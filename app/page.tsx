@@ -173,16 +173,57 @@ export default function Home() {
 
       {/* SECCIÓN 4 — CALENDLY */}
       <section id="agendar" className="px-6 md:px-12 lg:px-20 py-24 bg-background">
-        <div className="max-w-3xl mx-auto">
-          <p className="text-xs tracking-widest uppercase text-brand-teal mb-4">
-            Agenda una sesión
-          </p>
-          <p className="font-serif text-2xl mb-12">
-            Entrevista informativa de psicoterapia
-            <span className="font-sans text-sm text-brand-gold ml-3">20 min · gratuita</span>
-          </p>
+        <div className="max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-[1fr,2fr] gap-12 md:gap-16 items-start">
+            {/* Info lateral */}
+            <div className="space-y-6">
+              <div>
+                <p className="text-xs tracking-widest uppercase text-brand-teal mb-3">
+                  Agenda una sesión
+                </p>
+                <h2 className="font-serif text-2xl md:text-3xl leading-snug">
+                  Entrevista informativa
+                </h2>
+              </div>
+              
+              <div className="space-y-4 text-sm">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-brand-gold/10 flex items-center justify-center">
+                    <svg className="w-4 h-4 text-brand-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <span className="opacity-70">20 minutos</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-brand-mint/10 flex items-center justify-center">
+                    <svg className="w-4 h-4 text-brand-mint" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <span className="opacity-70">Videollamada</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-brand-teal/10 flex items-center justify-center">
+                    <svg className="w-4 h-4 text-brand-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <span className="opacity-70">Sin costo</span>
+                </div>
+              </div>
 
-          <CalendlyEmbed slug={SLUG_ENTREVISTA} />
+              <p className="text-sm opacity-50 leading-relaxed">
+                Conversamos brevemente para conocernos y explorar si hay resonancia terapéutica. Sin compromiso.
+              </p>
+            </div>
+
+            {/* Calendly widget */}
+            <div>
+              <CalendlyEmbed slug={SLUG_ENTREVISTA} />
+            </div>
+          </div>
+
           <CalendlyToggle />
         </div>
       </section>
