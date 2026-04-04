@@ -1,7 +1,7 @@
 import Image from "next/image";
 import ThemeToggle from "@/components/ThemeToggle";
-import CustomCalendly from "@/components/CustomCalendly";
 import Logo from "@/components/Logo";
+import CustomCalendly from "@/components/CustomCalendly";
 
 export default function Home() {
   return (
