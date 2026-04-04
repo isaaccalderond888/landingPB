@@ -1,6 +1,6 @@
 import Image from "next/image";
 import ThemeToggle from "@/components/ThemeToggle";
-import CalendlyWidget from "@/components/CalendlyWidget";
+import CustomCalendly from "@/components/CustomCalendly";
 import Logo from "@/components/Logo";
 
 export default function Home() {
@@ -205,7 +205,7 @@ export default function Home() {
                 <p className="text-sm opacity-50 mb-6">
                   Conversamos brevemente para conocernos y explorar si hay resonancia terapéutica. Sin compromiso.
                 </p>
-                <CalendlyWidget slug="entrevista" />
+                <CustomCalendly eventSlug="entrevista" />
               </div>
             </details>
 
@@ -231,7 +231,7 @@ export default function Home() {
                 <p className="text-sm opacity-50 mb-6">
                   Agenda tu sesión de psicoterapia con pago anticipado.
                 </p>
-                <CalendlyWidget slug="sesion-de-psicoterapia" />
+                <CustomCalendly eventSlug="sesion-de-psicoterapia" />
               </div>
             </details>
           </div>
