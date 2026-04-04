@@ -118,11 +118,16 @@ export default function CustomCalendly({ eventSlug }: { eventSlug: string }) {
 
   useEffect(() => {
     if (eventTypesData?.collection) {
+      console.log("[v0] Looking for slug:", eventSlug);
+      console.log("[v0] Available events:", eventTypesData.collection.map((et: { name: string; slug: string }) => ({ name: et.name, slug: et.slug })));
       const targetEvent = eventTypesData.collection.find(
         (et: { slug: string }) => et.slug === eventSlug
       );
       if (targetEvent) {
+        console.log("[v0] Found event:", targetEvent.name);
         setEventTypeUri(targetEvent.uri);
+      } else {
+        console.log("[v0] Event not found for slug:", eventSlug);
       }
     }
   }, [eventTypesData, eventSlug]);
