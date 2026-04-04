@@ -20,7 +20,9 @@ async function calendlyFetch(endpoint: string, params?: Record<string, string>) 
   });
 
   if (!res.ok) {
-    throw new Error(`Calendly API error: ${res.status}`);
+    const errorBody = await res.text();
+    console.log("[v0] Calendly API error details:", res.status, errorBody);
+    throw new Error(`Calendly API error: ${res.status} - ${errorBody}`);
   }
 
   return res.json();
@@ -53,7 +55,7 @@ export async function GET(request: Request) {
     // Get available times
     if (action === "available_times") {
       const eventTypeUri = searchParams.get("event_type");
-      const startTime = searchParams.get("start_time");
+      let startTime = searchParams.get("start_time");
       const endTime = searchParams.get("end_time");
 
       if (!eventTypeUri || !startTime || !endTime) {
@@ -61,6 +63,14 @@ export async function GET(request: Request) {
           { error: "event_type, start_time, and end_time are required" },
           { status: 400 }
         );
+      }
+
+      // Ensure start_time is always in the future (Calendly requires this)
+      const now = new Date();
+      const startDate = new Date(startTime);
+      if (startDate <= now) {
+        // Use current time + 1 minute to ensure it's in the future
+        startTime = new Date(now.getTime() + 60000).toISOString();
       }
 
       const data = await calendlyFetch("/event_type_available_times", {
