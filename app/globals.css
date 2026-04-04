@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #fafaf8;
+  --foreground: #1a1a18;
+  /* Paleta Sea from Space */
+  --brand-gold:  #C99328;
+  --brand-mint:  #5CC4A8;
+  --brand-teal:  #1A96A6;
+  --brand-mid:   #3B508A;
+  --brand-navy:  #253070;
+  --brand-night: #0D1430;
+}
+
+.dark {
+  --background: #0e0e0c;
+  --foreground: #e8e8e4;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-geist-sans), Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
