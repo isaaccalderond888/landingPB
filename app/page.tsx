@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ThemeToggle from "@/components/ThemeToggle";
 import CalendlyEmbed from "@/components/CalendlyEmbed";
 import CalendlyToggle from "@/components/CalendlyToggle";
@@ -63,17 +64,15 @@ export default function Home() {
             </a>
           </div>
 
-          {/* NOTA PARA ISAAC: reemplaza este placeholder con tu foto.
-              1. Añade tu imagen en /public/isaac.jpg (recomendado 600x750px, proporción 4:5)
-              2. Reemplaza el bloque completo con:
-                 import Image from "next/image";
-                 <div className="hidden md:block">
-                   <Image src="/isaac.jpg" alt="Isaac Calderón Derat" width={600} height={750}
-                     className="aspect-[4/5] object-cover w-full" />
-                 </div>
-          */}
-          <div className="hidden md:flex items-center justify-center">
-            <Logo size={320} variant="color" className="opacity-90" />
+          <div className="hidden md:block">
+            <Image 
+              src="/isaac.jpg" 
+              alt="Isaac Calderón Derat" 
+              width={600} 
+              height={750}
+              className="aspect-[4/5] object-cover w-full grayscale"
+              priority
+            />
           </div>
         </div>
       </section>
