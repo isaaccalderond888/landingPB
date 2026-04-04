@@ -1,6 +1,6 @@
 import Image from "next/image";
 import ThemeToggle from "@/components/ThemeToggle";
-import CustomCalendly from "@/components/CustomCalendly";
+import CalendlyCard from "@/components/CalendlyCard";
 import Logo from "@/components/Logo";
 
 export default function Home() {
@@ -170,75 +170,41 @@ export default function Home() {
 
       {/* SECCIÓN 4 — CALENDLY */}
       <section id="agendar" className="px-6 md:px-12 lg:px-20 py-24 bg-background">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           {/* Header */}
-          <div className="mb-12">
+          <div className="mb-12 text-center">
             <p className="text-xs tracking-widest uppercase text-brand-teal mb-3">
               Agenda una sesión
             </p>
-            <h2 className="font-serif text-2xl md:text-3xl leading-snug max-w-lg">
+            <h2 className="font-serif text-2xl md:text-3xl leading-snug">
               Selecciona el tipo de cita que necesitas
             </h2>
           </div>
 
-          {/* Tabs de eventos */}
+          {/* Cards de eventos */}
           <div className="space-y-6">
-            {/* Entrevista informativa */}
-            <details className="group border border-foreground/10 rounded-xl overflow-hidden" open>
-              <summary className="flex items-center justify-between p-6 cursor-pointer bg-background hover:bg-foreground/[0.02] transition-colors list-none">
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-brand-gold/10 flex items-center justify-center">
-                    <svg className="w-5 h-5 text-brand-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-serif text-lg">Entrevista informativa</h3>
-                    <p className="text-sm opacity-50">20 min · gratuita · nuevos pacientes</p>
-                  </div>
-                </div>
-                <svg className="w-5 h-5 opacity-40 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </summary>
-              <div className="p-6 pt-0 border-t border-foreground/5">
-                <p className="text-sm opacity-50 mb-6 max-w-md">
-                  Conversamos brevemente para conocernos y explorar si hay resonancia terapéutica. Sin compromiso.
-                </p>
-                <CustomCalendly eventSlug="entrevista" />
-              </div>
-            </details>
+            <CalendlyCard
+              title="Entrevista informativa"
+              description="Conversamos brevemente para conocernos y explorar si hay resonancia terapéutica. Sin compromiso."
+              duration="20 min"
+              price="Gratuita"
+              slug="entrevista"
+              accentColor="gold"
+              icon="chat"
+            />
 
-            {/* Sesión con pago adelantado */}
-            <details className="group border border-foreground/10 rounded-xl overflow-hidden">
-              <summary className="flex items-center justify-between p-6 cursor-pointer bg-background hover:bg-foreground/[0.02] transition-colors list-none">
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-brand-teal/10 flex items-center justify-center">
-                    <svg className="w-5 h-5 text-brand-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-serif text-lg">Sesión de psicoterapia</h3>
-                    <p className="text-sm opacity-50">Pago por adelantado</p>
-                  </div>
-                </div>
-                <svg className="w-5 h-5 opacity-40 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </summary>
-              <div className="p-6 pt-0 border-t border-foreground/5">
-                <p className="text-sm opacity-50 mb-6 max-w-md">
-                  Agenda tu sesión de psicoterapia con pago anticipado.
-                </p>
-                <CustomCalendly eventSlug="sesion-de-psicoterapia" />
-              </div>
-            </details>
-
+            <CalendlyCard
+              title="Sesión de psicoterapia"
+              description="Agenda tu sesión de psicoterapia con pago anticipado."
+              duration="50 min"
+              slug="sesion-de-psicoterapia"
+              accentColor="teal"
+              icon="payment"
+            />
           </div>
 
           {/* Nota de zona horaria */}
-          <p className="mt-8 text-xs opacity-40 text-center">
+          <p className="mt-10 text-xs opacity-40 text-center">
             Zona horaria: Ciudad de México (GMT-6)
           </p>
         </div>
