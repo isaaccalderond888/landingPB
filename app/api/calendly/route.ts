@@ -57,8 +57,6 @@ export async function GET(request: NextRequest) {
         user: userUri,
         active: "true",
       });
-      // Debug: log available event types
-      console.log("[v0] Available event types:", data.collection?.map((et: { name: string; slug: string }) => ({ name: et.name, slug: et.slug })));
       return NextResponse.json(data);
     }
 

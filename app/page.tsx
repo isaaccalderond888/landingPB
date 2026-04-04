@@ -170,84 +170,102 @@ export default function Home() {
 
       {/* SECCIÓN 4 — CALENDLY */}
       <section id="agendar" className="px-6 md:px-12 lg:px-20 py-24 bg-background">
-        <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-[280px,1fr] gap-12 md:gap-16 items-start">
-            {/* Info lateral */}
-            <div className="space-y-6">
-              <div>
-                <p className="text-xs tracking-widest uppercase text-brand-teal mb-3">
-                  Agenda una sesión
+        <div className="max-w-5xl mx-auto">
+          {/* Header */}
+          <div className="mb-12">
+            <p className="text-xs tracking-widest uppercase text-brand-teal mb-3">
+              Agenda una sesión
+            </p>
+            <h2 className="font-serif text-2xl md:text-3xl leading-snug max-w-lg">
+              Selecciona el tipo de cita que necesitas
+            </h2>
+          </div>
+
+          {/* Tabs de eventos */}
+          <div className="space-y-6">
+            {/* Entrevista informativa */}
+            <details className="group border border-foreground/10 rounded-xl overflow-hidden" open>
+              <summary className="flex items-center justify-between p-6 cursor-pointer bg-background hover:bg-foreground/[0.02] transition-colors list-none">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-brand-gold/10 flex items-center justify-center">
+                    <svg className="w-5 h-5 text-brand-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-serif text-lg">Entrevista informativa</h3>
+                    <p className="text-sm opacity-50">20 min · gratuita · nuevos pacientes</p>
+                  </div>
+                </div>
+                <svg className="w-5 h-5 opacity-40 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div className="p-6 pt-0 border-t border-foreground/5">
+                <p className="text-sm opacity-50 mb-6 max-w-md">
+                  Conversamos brevemente para conocernos y explorar si hay resonancia terapéutica. Sin compromiso.
                 </p>
-                <h2 className="font-serif text-2xl md:text-3xl leading-snug">
-                  Entrevista informativa
-                </h2>
+                <CustomCalendly eventSlug="entrevista" />
               </div>
-              
-              <div className="space-y-4 text-sm">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-brand-gold/10 flex items-center justify-center">
-                    <svg className="w-4 h-4 text-brand-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <span className="opacity-70">20 minutos</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-brand-mint/10 flex items-center justify-center">
-                    <svg className="w-4 h-4 text-brand-mint" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <span className="opacity-70">Videollamada</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-brand-teal/10 flex items-center justify-center">
-                    <svg className="w-4 h-4 text-brand-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            </details>
+
+            {/* Sesión con pago adelantado */}
+            <details className="group border border-foreground/10 rounded-xl overflow-hidden">
+              <summary className="flex items-center justify-between p-6 cursor-pointer bg-background hover:bg-foreground/[0.02] transition-colors list-none">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-brand-teal/10 flex items-center justify-center">
+                    <svg className="w-5 h-5 text-brand-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
-                  <span className="opacity-70">Sin costo</span>
+                  <div>
+                    <h3 className="font-serif text-lg">Sesión de psicoterapia</h3>
+                    <p className="text-sm opacity-50">Pago por adelantado</p>
+                  </div>
                 </div>
-              </div>
-
-              <p className="text-sm opacity-50 leading-relaxed">
-                Conversamos brevemente para conocernos y explorar si hay resonancia terapéutica. Sin compromiso.
-              </p>
-
-              <div className="pt-4 border-t border-foreground/10">
-                <p className="text-xs opacity-40">
-                  Zona horaria: Ciudad de México
-                </p>
-              </div>
-            </div>
-
-            {/* Custom Calendar */}
-            <div className="bg-background border border-foreground/10 rounded-xl p-6">
-              <CustomCalendly eventSlug="entrevista" />
-            </div>
-          </div>
-
-          {/* Toggle for existing patients */}
-          <div className="mt-16 pt-10 border-t border-foreground/10">
-            <details className="group">
-              <summary className="flex items-center gap-3 cursor-pointer text-sm text-foreground/50 hover:text-brand-teal transition-colors list-none">
-                <span className="w-6 h-6 rounded-full border border-current flex items-center justify-center group-open:bg-brand-teal group-open:border-brand-teal group-open:text-white transition-all">
-                  <svg 
-                    className="w-3 h-3 transition-transform group-open:rotate-180" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    stroke="currentColor"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </span>
-                <span>¿Ya eres paciente? Agenda tu siguiente sesión</span>
+                <svg className="w-5 h-5 opacity-40 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
               </summary>
-              <div className="mt-8 bg-background border border-foreground/10 rounded-xl p-6">
+              <div className="p-6 pt-0 border-t border-foreground/5">
+                <p className="text-sm opacity-50 mb-6 max-w-md">
+                  Agenda tu sesión de psicoterapia con pago anticipado.
+                </p>
                 <CustomCalendly eventSlug="sesion-de-psicoterapia" />
               </div>
             </details>
+
+            {/* Pacientes regulares */}
+            <details className="group border border-foreground/10 rounded-xl overflow-hidden">
+              <summary className="flex items-center justify-between p-6 cursor-pointer bg-background hover:bg-foreground/[0.02] transition-colors list-none">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-brand-mint/10 flex items-center justify-center">
+                    <svg className="w-5 h-5 text-brand-mint" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-serif text-lg">Pacientes regulares</h3>
+                    <p className="text-sm opacity-50">Sesión individual · pacientes actuales</p>
+                  </div>
+                </div>
+                <svg className="w-5 h-5 opacity-40 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div className="p-6 pt-0 border-t border-foreground/5">
+                <p className="text-sm opacity-50 mb-6 max-w-md">
+                  Agenda tu próxima sesión de seguimiento.
+                </p>
+                <CustomCalendly eventSlug="sesion-individual" />
+              </div>
+            </details>
           </div>
+
+          {/* Nota de zona horaria */}
+          <p className="mt-8 text-xs opacity-40 text-center">
+            Zona horaria: Ciudad de México (GMT-6)
+          </p>
         </div>
       </section>
 
