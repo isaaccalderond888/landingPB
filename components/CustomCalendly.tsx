@@ -1,3 +1,4 @@
+// CustomCalendly - Calendar component for Calendly integration
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
@@ -73,12 +74,13 @@ export default function CustomCalendly({ eventSlug }: CustomCalendlyProps) {
   const { startTime, endTime } = useMemo(() => {
     const now = new Date();
     const weekStartDate = new Date(weekStart);
+    weekStartDate.setHours(0, 0, 0, 0);
     
     // Start from now if we're in the current week, otherwise from week start
-    const start = weekStartDate <= now ? now : weekStartDate;
+    const start = weekStartDate <= now ? new Date(now.getTime() + 60000) : weekStartDate;
     
-    // End exactly 6 days, 23 hours, 59 minutes from start (less than 7 days)
-    const end = new Date(weekStartDate);
+    // End exactly 6 days from start (within 7 day limit)
+    const end = new Date(start);
     end.setDate(end.getDate() + 6);
     end.setHours(23, 59, 59, 0);
     
