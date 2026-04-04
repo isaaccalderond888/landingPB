@@ -11,6 +11,9 @@ async function calendlyFetch(endpoint: string, params?: Record<string, string>) 
     });
   }
 
+  console.log("[v0] Calendly fetch:", url.toString());
+  console.log("[v0] API Key exists:", !!API_KEY, "Length:", API_KEY?.length);
+
   const res = await fetch(url.toString(), {
     headers: {
       Authorization: `Bearer ${API_KEY}`,
@@ -20,7 +23,9 @@ async function calendlyFetch(endpoint: string, params?: Record<string, string>) 
   });
 
   if (!res.ok) {
-    throw new Error(`Calendly API error: ${res.status}`);
+    const errorText = await res.text();
+    console.log("[v0] Calendly error response:", res.status, errorText);
+    throw new Error(`Calendly API error: ${res.status} - ${errorText}`);
   }
 
   return res.json();
