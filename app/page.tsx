@@ -1,10 +1,7 @@
 import Image from "next/image";
 import ThemeToggle from "@/components/ThemeToggle";
-import CalendlyEmbed from "@/components/CalendlyEmbed";
-import CalendlyToggle from "@/components/CalendlyToggle";
+import CustomCalendly from "@/components/CustomCalendly";
 import Logo from "@/components/Logo";
-
-const SLUG_ENTREVISTA = "entrevista";
 
 export default function Home() {
   return (
@@ -174,7 +171,7 @@ export default function Home() {
       {/* SECCIÓN 4 — CALENDLY */}
       <section id="agendar" className="px-6 md:px-12 lg:px-20 py-24 bg-background">
         <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-[1fr,2fr] gap-12 md:gap-16 items-start">
+          <div className="grid md:grid-cols-[280px,1fr] gap-12 md:gap-16 items-start">
             {/* Info lateral */}
             <div className="space-y-6">
               <div>
@@ -216,15 +213,41 @@ export default function Home() {
               <p className="text-sm opacity-50 leading-relaxed">
                 Conversamos brevemente para conocernos y explorar si hay resonancia terapéutica. Sin compromiso.
               </p>
+
+              <div className="pt-4 border-t border-foreground/10">
+                <p className="text-xs opacity-40">
+                  Zona horaria: Ciudad de México
+                </p>
+              </div>
             </div>
 
-            {/* Calendly widget */}
-            <div>
-              <CalendlyEmbed slug={SLUG_ENTREVISTA} />
+            {/* Custom Calendar */}
+            <div className="bg-background border border-foreground/10 rounded-xl p-6">
+              <CustomCalendly eventSlug="entrevista" />
             </div>
           </div>
 
-          <CalendlyToggle />
+          {/* Toggle for existing patients */}
+          <div className="mt-16 pt-10 border-t border-foreground/10">
+            <details className="group">
+              <summary className="flex items-center gap-3 cursor-pointer text-sm text-foreground/50 hover:text-brand-teal transition-colors list-none">
+                <span className="w-6 h-6 rounded-full border border-current flex items-center justify-center group-open:bg-brand-teal group-open:border-brand-teal group-open:text-white transition-all">
+                  <svg 
+                    className="w-3 h-3 transition-transform group-open:rotate-180" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+                <span>¿Ya eres paciente? Agenda tu siguiente sesión</span>
+              </summary>
+              <div className="mt-8 bg-background border border-foreground/10 rounded-xl p-6">
+                <CustomCalendly eventSlug="sesion-de-psicoterapia" />
+              </div>
+            </details>
+          </div>
         </div>
       </section>
 
