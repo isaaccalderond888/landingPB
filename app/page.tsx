@@ -33,8 +33,8 @@ export default function Home() {
       </nav>
 
       {/* SECCIÓN 1 — HERO */}
-      <section className="min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20 pt-24 pb-20 bg-gradient-to-br from-brand-night via-brand-navy to-brand-night">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+      <section className="min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20 pt-24 pb-20 bg-gradient-to-br from-brand-night via-brand-navy to-brand-night noise-texture radial-glow relative overflow-hidden">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10">
           <div className="space-y-8">
             <div className="space-y-3">
               <p className="text-xs tracking-widest uppercase text-brand-gold">
