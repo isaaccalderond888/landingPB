@@ -21,7 +21,6 @@ async function calendlyFetch(endpoint: string, params?: Record<string, string>) 
 
   if (!res.ok) {
     const errorBody = await res.text();
-    console.log("[v0] Calendly error:", res.status, errorBody);
     return { error: true, status: res.status, message: errorBody };
   }
 
@@ -94,8 +93,7 @@ export async function GET(request: Request) {
     }
 
     return NextResponse.json({ error: "Invalid action" }, { status: 400 });
-  } catch (error) {
-    console.log("[v0] Calendly route error:", error);
+  } catch {
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }

@@ -17,7 +17,8 @@ interface TimeSlot {
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
 const WEEKDAYS = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
-const MONTHS = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+const WEEKDAYS_FULL = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+const MONTHS = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
 
 function getWeekStart(date: Date): Date {
   const d = new Date(date);
@@ -46,6 +47,10 @@ function formatTime(isoString: string): string {
   });
 }
 
+function formatDateShort(date: Date): string {
+  return `${WEEKDAYS_FULL[date.getDay()]} ${date.getDate()} ${MONTHS[date.getMonth()]}`;
+}
+
 export default function CustomCalendly({ eventSlug }: CustomCalendlyProps) {
   const [weekStart, setWeekStart] = useState(() => getWeekStart(new Date()));
   const [selectedDay, setSelectedDay] = useState<Date | null>(null);
@@ -64,11 +69,19 @@ export default function CustomCalendly({ eventSlug }: CustomCalendlyProps) {
     fetcher
   );
 
-  // Get week range for availability query
+  // Get week range for availability query - ensure exactly 7 days max
   const { startTime, endTime } = useMemo(() => {
-    const start = new Date(weekStart);
-    const end = new Date(weekStart);
-    end.setDate(end.getDate() + 7);
+    const now = new Date();
+    const weekStartDate = new Date(weekStart);
+    
+    // Start from now if we're in the current week, otherwise from week start
+    const start = weekStartDate <= now ? now : weekStartDate;
+    
+    // End exactly 6 days, 23 hours, 59 minutes from start (less than 7 days)
+    const end = new Date(weekStartDate);
+    end.setDate(end.getDate() + 6);
+    end.setHours(23, 59, 59, 0);
+    
     return {
       startTime: start.toISOString(),
       endTime: end.toISOString(),
@@ -120,13 +133,28 @@ export default function CustomCalendly({ eventSlug }: CustomCalendlyProps) {
     return slots;
   }, [availabilityData]);
 
+  // Get next 3 available slots across all days
+  const nextThreeSlots = useMemo(() => {
+    const allSlots: TimeSlot[] = [];
+    if (availabilityData?.collection) {
+      availabilityData.collection.forEach((slot: TimeSlot) => {
+        if (slot.status === "available") {
+          allSlots.push(slot);
+        }
+      });
+    }
+    // Sort by start_time and take first 3
+    return allSlots
+      .sort((a, b) => new Date(a.start_time).getTime() - new Date(b.start_time).getTime())
+      .slice(0, 3);
+  }, [availabilityData]);
+
   // Get slots for selected day
   const selectedDaySlots = selectedDay ? slotsByDay[selectedDay.toDateString()] || [] : [];
 
   const goToPrevWeek = () => {
     const prev = new Date(weekStart);
     prev.setDate(prev.getDate() - 7);
-    // Don't go to past weeks
     if (prev >= getWeekStart(new Date())) {
       setWeekStart(prev);
       setSelectedDay(null);
@@ -160,119 +188,166 @@ export default function CustomCalendly({ eventSlug }: CustomCalendlyProps) {
   // Loading state
   if (!userData || userError) {
     return (
-      <div className="flex items-center justify-center py-12">
-        <div className="w-6 h-6 border-2 border-brand-teal border-t-transparent rounded-full animate-spin" />
+      <div className="flex items-center justify-center py-8">
+        <div className="w-5 h-5 border-2 border-brand-teal border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
 
   // Error state
-  if (userData?.error || eventTypesData?.error || availabilityData?.error) {
+  if (userData?.error || eventTypesData?.error) {
     return (
-      <div className="text-center py-8 text-sm opacity-50">
-        No se pudo cargar la disponibilidad. Por favor intenta más tarde.
+      <div className="text-center py-6 text-sm opacity-50">
+        No se pudo cargar la disponibilidad.
       </div>
     );
   }
 
-  const monthYear = `${MONTHS[weekStart.getMonth()]} ${weekStart.getFullYear()}`;
-
   return (
-    <div className="space-y-6">
-      {/* Header con navegación */}
-      <div className="flex items-center justify-between">
-        <h3 className="font-serif text-lg">{monthYear}</h3>
-        <div className="flex items-center gap-2">
-          <button
-            onClick={goToPrevWeek}
-            disabled={!canGoPrev}
-            className="w-8 h-8 flex items-center justify-center rounded-full border border-foreground/10 hover:border-brand-teal hover:text-brand-teal transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
-          >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          <button
-            onClick={goToNextWeek}
-            className="w-8 h-8 flex items-center justify-center rounded-full border border-foreground/10 hover:border-brand-teal hover:text-brand-teal transition-colors"
-          >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      {/* Días de la semana */}
-      <div className="grid grid-cols-7 gap-2">
-        {weekDays.map((day) => {
-          const past = isPast(day);
-          const today = isToday(day);
-          const available = hasSlots(day);
-          const selected = selectedDay?.toDateString() === day.toDateString();
-
-          return (
+    <div className="grid md:grid-cols-[1fr,240px] gap-4">
+      {/* Calendario compacto */}
+      <div className="space-y-3">
+        {/* Header con navegación */}
+        <div className="flex items-center justify-between">
+          <span className="text-sm font-medium">
+            {MONTHS[weekStart.getMonth()]} {weekStart.getFullYear()}
+          </span>
+          <div className="flex items-center gap-1">
             <button
-              key={day.toISOString()}
-              onClick={() => !past && setSelectedDay(day)}
-              disabled={past}
-              className={`
-                flex flex-col items-center py-3 px-2 rounded-lg transition-all
-                ${past ? "opacity-30 cursor-not-allowed" : "cursor-pointer hover:bg-foreground/5"}
-                ${selected ? "bg-brand-teal text-white" : ""}
-                ${today && !selected ? "ring-1 ring-brand-gold" : ""}
-              `}
+              onClick={goToPrevWeek}
+              disabled={!canGoPrev}
+              className="w-7 h-7 flex items-center justify-center rounded-md hover:bg-foreground/5 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
             >
-              <span className="text-xs opacity-60 mb-1">{WEEKDAYS[day.getDay()]}</span>
-              <span className="text-lg font-medium">{day.getDate()}</span>
-              {available && !selected && (
-                <span className="w-1.5 h-1.5 rounded-full bg-brand-mint mt-1" />
-              )}
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
             </button>
-          );
-        })}
+            <button
+              onClick={goToNextWeek}
+              className="w-7 h-7 flex items-center justify-center rounded-md hover:bg-foreground/5 transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Días de la semana - Grid compacto */}
+        <div className="grid grid-cols-7 gap-1">
+          {weekDays.map((day) => {
+            const past = isPast(day);
+            const today = isToday(day);
+            const available = hasSlots(day);
+            const selected = selectedDay?.toDateString() === day.toDateString();
+
+            return (
+              <button
+                key={day.toISOString()}
+                onClick={() => !past && setSelectedDay(day)}
+                disabled={past}
+                className={`
+                  relative flex flex-col items-center py-2 rounded-lg transition-all text-center
+                  ${past ? "opacity-30 cursor-not-allowed" : "cursor-pointer hover:bg-foreground/5"}
+                  ${selected ? "bg-brand-teal text-white" : ""}
+                  ${today && !selected ? "ring-1 ring-brand-gold ring-inset" : ""}
+                `}
+              >
+                <span className="text-[10px] uppercase opacity-60">{WEEKDAYS[day.getDay()]}</span>
+                <span className="text-sm font-medium">{day.getDate()}</span>
+                {available && !selected && (
+                  <span className="absolute bottom-1 w-1 h-1 rounded-full bg-brand-mint" />
+                )}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Horarios del día seleccionado */}
+        {loadingTimes && (
+          <div className="flex items-center justify-center py-4">
+            <div className="w-4 h-4 border-2 border-brand-teal border-t-transparent rounded-full animate-spin" />
+          </div>
+        )}
+
+        {!loadingTimes && selectedDay && (
+          <div className="space-y-2">
+            <p className="text-xs opacity-50">
+              {formatDateShort(selectedDay)}
+            </p>
+            
+            {selectedDaySlots.length === 0 ? (
+              <p className="text-xs opacity-40 py-2">
+                Sin horarios disponibles
+              </p>
+            ) : (
+              <div className="grid grid-cols-4 gap-1.5">
+                {selectedDaySlots.map((slot) => (
+                  <a
+                    key={slot.start_time}
+                    href={slot.scheduling_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-2 py-1.5 text-xs text-center rounded-md border border-foreground/10 hover:border-brand-gold hover:bg-brand-gold/5 hover:text-brand-gold transition-all"
+                  >
+                    {formatTime(slot.start_time)}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
+        {!loadingTimes && !selectedDay && (
+          <p className="text-xs opacity-40 py-2">
+            Selecciona un día
+          </p>
+        )}
       </div>
 
-      {/* Horarios disponibles */}
-      {loadingTimes && (
-        <div className="flex items-center justify-center py-8">
-          <div className="w-5 h-5 border-2 border-brand-teal border-t-transparent rounded-full animate-spin" />
-        </div>
-      )}
-
-      {!loadingTimes && selectedDay && (
-        <div className="space-y-3">
-          <p className="text-sm opacity-60">
-            Horarios disponibles para el {selectedDay.getDate()} de {MONTHS[selectedDay.getMonth()]}
+      {/* Próximos horarios disponibles */}
+      <div className="border-l border-foreground/10 pl-4 space-y-3">
+        <p className="text-xs uppercase tracking-wider opacity-50">Próximos horarios</p>
+        
+        {loadingTimes ? (
+          <div className="flex items-center justify-center py-4">
+            <div className="w-4 h-4 border-2 border-brand-teal border-t-transparent rounded-full animate-spin" />
+          </div>
+        ) : nextThreeSlots.length === 0 ? (
+          <p className="text-xs opacity-40">
+            No hay horarios esta semana
           </p>
-          
-          {selectedDaySlots.length === 0 ? (
-            <p className="text-sm opacity-40 py-4 text-center">
-              No hay horarios disponibles este día
-            </p>
-          ) : (
-            <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
-              {selectedDaySlots.map((slot) => (
+        ) : (
+          <div className="space-y-2">
+            {nextThreeSlots.map((slot) => {
+              const slotDate = new Date(slot.start_time);
+              return (
                 <a
                   key={slot.start_time}
                   href={slot.scheduling_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-3 py-2 text-sm text-center rounded-lg border border-foreground/10 hover:border-brand-gold hover:bg-brand-gold/5 hover:text-brand-gold transition-all"
+                  className="block p-2.5 rounded-lg border border-foreground/10 hover:border-brand-teal hover:bg-brand-teal/5 transition-all group"
                 >
-                  {formatTime(slot.start_time)}
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm font-medium group-hover:text-brand-teal transition-colors">
+                        {formatTime(slot.start_time)}
+                      </p>
+                      <p className="text-[10px] opacity-50">
+                        {WEEKDAYS_FULL[slotDate.getDay()]} {slotDate.getDate()} {MONTHS[slotDate.getMonth()]}
+                      </p>
+                    </div>
+                    <svg className="w-4 h-4 opacity-30 group-hover:opacity-100 group-hover:text-brand-teal transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
                 </a>
-              ))}
-            </div>
-          )}
-        </div>
-      )}
-
-      {!loadingTimes && !selectedDay && (
-        <p className="text-sm opacity-40 text-center py-4">
-          Selecciona un día para ver los horarios disponibles
-        </p>
-      )}
+              );
+            })}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
