@@ -235,31 +235,6 @@ export default function Home() {
               </div>
             </details>
 
-            {/* Pacientes regulares */}
-            <details className="group border border-foreground/10 rounded-xl overflow-hidden">
-              <summary className="flex items-center justify-between p-6 cursor-pointer bg-background hover:bg-foreground/[0.02] transition-colors list-none">
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-brand-mint/10 flex items-center justify-center">
-                    <svg className="w-5 h-5 text-brand-mint" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-serif text-lg">Pacientes regulares</h3>
-                    <p className="text-sm opacity-50">Sesión individual · pacientes actuales</p>
-                  </div>
-                </div>
-                <svg className="w-5 h-5 opacity-40 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </summary>
-              <div className="p-6 pt-0 border-t border-foreground/5">
-                <p className="text-sm opacity-50 mb-6 max-w-md">
-                  Agenda tu próxima sesión de seguimiento.
-                </p>
-                <CustomCalendly eventSlug="sesion-individual" />
-              </div>
-            </details>
           </div>
 
           {/* Nota de zona horaria */}

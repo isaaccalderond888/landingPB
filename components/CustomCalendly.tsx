@@ -102,13 +102,14 @@ export default function CustomCalendly({ eventSlug }: { eventSlug: string }) {
   const { start, end } = getWeekDates(weekOffset);
 
   // Fetch user
-  const { data: userData } = useSWR("/api/calendly?action=user", fetcher);
+  const { data: userData, error: userError } = useSWR("/api/calendly?action=user", fetcher);
 
   useEffect(() => {
+    console.log("[v0] userData:", userData, "error:", userError);
     if (userData?.resource?.uri) {
       setUserUri(userData.resource.uri);
     }
-  }, [userData]);
+  }, [userData, userError]);
 
   // Fetch event types
   const { data: eventTypesData } = useSWR(
