@@ -40,10 +40,10 @@ export default function Home() {
               <p className="text-xs tracking-widest uppercase text-brand-gold">
                 Psicólogo · Psicoterapeuta Transpersonal
               </p>
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-tight text-white">
+              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight text-white text-balance">
                 Psicoterapia desde la profundidad.
               </h1>
-              <p className="font-serif text-3xl md:text-4xl lg:text-5xl leading-tight text-brand-mint/60">
+              <p className="font-serif text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight text-brand-mint/60">
                 Para quienes buscan transformación real.
               </p>
             </div>
@@ -64,13 +64,13 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="hidden md:block">
+          <div className="hidden md:block teal-glow">
             <Image 
               src="/isaac.jpg" 
               alt="Isaac Calderón Derat" 
               width={600} 
               height={750}
-              className="aspect-[4/5] object-cover w-full"
+              className="aspect-[4/5] object-cover w-full relative z-10"
               priority
             />
           </div>
