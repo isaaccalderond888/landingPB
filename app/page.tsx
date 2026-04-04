@@ -40,19 +40,18 @@ export default function Home() {
                 Psicólogo · Psicoterapeuta Transpersonal
               </p>
               <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-tight">
-                Psicoterapia desde la profundidad.
+                Psicoterapia informada en trauma.
               </h1>
               <p className="font-serif text-3xl md:text-4xl lg:text-5xl leading-tight opacity-50">
-                Para quienes buscan transformación real.
+                Somática, transpersonal y basada en evidencia.
               </p>
             </div>
 
             <p className="text-base md:text-lg leading-relaxed opacity-65 max-w-md">
-              Trabajo con personas que han agotado las respuestas superficiales.
-              Mi práctica integra psicotraumatología, trabajo somático y acompañamiento
-              en estados ampliados de conciencia — cada proceso encuentra su propia
-              forma y jerarquía. Atiendo online para hispanohablantes y presencial
-              en Ciudad de México.
+              Trabajo desde la integración de cuerpo, sistema nervioso y psique
+              para acompañar procesos de transformación real. No solo el alivio
+              de los síntomas — sino el encuentro con ese misterio que somos.
+              Atiendo online para hispanohablantes y presencial en Ciudad de México.
             </p>
 
             <a
@@ -89,41 +88,40 @@ export default function Home() {
             <div className="space-y-4">
               <div className="w-8 h-px bg-brand-gold mb-6" />
               <h2 className="font-serif text-xl leading-snug">
-                Psicotraumatología y enfoque somático
+                El cuerpo como territorio de sanación
               </h2>
               <p className="text-sm leading-relaxed opacity-55">
-                El trauma no vive solo en la mente — vive en el cuerpo, en los
-                patrones de activación del sistema nervioso, en lo que no pudo
-                ser dicho ni procesado. Trabajo con protocolos actualizados e
-                informados en neurociencia, donde el cuerpo es territorio tanto
-                del problema como de la solución.
+                El trauma no vive solo en los recuerdos — vive en el sistema nervioso,
+                en la tensión muscular, en los patrones de activación que el cuerpo
+                aprendió para sobrevivir. Trabajo con psicotraumatología y enfoque
+                somático: el cuerpo no es el problema, es parte de la solución.
               </p>
             </div>
 
             <div className="space-y-4">
               <div className="w-8 h-px bg-brand-teal mb-6" />
               <h2 className="font-serif text-xl leading-snug">
-                Neurofeedback e integración neurológica
+                Tecnología al servicio del proceso
               </h2>
               <p className="text-sm leading-relaxed opacity-55">
-                Cuando el proceso lo requiere, integro evaluación y entrenamiento
-                de ondas cerebrales como parte del trabajo clínico. No como
-                tecnología separada, sino como información adicional sobre el
-                sistema nervioso de cada persona.
+                Cuando el proceso lo requiere, integro neurofeedback — evaluación
+                y entrenamiento de ondas cerebrales — como información adicional
+                sobre el sistema nervioso de cada persona. No como tecnología
+                separada, sino como una capa más de comprensión.
               </p>
             </div>
 
             <div className="space-y-4">
               <div className="w-8 h-px bg-brand-mint mb-6" />
               <h2 className="font-serif text-xl leading-snug">
-                Terapia asistida con psicodélicos
+                Más allá de lo personal
               </h2>
               <p className="text-sm leading-relaxed opacity-55">
-                Acompaño procesos de preparación, sesión e integración con
-                sustancias psicoactivas en contexto clínico, ético y fundamentado
-                en evidencia emergente. Como director de Ciencia Psicodélica,
-                este trabajo forma parte de un compromiso más amplio: legitimar
-                estas herramientas con el rigor que merecen.
+                Hay heridas que van más allá de nuestra biografía individual —
+                heridas generacionales, de la especie, cósmicas. La psicología
+                transpersonal y el trabajo con estados ampliados de conciencia
+                abren la posibilidad de sanar en esas capas más profundas,
+                con el rigor clínico y ético que merecen.
               </p>
             </div>
 
@@ -145,29 +143,35 @@ export default function Home() {
                 <span className="font-sans text-xs text-brand-gold opacity-80 tracking-wide">20 min · sin costo</span>
               </h3>
               <p className="text-sm leading-relaxed opacity-55">
-                Conversamos para conocernos y explorar si hay resonancia terapéutica.
-                Sin compromiso.
+                Un espacio para conocernos y explorar si hay resonancia terapéutica.
+                No es una sesión, es una conversación honesta sobre lo que buscas
+                y lo que puedo ofrecer. Sin compromisos.
               </p>
             </div>
 
             <div className="py-10 space-y-2">
               <h3 className="font-serif text-lg">Sesión inicial</h3>
               <p className="text-sm leading-relaxed opacity-55">
-                Evaluamos juntos el punto de partida y definimos el encuadre del proceso.
+                Evaluamos juntos el punto de partida: tu historia, tus síntomas,
+                lo que ya has intentado. A partir de ahí definimos el encuadre —
+                la frecuencia, la modalidad y la dirección del proceso.
               </p>
             </div>
 
             <div className="py-10 space-y-2">
               <h3 className="font-serif text-lg">Proceso terapéutico</h3>
               <p className="text-sm leading-relaxed opacity-55">
-                La frecuencia y modalidad emergen de cada persona. No hay fórmula fija.
+                No hay fórmula fija. Cada proceso encuentra su propia forma y
+                jerarquía. Trabajo explorando todas las capas posibles — desde
+                lo bioquímico y fisiológico hasta las creencias, el sentido y
+                lo que trasciende lo personal.
               </p>
             </div>
 
           </div>
 
-          <p className="mt-12 text-sm text-brand-gold/50 italic font-serif">
-            Tengo pocos espacios disponibles. Si hay resonancia, comenzamos.
+          <p className="mt-12 text-sm text-brand-gold/60 italic font-serif">
+            Vengo de haber atravesado mi propio caos. En la manera en que aprendí, acompaño.
           </p>
         </div>
       </section>
@@ -178,9 +182,12 @@ export default function Home() {
           <p className="text-xs tracking-widest uppercase text-brand-teal opacity-70 mb-4">
             Agenda una sesión
           </p>
-          <p className="font-serif text-2xl mb-12">
+          <p className="font-serif text-2xl mb-2">
             Entrevista informativa de psicoterapia
             <span className="font-sans text-sm text-brand-gold opacity-80 ml-3">20 min · gratuita</span>
+          </p>
+          <p className="text-sm opacity-40 mb-12">
+            Zona horaria: Ciudad de México (GMT-6)
           </p>
 
           <CalendlyEmbed slug={SLUG_ENTREVISTA} />
