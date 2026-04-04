@@ -20,8 +20,6 @@ async function calendlyFetch(endpoint: string, params?: Record<string, string>) 
   });
 
   if (!res.ok) {
-    const errorText = await res.text();
-    console.log("[v0] Calendly API error:", res.status, errorText);
     throw new Error(`Calendly API error: ${res.status}`);
   }
 
@@ -36,7 +34,6 @@ export async function GET(request: Request) {
     // Get current user
     if (action === "user") {
       const data = await calendlyFetch("/users/me");
-      console.log("[v0] User fetched:", data.resource?.uri);
       return NextResponse.json(data);
     }
 
@@ -50,7 +47,6 @@ export async function GET(request: Request) {
         user: userUri,
         active: "true",
       });
-      console.log("[v0] Event types:", data.collection?.map((e: { slug: string }) => e.slug));
       return NextResponse.json(data);
     }
 

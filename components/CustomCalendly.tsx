@@ -66,9 +66,17 @@ export default function CustomCalendly({ eventSlug }: CustomCalendlyProps) {
   const weekDays = useMemo(() => getWeekDays(weekStart), [weekStart]);
 
   const startTime = useMemo(() => {
-    const d = new Date(weekStart);
-    d.setHours(0, 0, 0, 0);
-    return d.toISOString();
+    const now = new Date();
+    const weekStartDate = new Date(weekStart);
+    weekStartDate.setHours(0, 0, 0, 0);
+    
+    // Si weekStart es hoy o en el pasado, usar ahora + 1 minuto
+    // De lo contrario, usar el inicio de weekStart
+    if (weekStartDate <= now) {
+      const future = new Date(now.getTime() + 60000); // +1 minuto para estar seguro
+      return future.toISOString();
+    }
+    return weekStartDate.toISOString();
   }, [weekStart]);
 
   const endTime = useMemo(() => {
