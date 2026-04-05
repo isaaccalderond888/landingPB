@@ -10,22 +10,25 @@ export async function GET(req: NextRequest) {
   if (!uri) return NextResponse.json({ slots: [] });
 
   const token = process.env.CALENDLY_API_TOKEN;
-  if (!token) return NextResponse.json({ slots: [] });
+  if (!token) return NextResponse.json({ slots: [], debug: "no_token" });
 
   const start = new Date();
-  const end = new Date(start.getTime() + 14 * 24 * 60 * 60 * 1000); // próximas 2 semanas
+  const end = new Date(start.getTime() + 14 * 24 * 60 * 60 * 1000);
 
   const url = new URL("https://api.calendly.com/event_type_available_times");
   url.searchParams.set("event_type", uri);
   url.searchParams.set("start_time", start.toISOString());
-  url.searchParams.set("end_time", new Date(start.getTime() + 7 * 24 * 60 * 60 * 1000).toISOString()); // max 7 días
+  url.searchParams.set("end_time", new Date(start.getTime() + 7 * 24 * 60 * 60 * 1000).toISOString());
 
   const res = await fetch(url.toString(), {
     headers: { Authorization: `Bearer ${token}` },
-    next: { revalidate: 300 }, // cache 5 min
+    cache: "no-store",
   });
 
-  if (!res.ok) return NextResponse.json({ slots: [] });
+  if (!res.ok) {
+    const errText = await res.text();
+    return NextResponse.json({ slots: [], debug: `calendly_error_${res.status}`, detail: errText.slice(0, 200) });
+  }
 
   const data = await res.json();
   const slots: Slot[] = (data.collection ?? [])
