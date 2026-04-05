@@ -1,10 +1,7 @@
 import Image from "next/image";
 import ThemeToggle from "@/components/ThemeToggle";
-import CalendlyEmbed from "@/components/CalendlyEmbed";
-import CalendlyToggle from "@/components/CalendlyToggle";
+import CalendlyAccordion from "@/components/CalendlyAccordion";
 import Logo from "@/components/Logo";
-
-const SLUG_ENTREVISTA = "entrevista";
 
 export default function Home() {
   return (
@@ -177,22 +174,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECCIÓN 4 — CALENDLY */}
+      {/* SECCIÓN 4 — AGENDAR */}
       <section id="agendar" className="px-6 md:px-12 lg:px-20 py-24 bg-background">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-xs tracking-widest uppercase text-brand-teal opacity-70 mb-4">
             Agenda una sesión
           </h2>
-          <p className="font-serif text-2xl mb-2">
-            Entrevista informativa de psicoterapia
-            <span className="font-sans text-sm text-brand-gold opacity-80 ml-3">20 min · gratuita</span>
+          <p className="font-serif text-2xl md:text-3xl mb-2">
+            Selecciona el tipo de cita
           </p>
-          <p className="text-sm opacity-40 mb-12">
-            Zona horaria: Ciudad de México (GMT-6)
+          <p className="text-sm opacity-40 mb-10">
+            Zona horaria: Ciudad de México (GMT‑6) · Vía Calendly
           </p>
 
-          <CalendlyEmbed slug={SLUG_ENTREVISTA} />
-          <CalendlyToggle />
+          <CalendlyAccordion />
         </div>
       </section>
 
