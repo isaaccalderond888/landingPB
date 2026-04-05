@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ThemeToggle from "@/components/ThemeToggle";
 import CalendlyEmbed from "@/components/CalendlyEmbed";
 import CalendlyToggle from "@/components/CalendlyToggle";
@@ -32,22 +33,22 @@ export default function Home() {
       </nav>
 
       {/* SECCIÓN 1 — HERO */}
-      <section className="min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20 pt-24 pb-20 max-w-5xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+      <section className="min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20 pt-24 pb-20 bg-gradient-to-br from-brand-night via-brand-navy to-brand-night noise-texture radial-glow relative overflow-hidden">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10">
           <div className="space-y-8">
             <div className="space-y-3">
-              <p className="text-xs tracking-widest uppercase text-brand-gold opacity-80">
+              <p className="text-xs tracking-widest uppercase text-brand-gold opacity-90">
                 Psicólogo · Psicoterapeuta Transpersonal
               </p>
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-tight">
+              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight text-white text-balance">
                 Psicoterapia informada en trauma.
               </h1>
-              <p className="font-serif text-3xl md:text-4xl lg:text-5xl leading-tight opacity-50">
+              <p className="font-serif text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight text-brand-mint/60">
                 Somática, transpersonal y basada en evidencia.
               </p>
             </div>
 
-            <p className="text-base md:text-lg leading-relaxed opacity-65 max-w-md">
+            <p className="text-base md:text-lg leading-relaxed text-white/70 max-w-md">
               Trabajo desde la integración de cuerpo, sistema nervioso y psique
               para acompañar procesos de transformación real. No solo el alivio
               de los síntomas — sino el encuentro con ese misterio que somos.
@@ -57,72 +58,71 @@ export default function Home() {
             <a
               href="#agendar"
               aria-label="Solicitar entrevista informativa gratuita de 20 minutos"
-              className="inline-block border border-brand-gold/60 text-brand-gold px-6 py-3 text-sm tracking-widest uppercase hover:bg-brand-gold hover:text-brand-night transition-colors duration-300"
+              className="inline-block bg-brand-gold text-brand-night px-6 py-3 text-sm tracking-widest uppercase font-medium hover:bg-brand-gold/90 transition-colors duration-300"
             >
               Solicitar entrevista informativa
             </a>
           </div>
 
-          {/* NOTA PARA ISAAC: reemplaza este placeholder con tu foto.
-              1. Añade tu imagen en /public/isaac.jpg (recomendado 600x750px, proporción 4:5)
-              2. Reemplaza el bloque completo con:
-                 import Image from "next/image";
-                 <div className="hidden md:block">
-                   <Image src="/isaac.jpg" alt="Isaac Calderón Derat" width={600} height={750}
-                     className="aspect-[4/5] object-cover w-full" />
-                 </div>
-          */}
-          <div className="hidden md:flex items-center justify-center">
-            <Logo size={320} variant="color" className="opacity-90" />
+          <div className="hidden md:block teal-glow">
+            <Image
+              src="/isaac.jpg"
+              alt="Isaac Calderón Derat, psicoterapeuta transpersonal en Ciudad de México"
+              width={600}
+              height={750}
+              className="aspect-[4/5] object-cover w-full relative z-10"
+              priority
+            />
           </div>
         </div>
       </section>
 
       {/* SECCIÓN 2 — ENFOQUE */}
-      <section id="enfoque" className="px-6 md:px-12 lg:px-20 py-24 border-t border-foreground/10">
+      <section id="enfoque" className="px-6 md:px-12 lg:px-20 py-24 bg-background">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-xs tracking-widest uppercase text-brand-teal opacity-70 mb-16">
             Cómo trabajo
           </h2>
           <div className="grid md:grid-cols-3 gap-12 md:gap-8 lg:gap-16">
 
-            <div className="space-y-4">
-              <div className="w-8 h-px bg-brand-gold mb-6" />
+            <div className="space-y-4 group">
+              <div className="w-10 h-1 bg-brand-gold mb-6 group-hover:w-16 transition-all duration-300" />
               <h3 className="font-serif text-xl leading-snug">
-                El cuerpo como territorio de sanación
+                Psicotraumatología y enfoque somático
               </h3>
-              <p className="text-sm leading-relaxed opacity-55">
-                El trauma no vive solo en los recuerdos — vive en el sistema nervioso,
-                en la tensión muscular, en los patrones de activación que el cuerpo
-                aprendió para sobrevivir. Trabajo con psicotraumatología y enfoque
-                somático: el cuerpo no es el problema, es parte de la solución.
+              <p className="text-sm leading-relaxed opacity-60">
+                El trauma no vive solo en la mente — vive en el cuerpo, en los
+                patrones de activación del sistema nervioso, en lo que no pudo
+                ser dicho ni procesado. Trabajo con protocolos actualizados e
+                informados en neurociencia, donde el cuerpo es territorio tanto
+                del problema como de la solución.
               </p>
             </div>
 
-            <div className="space-y-4">
-              <div className="w-8 h-px bg-brand-teal mb-6" />
+            <div className="space-y-4 group">
+              <div className="w-10 h-1 bg-brand-teal mb-6 group-hover:w-16 transition-all duration-300" />
               <h3 className="font-serif text-xl leading-snug">
-                Tecnología al servicio del proceso
+                Neurofeedback e integración neurológica
               </h3>
-              <p className="text-sm leading-relaxed opacity-55">
-                Cuando el proceso lo requiere, integro neurofeedback — evaluación
-                y entrenamiento de ondas cerebrales — como información adicional
-                sobre el sistema nervioso de cada persona. No como tecnología
-                separada, sino como una capa más de comprensión.
+              <p className="text-sm leading-relaxed opacity-60">
+                Cuando el proceso lo requiere, integro evaluación y entrenamiento
+                de ondas cerebrales como parte del trabajo clínico. No como
+                tecnología separada, sino como información adicional sobre el
+                sistema nervioso de cada persona.
               </p>
             </div>
 
-            <div className="space-y-4">
-              <div className="w-8 h-px bg-brand-mint mb-6" />
+            <div className="space-y-4 group">
+              <div className="w-10 h-1 bg-brand-mint mb-6 group-hover:w-16 transition-all duration-300" />
               <h3 className="font-serif text-xl leading-snug">
-                Más allá de lo personal
+                Terapia asistida con psicodélicos
               </h3>
-              <p className="text-sm leading-relaxed opacity-55">
-                Hay heridas que van más allá de nuestra biografía individual —
-                heridas generacionales, de la especie, cósmicas. La psicología
-                transpersonal y el trabajo con estados ampliados de conciencia
-                abren la posibilidad de sanar en esas capas más profundas,
-                con el rigor clínico y ético que merecen.
+              <p className="text-sm leading-relaxed opacity-60">
+                Acompaño procesos de preparación, sesión e integración con
+                sustancias psicoactivas en contexto clínico, ético y fundamentado
+                en evidencia emergente. Como director de Ciencia Psicodélica,
+                este trabajo forma parte de un compromiso más amplio: legitimar
+                estas herramientas con el rigor que merecen.
               </p>
             </div>
 
@@ -131,19 +131,19 @@ export default function Home() {
       </section>
 
       {/* SECCIÓN 3 — EL PROCESO */}
-      <section id="proceso" className="px-6 md:px-12 lg:px-20 py-24 border-t border-foreground/10">
+      <section id="proceso" className="px-6 md:px-12 lg:px-20 py-24 bg-brand-navy">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-xs tracking-widest uppercase text-brand-teal opacity-70 mb-16">
             El proceso
           </h2>
-          <div className="space-y-0 divide-y divide-foreground/10">
+          <div className="space-y-0 divide-y divide-white/10">
 
             <div className="py-10 space-y-2">
-              <h3 className="font-serif text-lg flex items-baseline gap-3">
+              <h3 className="font-serif text-lg text-white flex items-baseline gap-3">
                 Entrevista informativa
-                <span className="font-sans text-xs text-brand-gold opacity-80 tracking-wide">20 min · sin costo</span>
+                <span className="font-sans text-xs text-brand-gold tracking-wide">20 min · sin costo</span>
               </h3>
-              <p className="text-sm leading-relaxed opacity-55">
+              <p className="text-sm leading-relaxed text-white/60">
                 Un espacio para conocernos y explorar si hay resonancia terapéutica.
                 No es una sesión, es una conversación honesta sobre lo que buscas
                 y lo que puedo ofrecer. Sin compromisos.
@@ -151,8 +151,8 @@ export default function Home() {
             </div>
 
             <div className="py-10 space-y-2">
-              <h3 className="font-serif text-lg">Sesión inicial</h3>
-              <p className="text-sm leading-relaxed opacity-55">
+              <h3 className="font-serif text-lg text-white">Sesión inicial</h3>
+              <p className="text-sm leading-relaxed text-white/60">
                 Evaluamos juntos el punto de partida: tu historia, tus síntomas,
                 lo que ya has intentado. A partir de ahí definimos el encuadre —
                 la frecuencia, la modalidad y la dirección del proceso.
@@ -160,8 +160,8 @@ export default function Home() {
             </div>
 
             <div className="py-10 space-y-2">
-              <h3 className="font-serif text-lg">Proceso terapéutico</h3>
-              <p className="text-sm leading-relaxed opacity-55">
+              <h3 className="font-serif text-lg text-white">Proceso terapéutico</h3>
+              <p className="text-sm leading-relaxed text-white/60">
                 No hay fórmula fija. Cada proceso encuentra su propia forma y
                 jerarquía. Trabajo explorando todas las capas posibles — desde
                 lo bioquímico y fisiológico hasta las creencias, el sentido y
@@ -171,14 +171,14 @@ export default function Home() {
 
           </div>
 
-          <p className="mt-12 text-sm text-brand-gold/60 italic font-serif">
+          <p className="mt-12 text-sm text-brand-mint italic font-serif">
             Vengo de haber atravesado mi propio caos. En la manera en que aprendí, acompaño.
           </p>
         </div>
       </section>
 
       {/* SECCIÓN 4 — CALENDLY */}
-      <section id="agendar" className="px-6 md:px-12 lg:px-20 py-24 border-t border-foreground/10">
+      <section id="agendar" className="px-6 md:px-12 lg:px-20 py-24 bg-background">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-xs tracking-widest uppercase text-brand-teal opacity-70 mb-4">
             Agenda una sesión
