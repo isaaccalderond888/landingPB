@@ -12,13 +12,13 @@ export async function GET(req: NextRequest) {
   const token = process.env.CALENDLY_API_KEY;
   if (!token) return NextResponse.json({ slots: [], debug: "no_token" });
 
-  const start = new Date();
-  const end = new Date(start.getTime() + 14 * 24 * 60 * 60 * 1000);
+  const start = new Date(Date.now() + 5 * 60 * 1000); // +5 min para evitar clock drift
+  const end = new Date(Date.now() + 14 * 24 * 60 * 60 * 1000);
 
   const url = new URL("https://api.calendly.com/event_type_available_times");
   url.searchParams.set("event_type", uri);
   url.searchParams.set("start_time", start.toISOString());
-  url.searchParams.set("end_time", new Date(start.getTime() + 7 * 24 * 60 * 60 * 1000).toISOString());
+  url.searchParams.set("end_time", new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString());
 
   const res = await fetch(url.toString(), {
     headers: { Authorization: `Bearer ${token}` },
@@ -39,7 +39,7 @@ export async function GET(req: NextRequest) {
   if (slots.length === 0) {
     const url2 = new URL("https://api.calendly.com/event_type_available_times");
     url2.searchParams.set("event_type", uri);
-    url2.searchParams.set("start_time", new Date(start.getTime() + 7 * 24 * 60 * 60 * 1000).toISOString());
+    url2.searchParams.set("start_time", new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString());
     url2.searchParams.set("end_time", end.toISOString());
 
     const res2 = await fetch(url2.toString(), {
