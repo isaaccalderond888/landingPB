@@ -42,10 +42,6 @@ export default function RootLayout({
     <html lang="es" className="dark" suppressHydrationWarning>
       <head>
         <meta name="theme-color" content="#0D1430" />
-        <link
-          href="https://assets.calendly.com/assets/external/widget.css"
-          rel="stylesheet"
-        />
       </head>
       <body className={`${geistSans.variable} ${playfair.variable} antialiased`}>
         {children}

@@ -6,9 +6,17 @@ interface CalendlyBadgeOptions {
   branding?: boolean;
 }
 
+interface CalendlyInlineOptions {
+  url: string;
+  parentElement: HTMLElement;
+  prefill?: Record<string, string>;
+  utm?: Record<string, string>;
+}
+
 interface Window {
   Calendly?: {
     initBadgeWidget: (options: CalendlyBadgeOptions) => void;
+    initInlineWidget: (options: CalendlyInlineOptions) => void;
     initInlineWidgets: () => void;
   };
 }

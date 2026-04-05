@@ -88,9 +88,9 @@ export default function Home() {
 
             <div className="space-y-4">
               <div className="w-8 h-px bg-brand-gold mb-6" />
-              <h2 className="font-serif text-xl leading-snug">
+              <h3 className="font-serif text-xl leading-snug">
                 El cuerpo como territorio de sanación
-              </h2>
+              </h3>
               <p className="text-sm leading-relaxed opacity-55">
                 El trauma no vive solo en los recuerdos — vive en el sistema nervioso,
                 en la tensión muscular, en los patrones de activación que el cuerpo
@@ -101,9 +101,9 @@ export default function Home() {
 
             <div className="space-y-4">
               <div className="w-8 h-px bg-brand-teal mb-6" />
-              <h2 className="font-serif text-xl leading-snug">
+              <h3 className="font-serif text-xl leading-snug">
                 Tecnología al servicio del proceso
-              </h2>
+              </h3>
               <p className="text-sm leading-relaxed opacity-55">
                 Cuando el proceso lo requiere, integro neurofeedback — evaluación
                 y entrenamiento de ondas cerebrales — como información adicional
@@ -114,9 +114,9 @@ export default function Home() {
 
             <div className="space-y-4">
               <div className="w-8 h-px bg-brand-mint mb-6" />
-              <h2 className="font-serif text-xl leading-snug">
+              <h3 className="font-serif text-xl leading-snug">
                 Más allá de lo personal
-              </h2>
+              </h3>
               <p className="text-sm leading-relaxed opacity-55">
                 Hay heridas que van más allá de nuestra biografía individual —
                 heridas generacionales, de la especie, cósmicas. La psicología
