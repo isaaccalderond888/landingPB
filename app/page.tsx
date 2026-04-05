@@ -3,6 +3,8 @@ import ThemeToggle from "@/components/ThemeToggle";
 import CalendlyAccordion from "@/components/CalendlyAccordion";
 import Logo from "@/components/Logo";
 
+const WA = "https://wa.me/524424752806?text=Hola%20Isaac%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20tu%20trabajo";
+
 export default function Home() {
   return (
     <div className="bg-background text-foreground min-h-screen">
@@ -16,15 +18,9 @@ export default function Home() {
           </span>
         </div>
         <div className="flex items-center gap-6 md:gap-8">
-          <a href="#enfoque" className="text-xs tracking-widest uppercase opacity-50 hover:text-brand-teal hover:opacity-100 transition-all hidden md:block">
-            Enfoque
-          </a>
-          <a href="#proceso" className="text-xs tracking-widest uppercase opacity-50 hover:text-brand-teal hover:opacity-100 transition-all hidden md:block">
-            Proceso
-          </a>
-          <a href="#agendar" className="text-xs tracking-widest uppercase opacity-50 hover:text-brand-teal hover:opacity-100 transition-all hidden md:block">
-            Agendar
-          </a>
+          <a href="#enfoque" className="text-xs tracking-widest uppercase opacity-50 hover:text-brand-teal hover:opacity-100 transition-all hidden md:block">Enfoque</a>
+          <a href="#proceso" className="text-xs tracking-widest uppercase opacity-50 hover:text-brand-teal hover:opacity-100 transition-all hidden md:block">Proceso</a>
+          <a href="#agendar" className="text-xs tracking-widest uppercase opacity-50 hover:text-brand-teal hover:opacity-100 transition-all hidden md:block">Agendar</a>
           <ThemeToggle />
         </div>
       </nav>
@@ -46,19 +42,30 @@ export default function Home() {
             </div>
 
             <p className="text-base md:text-lg leading-relaxed text-white/70 max-w-md">
-              Trabajo desde la integración de cuerpo, sistema nervioso y psique
-              para acompañar procesos de transformación real. No solo el alivio
-              de los síntomas — sino el encuentro con ese misterio que somos.
-              Atiendo online para hispanohablantes y presencial en Ciudad de México.
+              Acompaño procesos de transformación real desde la integración de
+              cuerpo, sistema nervioso y psique. Presencial en Ciudad de México
+              y online para hispanohablantes.
             </p>
 
-            <a
-              href="#agendar"
-              aria-label="Solicitar entrevista informativa gratuita de 20 minutos"
-              className="inline-block bg-brand-gold text-brand-night px-6 py-3 text-sm tracking-widest uppercase font-medium hover:bg-brand-gold/90 transition-colors duration-300"
-            >
-              Solicitar entrevista informativa
-            </a>
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="#agendar"
+                className="inline-block bg-brand-gold text-brand-night px-6 py-3 text-sm tracking-widest uppercase font-medium hover:bg-brand-gold/90 transition-colors duration-300"
+              >
+                Agendar sesión
+              </a>
+              <a
+                href={WA}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 border border-white/20 text-white/70 px-6 py-3 text-sm tracking-widest uppercase hover:border-white/50 hover:text-white transition-all duration-300"
+              >
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                WhatsApp
+              </a>
+            </div>
           </div>
 
           <div className="hidden md:block teal-glow">
@@ -88,11 +95,10 @@ export default function Home() {
                 Psicotraumatología y enfoque somático
               </h3>
               <p className="text-sm leading-relaxed opacity-60">
-                El trauma no vive solo en la mente — vive en el cuerpo, en los
-                patrones de activación del sistema nervioso, en lo que no pudo
-                ser dicho ni procesado. Trabajo con protocolos actualizados e
-                informados en neurociencia, donde el cuerpo es territorio tanto
-                del problema como de la solución.
+                El trauma vive en el cuerpo — en los patrones de activación
+                del sistema nervioso, en lo que no pudo ser procesado.
+                Trabajo con protocolos actualizados donde el cuerpo es
+                parte central de la solución.
               </p>
             </div>
 
@@ -102,10 +108,10 @@ export default function Home() {
                 Neurofeedback e integración neurológica
               </h3>
               <p className="text-sm leading-relaxed opacity-60">
-                Cuando el proceso lo requiere, integro evaluación y entrenamiento
-                de ondas cerebrales como parte del trabajo clínico. No como
-                tecnología separada, sino como información adicional sobre el
-                sistema nervioso de cada persona.
+                Cuando el proceso lo requiere, integro evaluación y
+                entrenamiento de ondas cerebrales. No como tecnología
+                separada — como una capa más de comprensión del
+                sistema nervioso.
               </p>
             </div>
 
@@ -115,11 +121,10 @@ export default function Home() {
                 Terapia asistida con psicodélicos
               </h3>
               <p className="text-sm leading-relaxed opacity-60">
-                Acompaño procesos de preparación, sesión e integración con
-                sustancias psicoactivas en contexto clínico, ético y fundamentado
-                en evidencia emergente. Como director de Ciencia Psicodélica,
-                este trabajo forma parte de un compromiso más amplio: legitimar
-                estas herramientas con el rigor que merecen.
+                Acompaño preparación, sesión e integración con sustancias
+                psicoactivas en contexto clínico y ético. Como director
+                de Ciencia Psicodélica, este trabajo tiene el rigor
+                que merece.
               </p>
             </div>
 
@@ -141,28 +146,27 @@ export default function Home() {
                 <span className="font-sans text-xs text-brand-gold tracking-wide">20 min · sin costo</span>
               </h3>
               <p className="text-sm leading-relaxed text-white/60">
-                Un espacio para conocernos y explorar si hay resonancia terapéutica.
-                No es una sesión, es una conversación honesta sobre lo que buscas
-                y lo que puedo ofrecer. Sin compromisos.
+                Una conversación breve para entender qué te trae y definir
+                juntos qué línea de trabajo tiene más sentido para ti.
+                Sin compromiso.
               </p>
             </div>
 
             <div className="py-10 space-y-2">
               <h3 className="font-serif text-lg text-white">Sesión inicial</h3>
               <p className="text-sm leading-relaxed text-white/60">
-                Evaluamos juntos el punto de partida: tu historia, tus síntomas,
-                lo que ya has intentado. A partir de ahí definimos el encuadre —
-                la frecuencia, la modalidad y la dirección del proceso.
+                Evaluamos el punto de partida: tu historia, tus síntomas,
+                lo que ya has intentado. Definimos el encuadre y la
+                dirección del proceso.
               </p>
             </div>
 
             <div className="py-10 space-y-2">
               <h3 className="font-serif text-lg text-white">Proceso terapéutico</h3>
               <p className="text-sm leading-relaxed text-white/60">
-                No hay fórmula fija. Cada proceso encuentra su propia forma y
-                jerarquía. Trabajo explorando todas las capas posibles — desde
-                lo bioquímico y fisiológico hasta las creencias, el sentido y
-                lo que trasciende lo personal.
+                No hay fórmula fija. Cada proceso encuentra su propia
+                forma — desde lo fisiológico hasta las creencias, el
+                sentido y lo que trasciende lo personal.
               </p>
             </div>
 
@@ -180,13 +184,9 @@ export default function Home() {
           <h2 className="text-xs tracking-widest uppercase text-brand-teal opacity-70 mb-4">
             Agenda una sesión
           </h2>
-          <p className="font-serif text-2xl md:text-3xl mb-2">
-            Selecciona el tipo de cita
+          <p className="font-serif text-2xl md:text-3xl mb-10">
+            ¿Cuándo empezamos?
           </p>
-          <p className="text-sm opacity-40 mb-10">
-            Zona horaria: Ciudad de México (GMT‑6) · Vía Calendly
-          </p>
-
           <CalendlyAccordion />
         </div>
       </section>
@@ -198,38 +198,10 @@ export default function Home() {
             Contexto institucional
           </h2>
           <div className="flex flex-wrap gap-x-10 gap-y-3">
-
-            <a
-              href="https://ayam.world"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm opacity-35 hover:text-brand-teal hover:opacity-100 transition-all"
-            >
-              Ayam Studio — Director ↗
-            </a>
-
-            <a
-              href="https://cienciapsicodelica.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm opacity-35 hover:text-brand-teal hover:opacity-100 transition-all"
-            >
-              Ciencia Psicodélica — Director ↗
-            </a>
-
-            <a
-              href="https://newman.institute"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm opacity-35 hover:text-brand-teal hover:opacity-100 transition-all"
-            >
-              Neuroclínica Newman — Psicoterapeuta ↗
-            </a>
-
-            <span className="text-sm opacity-35">
-              El Sanador Interior / Enteogénesis — Co-facilitador
-            </span>
-
+            <a href="https://ayam.world" target="_blank" rel="noopener noreferrer" className="text-sm opacity-35 hover:text-brand-teal hover:opacity-100 transition-all">Ayam Studio — Director ↗</a>
+            <a href="https://cienciapsicodelica.com" target="_blank" rel="noopener noreferrer" className="text-sm opacity-35 hover:text-brand-teal hover:opacity-100 transition-all">Ciencia Psicodélica — Director ↗</a>
+            <a href="https://newman.institute" target="_blank" rel="noopener noreferrer" className="text-sm opacity-35 hover:text-brand-teal hover:opacity-100 transition-all">Neuroclínica Newman — Psicoterapeuta ↗</a>
+            <span className="text-sm opacity-35">El Sanador Interior / Enteogénesis — Co-facilitador</span>
           </div>
         </div>
       </section>
@@ -237,18 +209,12 @@ export default function Home() {
       {/* FOOTER */}
       <footer className="px-6 md:px-12 lg:px-20 py-10 border-t border-foreground/10">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-          <div className="space-y-1">
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
             <p className="text-sm opacity-35">Ciudad de México</p>
-            <a
-              href="mailto:psic@isaaccalderon.me"
-              className="text-sm opacity-35 hover:text-brand-teal hover:opacity-100 transition-all"
-            >
-              psic@isaaccalderon.me
-            </a>
+            <a href="mailto:psic@isaaccalderon.me" className="text-sm opacity-35 hover:text-brand-teal hover:opacity-100 transition-all">psic@isaaccalderon.me</a>
+            <a href={WA} target="_blank" rel="noopener noreferrer" className="text-sm opacity-35 hover:text-brand-teal hover:opacity-100 transition-all">WhatsApp ↗</a>
           </div>
-          <p className="text-xs opacity-20">
-            © Isaac Calderón Derat
-          </p>
+          <p className="text-xs opacity-20">© Isaac Calderón Derat</p>
         </div>
       </footer>
 
