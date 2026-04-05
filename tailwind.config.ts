@@ -21,9 +21,9 @@ const config: Config = {
           gold:   "#C99328", // oro cálido   — centro / acento
           mint:   "#5CC4A8", // menta turquesa
           teal:   "#1A96A6", // teal profundo — color primario de marca
-          mid:    "#3B508A", // azul medio
-          navy:   "#253070", // azul marino
-          night:  "#0D1430", // azul noche   — fondo principal
+          mid:    "#313855", // azul medio — glass/floating
+          navy:   "#171e3a", // azul marino  — secciones
+          night:  "#0a112d", // azul noche   — fondo principal
         },
       },
     },

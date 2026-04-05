@@ -26,9 +26,9 @@ export default function Home() {
       </nav>
 
       {/* SECCIÓN 1 — HERO */}
-      <section className="min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20 pt-24 pb-20 bg-gradient-to-br from-brand-night via-brand-navy to-brand-night noise-texture radial-glow relative overflow-hidden">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10">
-          <div className="space-y-8">
+      <section className="min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20 pt-24 pb-14 bg-gradient-to-br from-brand-night via-brand-navy to-brand-night noise-texture radial-glow relative overflow-hidden">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center relative z-10">
+          <div className="space-y-6">
             <div className="space-y-3">
               <p className="text-xs tracking-widest uppercase text-brand-gold opacity-90">
                 Psicólogo · Psicoterapeuta Transpersonal
@@ -82,16 +82,16 @@ export default function Home() {
       </section>
 
       {/* SECCIÓN 2 — ENFOQUE */}
-      <section id="enfoque" className="px-6 md:px-12 lg:px-20 py-24 bg-background">
+      <section id="enfoque" className="px-6 md:px-12 lg:px-20 py-14 bg-background">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-xs tracking-widest uppercase text-brand-teal opacity-70 mb-16">
+          <h2 className="text-xs tracking-widest uppercase text-brand-teal opacity-70 mb-8">
             Cómo trabajo
           </h2>
-          <div className="grid md:grid-cols-3 gap-12 md:gap-8 lg:gap-16">
+          <div className="grid md:grid-cols-3 gap-5">
 
-            <div className="space-y-4 group">
-              <div className="w-10 h-1 bg-brand-gold mb-6 group-hover:w-16 transition-all duration-300" />
-              <h3 className="font-serif text-xl leading-snug">
+            <div className="group bg-brand-navy/60 backdrop-blur-sm border border-brand-mid/40 p-6 rounded-sm hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(26,150,166,0.18)] hover:border-brand-teal/40 transition-all duration-300 cursor-default">
+              <div className="w-10 h-0.5 bg-brand-gold mb-5 group-hover:w-16 transition-all duration-300" />
+              <h3 className="font-serif text-xl leading-snug mb-3">
                 Psicotraumatología y enfoque somático
               </h3>
               <p className="text-sm leading-relaxed opacity-60">
@@ -102,9 +102,9 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="space-y-4 group">
-              <div className="w-10 h-1 bg-brand-teal mb-6 group-hover:w-16 transition-all duration-300" />
-              <h3 className="font-serif text-xl leading-snug">
+            <div className="group bg-brand-navy/60 backdrop-blur-sm border border-brand-mid/40 p-6 rounded-sm hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(26,150,166,0.18)] hover:border-brand-teal/40 transition-all duration-300 cursor-default">
+              <div className="w-10 h-0.5 bg-brand-teal mb-5 group-hover:w-16 transition-all duration-300" />
+              <h3 className="font-serif text-xl leading-snug mb-3">
                 Neurofeedback e integración neurológica
               </h3>
               <p className="text-sm leading-relaxed opacity-60">
@@ -115,9 +115,9 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="space-y-4 group">
-              <div className="w-10 h-1 bg-brand-mint mb-6 group-hover:w-16 transition-all duration-300" />
-              <h3 className="font-serif text-xl leading-snug">
+            <div className="group bg-brand-navy/60 backdrop-blur-sm border border-brand-mid/40 p-6 rounded-sm hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(26,150,166,0.18)] hover:border-brand-teal/40 transition-all duration-300 cursor-default">
+              <div className="w-10 h-0.5 bg-brand-mint mb-5 group-hover:w-16 transition-all duration-300" />
+              <h3 className="font-serif text-xl leading-snug mb-3">
                 Terapia asistida con psicodélicos
               </h3>
               <p className="text-sm leading-relaxed opacity-60">
@@ -133,14 +133,14 @@ export default function Home() {
       </section>
 
       {/* SECCIÓN 3 — EL PROCESO */}
-      <section id="proceso" className="px-6 md:px-12 lg:px-20 py-24 bg-brand-navy">
+      <section id="proceso" className="px-6 md:px-12 lg:px-20 py-14 bg-brand-navy">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-xs tracking-widest uppercase text-brand-teal opacity-70 mb-16">
+          <h2 className="text-xs tracking-widest uppercase text-brand-teal opacity-70 mb-8">
             El proceso
           </h2>
           <div className="space-y-0 divide-y divide-white/10">
 
-            <div className="py-10 space-y-2">
+            <div className="py-7 space-y-2">
               <h3 className="font-serif text-lg text-white flex items-baseline gap-3">
                 Entrevista informativa
                 <span className="font-sans text-xs text-brand-gold tracking-wide">20 min · sin costo</span>
@@ -152,7 +152,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="py-10 space-y-2">
+            <div className="py-7 space-y-2">
               <h3 className="font-serif text-lg text-white">Sesión inicial</h3>
               <p className="text-sm leading-relaxed text-white/60">
                 Evaluamos el punto de partida: tu historia, tus síntomas,
@@ -161,7 +161,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="py-10 space-y-2">
+            <div className="py-7 space-y-2">
               <h3 className="font-serif text-lg text-white">Proceso terapéutico</h3>
               <p className="text-sm leading-relaxed text-white/60">
                 No hay fórmula fija. Cada proceso encuentra su propia
@@ -172,19 +172,19 @@ export default function Home() {
 
           </div>
 
-          <p className="mt-12 text-sm text-brand-mint italic font-serif">
+          <p className="mt-8 text-sm text-brand-mint italic font-serif">
             Vengo de haber atravesado mi propio caos. En la manera en que aprendí, acompaño.
           </p>
         </div>
       </section>
 
       {/* SECCIÓN 4 — AGENDAR */}
-      <section id="agendar" className="px-6 md:px-12 lg:px-20 py-24 bg-background">
+      <section id="agendar" className="px-6 md:px-12 lg:px-20 py-14 bg-background">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-xs tracking-widest uppercase text-brand-teal opacity-70 mb-4">
             Agenda una sesión
           </h2>
-          <p className="font-serif text-2xl md:text-3xl mb-10">
+          <p className="font-serif text-2xl md:text-3xl mb-7">
             ¿Cuándo empezamos?
           </p>
           <CalendlyAccordion />
@@ -192,7 +192,7 @@ export default function Home() {
       </section>
 
       {/* SECCIÓN 5 — CONTEXTO INSTITUCIONAL */}
-      <section className="px-6 md:px-12 lg:px-20 py-16 border-t border-foreground/10">
+      <section className="px-6 md:px-12 lg:px-20 py-10 border-t border-foreground/10">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-xs tracking-widest uppercase text-brand-teal opacity-40 mb-8">
             Contexto institucional

@@ -5,17 +5,17 @@
 :root {
   --background: #fafaf8;
   --foreground: #1a1a18;
-  /* Paleta Sea from Space */
+  /* Paleta Abisal Cosmos */
   --brand-gold:  #C99328;
   --brand-mint:  #5CC4A8;
   --brand-teal:  #1A96A6;
-  --brand-mid:   #3B508A;
-  --brand-navy:  #253070;
-  --brand-night: #0D1430;
+  --brand-mid:   #313855;
+  --brand-navy:  #171e3a;
+  --brand-night: #0a112d;
 }
 
 .dark {
-  --background: #0e0e0c;
+  --background: #0a112d;
   --foreground: #e8e8e4;
 }
 
