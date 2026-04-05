@@ -10,7 +10,7 @@ export async function GET(req: NextRequest) {
   if (!uri) return NextResponse.json({ slots: [] });
 
   const token = process.env.CALENDLY_API_KEY;
-  if (!token) return NextResponse.json({ slots: [], debug: "no_token" });
+  if (!token) return NextResponse.json({ slots: [] });
 
   const start = new Date(Date.now() + 5 * 60 * 1000); // +5 min para evitar clock drift
   const end = new Date(Date.now() + 14 * 24 * 60 * 60 * 1000);
@@ -25,10 +25,7 @@ export async function GET(req: NextRequest) {
     cache: "no-store",
   });
 
-  if (!res.ok) {
-    const errText = await res.text();
-    return NextResponse.json({ slots: [], debug: `calendly_error_${res.status}`, detail: errText.slice(0, 200) });
-  }
+  if (!res.ok) return NextResponse.json({ slots: [] });
 
   const data = await res.json();
   const slots: Slot[] = (data.collection ?? [])
