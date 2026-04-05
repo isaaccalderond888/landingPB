@@ -9,7 +9,7 @@ export async function GET(req: NextRequest) {
   const uri = req.nextUrl.searchParams.get("uri");
   if (!uri) return NextResponse.json({ slots: [] });
 
-  const token = process.env.CALENDLY_API_TOKEN;
+  const token = process.env.CALENDLY_API_KEY;
   if (!token) return NextResponse.json({ slots: [], debug: "no_token" });
 
   const start = new Date();
