@@ -38,19 +38,18 @@ export default function Home() {
                 Psicólogo · Psicoterapeuta Transpersonal
               </p>
               <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight text-white text-balance">
-                Psicoterapia desde la profundidad.
+                Psicoterapia informada en trauma.
               </h1>
               <p className="font-serif text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight text-brand-mint/60">
-                Para quienes buscan transformación real.
+                Somática, transpersonal y basada en evidencia.
               </p>
             </div>
 
             <p className="text-base md:text-lg leading-relaxed text-white/70 max-w-md">
-              Trabajo con personas que han agotado las respuestas superficiales.
-              Mi práctica integra psicotraumatología, trabajo somático y acompañamiento
-              en estados ampliados de conciencia — cada proceso encuentra su propia
-              forma y jerarquía. Atiendo online para hispanohablantes y presencial
-              en Ciudad de México.
+              Trabajo desde la integración de cuerpo, sistema nervioso y psique para 
+              acompañar procesos de transformación real. No solo el alivio de los 
+              síntomas — sino el encuentro con ese misterio que somos. Atiendo online 
+              para hispanohablantes y presencial en Ciudad de México.
             </p>
 
             <a
@@ -163,7 +162,7 @@ export default function Home() {
           </div>
 
           <p className="mt-12 text-sm text-brand-mint italic font-serif">
-            Tengo pocos espacios disponibles. Si hay resonancia, comenzamos.
+            Vengo de haber atravesado mi propio caos. En la manera en que aprendí, acompaño.
           </p>
         </div>
       </section>
