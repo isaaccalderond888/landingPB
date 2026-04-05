@@ -17,6 +17,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://isaaccalderon.me"),
   title: "Isaac Calderón Derat — Psicoterapeuta Transpersonal | CDMX",
   description:
     "Psicoterapia informada en trauma, somática y transpersonal. Acompaño procesos de transformación real integrando psicotraumatología, neurofeedback y estados ampliados de conciencia. Online para hispanohablantes y presencial en CDMX.",

@@ -150,15 +150,11 @@ export default async function OGImage() {
             flexShrink: 0,
           }}
         >
-          {/* @ts-expect-error - SVG element in ImageResponse */}
           <svg viewBox="0 0 500 500" width={230} height={230}>
             {RING_SCALES.map((s, i) => (
-              // @ts-expect-error - SVG element in ImageResponse
               <g key={i}>
-                {/* @ts-expect-error - SVG element in ImageResponse */}
                 <path fill={PALETTE[i]} transform={tx(s)} d={PATH} />
                 {i < GAP_SCALES.length && (
-                  // @ts-expect-error - SVG element in ImageResponse
                   <path fill={BG} transform={tx(GAP_SCALES[i])} d={PATH} />
                 )}
               </g>
