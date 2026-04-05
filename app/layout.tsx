@@ -19,11 +19,11 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Isaac Calderón Derat — Psicoterapeuta Transpersonal | CDMX",
   description:
-    "Psicoterapia online y presencial en CDMX. Psicotraumatología, enfoque somático y terapia asistida con psicodélicos. Pocos espacios disponibles.",
+    "Psicoterapia informada en trauma, somática y transpersonal. Acompaño procesos de transformación real integrando psicotraumatología, neurofeedback y estados ampliados de conciencia. Online para hispanohablantes y presencial en CDMX.",
   openGraph: {
     title: "Isaac Calderón Derat — Psicoterapeuta Transpersonal | CDMX",
     description:
-      "Psicoterapia online y presencial en CDMX. Psicotraumatología, enfoque somático y terapia asistida con psicodélicos. Pocos espacios disponibles.",
+      "Psicoterapia informada en trauma, somática y transpersonal. Acompaño procesos de transformación real integrando psicotraumatología, neurofeedback y estados ampliados de conciencia. Online para hispanohablantes y presencial en CDMX.",
     url: "https://isaaccalderon.me",
     siteName: "Isaac Calderón Derat",
     locale: "es_MX",
@@ -41,6 +41,7 @@ export default function RootLayout({
   return (
     <html lang="es" className="dark" suppressHydrationWarning>
       <head>
+        <meta name="theme-color" content="#0D1430" />
         <link
           href="https://assets.calendly.com/assets/external/widget.css"
           rel="stylesheet"

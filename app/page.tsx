@@ -10,7 +10,7 @@ export default function Home() {
     <div className="bg-background text-foreground min-h-screen">
 
       {/* NAV */}
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-5 bg-background/80 backdrop-blur-sm border-b border-foreground/5">
+      <nav aria-label="Navegación principal" className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-5 bg-background/80 backdrop-blur-sm border-b border-foreground/5">
         <div className="flex items-center gap-3">
           <Logo size={32} variant="color" />
           <span className="text-sm tracking-widest uppercase opacity-60 hidden sm:block">
@@ -56,6 +56,7 @@ export default function Home() {
 
             <a
               href="#agendar"
+              aria-label="Solicitar entrevista informativa gratuita de 20 minutos"
               className="inline-block border border-brand-gold/60 text-brand-gold px-6 py-3 text-sm tracking-widest uppercase hover:bg-brand-gold hover:text-brand-night transition-colors duration-300"
             >
               Solicitar entrevista informativa
@@ -80,9 +81,9 @@ export default function Home() {
       {/* SECCIÓN 2 — ENFOQUE */}
       <section id="enfoque" className="px-6 md:px-12 lg:px-20 py-24 border-t border-foreground/10">
         <div className="max-w-5xl mx-auto">
-          <p className="text-xs tracking-widest uppercase text-brand-teal opacity-70 mb-16">
+          <h2 className="text-xs tracking-widest uppercase text-brand-teal opacity-70 mb-16">
             Cómo trabajo
-          </p>
+          </h2>
           <div className="grid md:grid-cols-3 gap-12 md:gap-8 lg:gap-16">
 
             <div className="space-y-4">
@@ -132,9 +133,9 @@ export default function Home() {
       {/* SECCIÓN 3 — EL PROCESO */}
       <section id="proceso" className="px-6 md:px-12 lg:px-20 py-24 border-t border-foreground/10">
         <div className="max-w-3xl mx-auto">
-          <p className="text-xs tracking-widest uppercase text-brand-teal opacity-70 mb-16">
+          <h2 className="text-xs tracking-widest uppercase text-brand-teal opacity-70 mb-16">
             El proceso
-          </p>
+          </h2>
           <div className="space-y-0 divide-y divide-foreground/10">
 
             <div className="py-10 space-y-2">
@@ -179,9 +180,9 @@ export default function Home() {
       {/* SECCIÓN 4 — CALENDLY */}
       <section id="agendar" className="px-6 md:px-12 lg:px-20 py-24 border-t border-foreground/10">
         <div className="max-w-3xl mx-auto">
-          <p className="text-xs tracking-widest uppercase text-brand-teal opacity-70 mb-4">
+          <h2 className="text-xs tracking-widest uppercase text-brand-teal opacity-70 mb-4">
             Agenda una sesión
-          </p>
+          </h2>
           <p className="font-serif text-2xl mb-2">
             Entrevista informativa de psicoterapia
             <span className="font-sans text-sm text-brand-gold opacity-80 ml-3">20 min · gratuita</span>
@@ -198,9 +199,9 @@ export default function Home() {
       {/* SECCIÓN 5 — CONTEXTO INSTITUCIONAL */}
       <section className="px-6 md:px-12 lg:px-20 py-16 border-t border-foreground/10">
         <div className="max-w-5xl mx-auto">
-          <p className="text-xs tracking-widest uppercase text-brand-teal opacity-40 mb-8">
+          <h2 className="text-xs tracking-widest uppercase text-brand-teal opacity-40 mb-8">
             Contexto institucional
-          </p>
+          </h2>
           <div className="flex flex-wrap gap-x-10 gap-y-3">
 
             <a
