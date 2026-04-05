@@ -28,8 +28,8 @@ export const metadata: Metadata = {
     siteName: "Isaac Calderón Derat",
     locale: "es_MX",
     type: "website",
-    // NOTA PARA ISAAC: reemplaza esta ruta con tu imagen de Open Graph (1200x630px)
-    // images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
+    // Imagen generada dinámicamente por app/opengraph-image.tsx
+    images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
   },
 };
 
