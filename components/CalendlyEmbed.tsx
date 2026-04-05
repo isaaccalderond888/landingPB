@@ -7,7 +7,7 @@ interface CalendlyEmbedProps {
   hideDetails?: boolean;
 }
 
-/** Inyecta el CSS de Calendly de forma no bloqueante (solo una vez) */
+/** Inyecta CSS y JS de Calendly de forma no bloqueante (solo una vez) */
 function injectCalendlyCSS() {
   if (document.getElementById("calendly-css")) return;
   const link = document.createElement("link");
@@ -15,6 +15,15 @@ function injectCalendlyCSS() {
   link.rel = "stylesheet";
   link.href = "https://assets.calendly.com/assets/external/widget.css";
   document.head.appendChild(link);
+}
+
+function injectCalendlyJS() {
+  if (document.getElementById("calendly-embed-js")) return;
+  const script = document.createElement("script");
+  script.id = "calendly-embed-js";
+  script.src = "https://assets.calendly.com/assets/external/widget.js";
+  script.async = true;
+  document.body.appendChild(script);
 }
 
 /** Espera a que window.Calendly esté disponible y llama el callback */
@@ -53,6 +62,7 @@ export default function CalendlyEmbed({ slug, hideDetails = true }: CalendlyEmbe
       ([entry]) => {
         if (entry.isIntersecting) {
           injectCalendlyCSS();
+          injectCalendlyJS();
           setVisible(true);
           observer.disconnect();
         }
