@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Playfair_Display } from "next/font/google";
 import "./globals.css";
-import CalendlyBadge from "@/components/CalendlyBadge";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -45,7 +45,6 @@ export default function RootLayout({
       </head>
       <body className={`${geistSans.variable} ${playfair.variable} antialiased`}>
         {children}
-        <CalendlyBadge />
       </body>
     </html>
   );
