@@ -19,7 +19,12 @@
       "Bash(npx tsc:*)",
       "Bash(netstat -ano)",
       "Bash(findstr \"LISTENING\")",
-      "Bash(findstr \":300\")"
+      "Bash(findstr \":300\")",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "mcp__stitch__list_projects",
+      "Bash(python -c \"import json,sys; data=json.load\\(sys.stdin\\); [print\\(p[''''name''''], p.get\\(''''displayName'''',''''''''\\), p.get\\(''''id'''',''''''''\\)\\) for p in data.get\\(''''projects'''',[]\\)]\")",
+      "Bash(python -c \"import json,sys; data=json.load\\(sys.stdin\\); print\\(json.dumps\\(data.get\\(''''projects'''',[]\\)[0], indent=2\\)\\)\")",
+      "mcp__stitch__list_screens"
     ]
   }
 }
