@@ -172,9 +172,6 @@ export default function Home() {
 
           </div>
 
-          <p className="mt-8 text-sm text-brand-mint italic font-serif">
-            Vengo de haber atravesado mi propio caos. En la manera en que aprendí, acompaño.
-          </p>
         </div>
       </section>
 

@@ -89,7 +89,7 @@ export default function CalendlyAccordion() {
               <div className="mb-5">
                 <p className="text-xs tracking-widest uppercase opacity-40 mb-3">Próximos horarios</p>
                 <div className="flex flex-wrap gap-2">
-                  {slots.map((s) => (
+                  {slots.slice(0, 3).map((s) => (
                     <a
                       key={s.start_time}
                       href={s.scheduling_url}
