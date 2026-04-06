@@ -188,17 +188,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECCIÓN 5 — CONTEXTO INSTITUCIONAL */}
+      {/* SECCIÓN 5 — CONTEXTO COLABORATIVO */}
       <section className="px-6 md:px-12 lg:px-20 py-10 border-t border-foreground/10">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-xs tracking-widest uppercase text-brand-teal opacity-40 mb-8">
-            Contexto institucional
+            Contexto colaborativo
           </h2>
           <div className="flex flex-wrap gap-x-10 gap-y-3">
-            <a href="https://ayam.world" target="_blank" rel="noopener noreferrer" className="text-sm opacity-35 hover:text-brand-teal hover:opacity-100 transition-all">Ayam Studio — Director ↗</a>
-            <a href="https://cienciapsicodelica.com" target="_blank" rel="noopener noreferrer" className="text-sm opacity-35 hover:text-brand-teal hover:opacity-100 transition-all">Ciencia Psicodélica — Director ↗</a>
-            <a href="https://newman.institute" target="_blank" rel="noopener noreferrer" className="text-sm opacity-35 hover:text-brand-teal hover:opacity-100 transition-all">Neuroclínica Newman — Psicoterapeuta ↗</a>
-            <span className="text-sm opacity-35">El Sanador Interior / Enteogénesis — Co-facilitador</span>
+            <a href="https://ayam.world" target="_blank" rel="noopener noreferrer" className="text-sm opacity-35 hover:text-brand-teal hover:opacity-100 transition-all">Ayam Studio ↗</a>
+            <a href="https://newman.institute" target="_blank" rel="noopener noreferrer" className="text-sm opacity-35 hover:text-brand-teal hover:opacity-100 transition-all">Neuroclínica Newman ↗</a>
+            <a href="https://cienciapsicodelica.com" target="_blank" rel="noopener noreferrer" className="text-sm opacity-35 hover:text-brand-teal hover:opacity-100 transition-all">Ciencia Psicodélica ↗</a>
+            <a href="https://enteogenesis.com" target="_blank" rel="noopener noreferrer" className="text-sm opacity-35 hover:text-brand-teal hover:opacity-100 transition-all">Enteogénesis ↗</a>
           </div>
         </div>
       </section>
