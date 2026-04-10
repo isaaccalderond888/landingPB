@@ -13,45 +13,31 @@ export async function GET(req: NextRequest) {
   if (!token) return NextResponse.json({ slots: [] });
 
   const start = new Date(Date.now() + 5 * 60 * 1000); // +5 min para evitar clock drift
-  const end = new Date(Date.now() + 14 * 24 * 60 * 60 * 1000);
+  const WEEK = 7 * 24 * 60 * 60 * 1000;
 
-  const url = new URL("https://api.calendly.com/event_type_available_times");
-  url.searchParams.set("event_type", uri);
-  url.searchParams.set("start_time", start.toISOString());
-  url.searchParams.set("end_time", new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString());
-
-  const res = await fetch(url.toString(), {
-    headers: { Authorization: `Bearer ${token}` },
-    cache: "no-store",
-  });
-
-  if (!res.ok) return NextResponse.json({ slots: [] });
-
-  const data = await res.json();
-  const slots: Slot[] = (data.collection ?? [])
-    .filter((s: { status: string }) => s.status === "available")
-    .slice(0, 5);
-
-  // Si no hay slots en la primera semana, busca la siguiente
-  if (slots.length === 0) {
-    const url2 = new URL("https://api.calendly.com/event_type_available_times");
-    url2.searchParams.set("event_type", uri);
-    url2.searchParams.set("start_time", new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString());
-    url2.searchParams.set("end_time", end.toISOString());
-
-    const res2 = await fetch(url2.toString(), {
+  async function fetchSlots(from: Date, to: Date): Promise<Slot[]> {
+    const u = new URL("https://api.calendly.com/event_type_available_times");
+    u.searchParams.set("event_type", uri!);
+    u.searchParams.set("start_time", from.toISOString());
+    u.searchParams.set("end_time", to.toISOString());
+    const r = await fetch(u.toString(), {
       headers: { Authorization: `Bearer ${token}` },
-      next: { revalidate: 300 },
+      cache: "no-store",
     });
+    if (!r.ok) return [];
+    const d = await r.json();
+    return (d.collection ?? []).filter((s: { status: string }) => s.status === "available");
+  }
 
-    if (res2.ok) {
-      const data2 = await res2.json();
-      const slots2: Slot[] = (data2.collection ?? [])
-        .filter((s: { status: string }) => s.status === "available")
-        .slice(0, 5);
-      return NextResponse.json({ slots: slots2 });
+  // Busca semana a semana hasta encontrar slots o agotar 4 semanas
+  for (let w = 0; w < 4; w++) {
+    const from = new Date(start.getTime() + w * WEEK);
+    const to = new Date(start.getTime() + (w + 1) * WEEK);
+    const slots = await fetchSlots(from, to);
+    if (slots.length > 0) {
+      return NextResponse.json({ slots: slots.slice(0, 5) });
     }
   }
 
-  return NextResponse.json({ slots });
+  return NextResponse.json({ slots: [] });
 }
