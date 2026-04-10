@@ -29,8 +29,10 @@ export async function GET(req: NextRequest) {
     return (d.collection ?? []).filter((s: { status: string }) => s.status === "available");
   }
 
-  // Busca semana a semana hasta encontrar slots o agotar 4 semanas
-  for (let w = 0; w < 4; w++) {
+  const maxWeeks = parseInt(req.nextUrl.searchParams.get("maxWeeks") ?? "4", 10);
+
+  // Busca semana a semana hasta encontrar slots o agotar maxWeeks semanas
+  for (let w = 0; w < maxWeeks; w++) {
     const from = new Date(start.getTime() + w * WEEK);
     const to = new Date(start.getTime() + (w + 1) * WEEK);
     const slots = await fetchSlots(from, to);
