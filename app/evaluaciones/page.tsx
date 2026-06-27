@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Logo from "@/components/Logo";
@@ -19,7 +19,7 @@ const TEST_ORDER: TestId[] = [
   "SDS", "SWLS", "MEQ30",
 ];
 
-export default function EvaluacionesPage() {
+function EvaluacionesPageInner() {
   const searchParams = useSearchParams();
   const [selectedTest, setSelectedTest] = useState<TestId | null>(() => {
     const param = searchParams.get("test")?.toUpperCase() as TestId | null;
@@ -178,5 +178,13 @@ export default function EvaluacionesPage() {
       </footer>
 
     </div>
+  );
+}
+
+export default function EvaluacionesPage() {
+  return (
+    <Suspense>
+      <EvaluacionesPageInner />
+    </Suspense>
   );
 }
