@@ -68,13 +68,13 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="hidden md:block teal-glow">
+          <div className="hidden md:flex items-center justify-center teal-glow">
             <Image
               src="/isaac.jpg"
               alt="Isaac Calderón Derat, psicoterapeuta transpersonal en Ciudad de México"
-              width={600}
-              height={750}
-              className="aspect-[4/5] object-cover w-full relative z-10"
+              width={520}
+              height={520}
+              className="aspect-square object-cover w-full max-w-[520px] rounded-full relative z-10"
               priority
             />
           </div>
