@@ -89,14 +89,18 @@ export default function TestRunner({ config, onComplete }: Props) {
                 </div>
               </div>
 
-              {/* Mobile scale labels */}
-              <div className="md:hidden flex gap-1 mt-1.5 justify-end flex-wrap">
-                {config.scale.map((s) => (
-                  <span key={s.value} className={`${btnW} text-center text-[9px] opacity-25 leading-tight`}>
-                    {s.full}
-                  </span>
-                ))}
-              </div>
+              {/* Mobile scale labels — solo anclas nombradas distribuidas */}
+              {(() => {
+                const anchors = config.scale.filter((s) => /[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ]/.test(s.full));
+                if (!anchors.length) return null;
+                return (
+                  <div className="md:hidden flex justify-between mt-2 px-0.5">
+                    {anchors.map((s) => (
+                      <span key={s.value} className="text-[9px] opacity-30 leading-tight">{s.full}</span>
+                    ))}
+                  </div>
+                );
+              })()}
             </div>
           );
         })}
