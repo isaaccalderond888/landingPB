@@ -5,9 +5,10 @@ import { useState } from "react";
 interface Props {
   score: number;
   answers: number[];
+  test: "PHQ9" | "GAD7";
 }
 
-export default function AIInterpret({ score, answers }: Props) {
+export default function AIInterpret({ score, answers, test }: Props) {
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
@@ -23,7 +24,7 @@ export default function AIInterpret({ score, answers }: Props) {
       const res = await fetch("/api/interpret", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ score, answers }),
+        body: JSON.stringify({ score, answers, test }),
       });
 
       if (!res.ok || !res.body) throw new Error(`Status ${res.status}`);

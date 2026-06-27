@@ -5,11 +5,41 @@ import Link from "next/link";
 import Logo from "@/components/Logo";
 import ThemeToggle from "@/components/ThemeToggle";
 import PHQ9 from "@/components/tests/PHQ9";
+import GAD7 from "@/components/tests/GAD7";
 import ResultCard from "@/components/tests/ResultCard";
 import AIInterpret from "@/components/tests/AIInterpret";
 
+type TestId = "PHQ9" | "GAD7";
+
+const TESTS: Record<TestId, { name: string; subtitle: string; description: string; accent: string; accentClass: string; borderClass: string }> = {
+  PHQ9: {
+    name: "PHQ-9",
+    subtitle: "Depresión",
+    description: "9 preguntas · ~2 min · Instrumento validado internacionalmente para evaluar la presencia y severidad de síntomas depresivos.",
+    accent: "#1A96A6",
+    accentClass: "text-brand-teal",
+    borderClass: "border-brand-teal/40 hover:border-brand-teal",
+  },
+  GAD7: {
+    name: "GAD-7",
+    subtitle: "Ansiedad",
+    description: "7 preguntas · ~1 min · Escala validada para identificar y medir la severidad del trastorno de ansiedad generalizada.",
+    accent: "#C99328",
+    accentClass: "text-brand-gold",
+    borderClass: "border-brand-gold/40 hover:border-brand-gold",
+  },
+};
+
 export default function EvaluacionesPage() {
+  const [selectedTest, setSelectedTest] = useState<TestId | null>(null);
   const [result, setResult] = useState<{ score: number; answers: number[] } | null>(null);
+
+  function reset() {
+    setResult(null);
+    setSelectedTest(null);
+  }
+
+  const test = selectedTest ? TESTS[selectedTest] : null;
 
   return (
     <div className="bg-background text-foreground min-h-screen">
@@ -43,11 +73,13 @@ export default function EvaluacionesPage() {
             Herramientas clínicas
           </p>
           <h1 className="font-serif text-4xl md:text-5xl leading-tight">
-            Cuestionario PHQ-9
+            {test ? `${test.name} — ${test.subtitle}` : "Evaluaciones"}
           </h1>
-          <p className="text-base leading-relaxed opacity-60 max-w-xl">
-            El PHQ-9 es un instrumento validado internacionalmente para evaluar la presencia y severidad de síntomas depresivos. Toma alrededor de dos minutos y puede ser un punto de partida útil para entender lo que estás viviendo.
-          </p>
+          {!selectedTest && (
+            <p className="text-base leading-relaxed opacity-60 max-w-xl">
+              Instrumentos de tamizaje validados para explorar tu estado emocional. Elige la prueba que quieras realizar.
+            </p>
+          )}
         </div>
       </section>
 
@@ -55,11 +87,51 @@ export default function EvaluacionesPage() {
       <main className="px-6 md:px-12 lg:px-20 py-12">
         <div className="max-w-3xl mx-auto">
 
-          {!result ? (
-            <PHQ9 onComplete={(score, answers) => setResult({ score, answers })} />
-          ) : (
+          {/* SELECTOR */}
+          {!selectedTest && (
+            <div className="grid sm:grid-cols-2 gap-4">
+              {(Object.entries(TESTS) as [TestId, typeof TESTS[TestId]][]).map(([id, t]) => (
+                <button
+                  key={id}
+                  onClick={() => setSelectedTest(id)}
+                  className={`
+                    group text-left p-6 rounded-sm border bg-brand-navy/40 backdrop-blur-sm
+                    transition-all duration-200 hover:-translate-y-1
+                    hover:shadow-[0_8px_32px_rgba(0,0,0,0.2)]
+                    ${t.borderClass}
+                  `}
+                >
+                  <p className={`text-xs tracking-widest uppercase mb-2 ${t.accentClass}`}>{t.subtitle}</p>
+                  <p className="font-serif text-2xl mb-3">{t.name}</p>
+                  <p className="text-xs leading-relaxed opacity-50">{t.description}</p>
+                  <p className={`text-xs mt-4 opacity-0 group-hover:opacity-100 transition-opacity ${t.accentClass}`}>
+                    Comenzar →
+                  </p>
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* TEST ACTIVO */}
+          {selectedTest && !result && (
+            <div className="space-y-8">
+              <button
+                onClick={() => setSelectedTest(null)}
+                className="text-xs opacity-35 hover:opacity-70 transition-opacity flex items-center gap-1.5"
+              >
+                ← Elegir otra prueba
+              </button>
+              {selectedTest === "PHQ9"
+                ? <PHQ9 onComplete={(score, answers) => setResult({ score, answers })} />
+                : <GAD7 onComplete={(score, answers) => setResult({ score, answers })} />
+              }
+            </div>
+          )}
+
+          {/* RESULTADO */}
+          {selectedTest && result && (
             <div className="space-y-10">
-              <ResultCard score={result.score} answers={result.answers} />
+              <ResultCard score={result.score} answers={result.answers} test={selectedTest} />
 
               <div className="border-t border-foreground/10 pt-8">
                 <div className="mb-5 space-y-1">
@@ -71,7 +143,7 @@ export default function EvaluacionesPage() {
                     Puedo ofrecerte una interpretación de estos resultados desde una perspectiva transpersonal y somática, señalando lo que emerge con más fuerza y qué podría merecer atención.
                   </p>
                 </div>
-                <AIInterpret score={result.score} answers={result.answers} />
+                <AIInterpret score={result.score} answers={result.answers} test={selectedTest} />
               </div>
 
               <div className="border-t border-foreground/10 pt-6 flex flex-wrap gap-6 items-center">
@@ -79,7 +151,13 @@ export default function EvaluacionesPage() {
                   onClick={() => setResult(null)}
                   className="text-xs opacity-35 hover:opacity-70 transition-opacity underline underline-offset-4"
                 >
-                  Volver a hacer el cuestionario
+                  Volver a hacer esta prueba
+                </button>
+                <button
+                  onClick={reset}
+                  className="text-xs opacity-35 hover:opacity-70 transition-opacity underline underline-offset-4"
+                >
+                  Elegir otra prueba
                 </button>
                 <Link
                   href="/#agendar"
