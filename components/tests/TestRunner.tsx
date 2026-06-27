@@ -16,6 +16,10 @@ export default function TestRunner({ config, onComplete }: Props) {
   const allAnswered = answered === total;
   const isWide = config.scale.length <= 4;
   const isMedium = config.scale.length <= 7;
+  const useSlider = config.scale.length >= 8;
+  const minVal = config.scale[0].value;
+  const maxVal = config.scale[config.scale.length - 1].value;
+  const step = config.scale.length > 1 ? config.scale[1].value - config.scale[0].value : 1;
 
   function handleAnswer(qi: number, value: number) {
     setAnswers((prev) => {
@@ -62,35 +66,65 @@ export default function TestRunner({ config, onComplete }: Props) {
                   {q}
                 </p>
 
-                <div
-                  className="flex gap-1 md:flex-shrink-0 flex-wrap"
-                  role="group"
-                  aria-label={`Respuesta para ítem ${qi + 1}`}
-                >
-                  {config.scale.map((s) => {
-                    const selected = answers[qi] === s.value;
-                    return (
-                      <button
-                        key={s.value}
-                        onClick={() => handleAnswer(qi, s.value)}
-                        aria-pressed={selected}
-                        className={`
-                          ${btnW} py-2 rounded-sm text-xs font-medium transition-all duration-150 border
-                          ${selected
-                            ? config.btnSelectedClass
-                            : `border-foreground/15 opacity-60 ${config.btnHoverClass} hover:opacity-100`
-                          }
-                        `}
-                      >
-                        {s.short}
-                      </button>
-                    );
-                  })}
-                </div>
+                {useSlider ? (
+                  <div className="w-full md:w-72 space-y-2 mt-1">
+                    <div className="flex items-center gap-4">
+                      <input
+                        type="range"
+                        min={minVal}
+                        max={maxVal}
+                        step={step}
+                        value={answers[qi] ?? minVal}
+                        onChange={(e) => handleAnswer(qi, Number(e.target.value))}
+                        onClick={(e) => { if (answers[qi] === null) handleAnswer(qi, Number(e.currentTarget.value)); }}
+                        className="flex-1 h-1.5 cursor-pointer accent-teal-500"
+                      />
+                      <span className={`w-12 text-right font-serif text-xl tabular-nums leading-none transition-opacity ${answers[qi] !== null ? "opacity-100" : "opacity-20"}`}>
+                        {answers[qi] !== null ? answers[qi] : minVal}
+                      </span>
+                    </div>
+                    <div className="flex justify-between text-[9px] opacity-30">
+                      <span>{config.scale[0].full}</span>
+                      {config.scale.filter((s) => /[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ]/.test(s.full) && s.value !== minVal && s.value !== maxVal).map((s) => (
+                        <span key={s.value}>{s.full}</span>
+                      ))}
+                      <span>{config.scale[config.scale.length - 1].full}</span>
+                    </div>
+                    {answers[qi] === null && (
+                      <p className="text-[10px] opacity-30 text-right">Desliza para responder</p>
+                    )}
+                  </div>
+                ) : (
+                  <div
+                    className="flex gap-1 md:flex-shrink-0 flex-wrap"
+                    role="group"
+                    aria-label={`Respuesta para ítem ${qi + 1}`}
+                  >
+                    {config.scale.map((s) => {
+                      const selected = answers[qi] === s.value;
+                      return (
+                        <button
+                          key={s.value}
+                          onClick={() => handleAnswer(qi, s.value)}
+                          aria-pressed={selected}
+                          className={`
+                            ${btnW} py-2 rounded-sm text-xs font-medium transition-all duration-150 border
+                            ${selected
+                              ? config.btnSelectedClass
+                              : `border-foreground/15 opacity-60 ${config.btnHoverClass} hover:opacity-100`
+                            }
+                          `}
+                        >
+                          {s.short}
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
 
-              {/* Mobile scale labels — solo anclas nombradas distribuidas */}
-              {(() => {
+              {/* Mobile scale labels — solo anclas nombradas (solo para botones) */}
+              {!useSlider && (() => {
                 const anchors = config.scale.filter((s) => /[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ]/.test(s.full));
                 if (!anchors.length) return null;
                 return (
