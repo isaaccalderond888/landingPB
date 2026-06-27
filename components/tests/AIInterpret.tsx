@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 
+import type { TestId } from "@/lib/testData";
+
 interface Props {
   score: number;
   answers: number[];
-  test: "PHQ9" | "GAD7";
+  test: TestId;
 }
 
 export default function AIInterpret({ score, answers, test }: Props) {

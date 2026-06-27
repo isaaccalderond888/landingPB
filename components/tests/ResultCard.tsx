@@ -1,81 +1,38 @@
-const QUESTIONS_SHORT: Record<"PHQ9" | "GAD7", string[]> = {
-  PHQ9: [
-    "Poco interés o placer",
-    "Ánimo deprimido",
-    "Sueño alterado",
-    "Fatiga o poca energía",
-    "Apetito alterado",
-    "Baja autoestima",
-    "Dificultad para concentrarse",
-    "Lentitud o agitación psicomotora",
-    "Pensamientos de daño",
-  ],
-  GAD7: [
-    "Nerviosismo o tensión",
-    "Preocupación incontrolable",
-    "Preocupación excesiva",
-    "Dificultad para relajarse",
-    "Inquietud o agitación",
-    "Irritabilidad",
-    "Miedo a que algo terrible ocurra",
-  ],
-};
+import { TEST_CONFIGS, getBand, getSubScaleScore, getSubScaleBand, type TestId } from "@/lib/testData";
 
-const SCALE = ["Ningún día", "Varios días", "Más de la mitad", "Casi todos los días"];
-
-type Band = {
-  max: number;
-  label: string;
-  description: string;
-  textClass: string;
-  barClass: string;
-};
-
-const PHQ9_BANDS: Band[] = [
-  { max: 4,  label: "Mínima",               textClass: "text-brand-mint", barClass: "bg-brand-mint", description: "Las puntuaciones en este rango sugieren síntomas muy leves o ausentes. El bienestar emocional parece estar mayormente preservado en este momento." },
-  { max: 9,  label: "Leve",                 textClass: "text-brand-teal", barClass: "bg-brand-teal", description: "Hay algunas dificultades presentes que merecen atención. Los síntomas son manejables, pero explorarlos puede ser valioso para prevenir que escalen." },
-  { max: 14, label: "Moderada",             textClass: "text-brand-gold", barClass: "bg-brand-gold", description: "El puntaje indica síntomas de intensidad moderada que probablemente están afectando áreas importantes de tu vida cotidiana. Vale la pena acompañamiento profesional." },
-  { max: 19, label: "Moderadamente severa", textClass: "text-brand-gold", barClass: "bg-brand-gold", description: "Los síntomas son significativos. Hablar con un profesional de salud mental pronto puede marcar una diferencia real en cómo te sientes." },
-  { max: 27, label: "Severa",               textClass: "text-red-400",    barClass: "bg-red-400",    description: "El nivel de síntomas es alto. Es importante buscar apoyo profesional lo antes posible. No tienes que atravesar esto solo/a." },
-];
-
-const GAD7_BANDS: Band[] = [
-  { max: 4,  label: "Mínima",   textClass: "text-brand-mint", barClass: "bg-brand-mint", description: "Los síntomas de ansiedad son muy leves o prácticamente ausentes. El sistema nervioso parece estar en un estado de relativa calma en este momento." },
-  { max: 9,  label: "Leve",     textClass: "text-brand-teal", barClass: "bg-brand-teal", description: "Hay cierto nivel de activación ansiosa presente. Los síntomas son manejables aunque merecen atención para evitar que se instalen con más fuerza." },
-  { max: 14, label: "Moderada", textClass: "text-brand-gold", barClass: "bg-brand-gold", description: "El puntaje refleja una ansiedad de intensidad moderada que probablemente está afectando tu descanso, concentración o relaciones. Acompañamiento profesional puede ser muy útil." },
-  { max: 21, label: "Severa",   textClass: "text-red-400",    barClass: "bg-red-400",    description: "El nivel de ansiedad es alto. Es importante buscar apoyo profesional pronto. Trabajar con el sistema nervioso puede traer alivio real." },
-];
-
-const MAX_SCORE = { PHQ9: 27, GAD7: 21 };
-
-function getBand(score: number, test: "PHQ9" | "GAD7"): Band {
-  const bands = test === "PHQ9" ? PHQ9_BANDS : GAD7_BANDS;
-  return bands.find((b) => score <= b.max) ?? bands[bands.length - 1];
-}
+const SCALE_LABELS = ["Ningún día", "Varios días", "Más de la mitad", "Casi todos los días"];
 
 interface Props {
+  testId: TestId;
   score: number;
   answers: number[];
-  test: "PHQ9" | "GAD7";
 }
 
-export default function ResultCard({ score, answers, test }: Props) {
-  const band = getBand(score, test);
-  const maxScore = MAX_SCORE[test];
-  const questions = QUESTIONS_SHORT[test];
+export default function ResultCard({ testId, score, answers }: Props) {
+  const config = TEST_CONFIGS[testId];
+  const band = getBand(testId, score);
+  const { maxScore, minScore } = config;
+
+  const barPct = Math.round(((score - minScore) / (maxScore - minScore)) * 100);
 
   const highItems = answers
-    .map((a, i) => ({ i, score: a }))
-    .filter((x) => x.score >= 2)
-    .sort((a, b) => b.score - a.score);
+    .map((a, i) => ({ i, a }))
+    .filter(({ a }) => a > 0 && a >= Math.ceil(config.scale[config.scale.length - 1].value * 0.5))
+    .sort((a, b) => b.a - a.a)
+    .slice(0, 4);
+
+  const isDesii = testId === "DESII";
+  const isSwls = testId === "SWLS";
 
   return (
     <div className="border border-foreground/10 rounded-sm p-6 bg-brand-navy/40 backdrop-blur-sm space-y-6">
-      {/* Score + label */}
+      {/* Score */}
       <div className="flex items-end gap-4">
         <div className="flex items-baseline gap-2">
-          <span className="font-serif text-6xl leading-none">{score}</span>
-          <span className="text-foreground/30 text-base">/&thinsp;{maxScore}</span>
+          <span className="font-serif text-6xl leading-none">{score}{isDesii ? "%" : ""}</span>
+          {!isDesii && (
+            <span className="text-foreground/30 text-base">/&thinsp;{maxScore}</span>
+          )}
         </div>
         <div className="ml-auto text-right">
           <p className="text-xs tracking-widest uppercase opacity-40 mb-0.5">Nivel</p>
@@ -83,36 +40,72 @@ export default function ResultCard({ score, answers, test }: Props) {
         </div>
       </div>
 
-      {/* Score bar */}
+      {/* Bar */}
       <div className="h-1 bg-foreground/10 rounded-full overflow-hidden">
         <div
           className={`h-full ${band.barClass} transition-all duration-1000 ease-out`}
-          style={{ width: `${(score / maxScore) * 100}%` }}
+          style={{ width: `${barPct}%` }}
         />
       </div>
 
+      {isSwls && (
+        <div className="flex justify-between text-[10px] opacity-25">
+          <span>Muy insatisfecho/a</span>
+          <span>Muy satisfecho/a</span>
+        </div>
+      )}
+
       <p className="text-sm leading-relaxed opacity-65">{band.description}</p>
 
-      {/* High-scoring items */}
+      {/* Subscales (DASS-21 etc.) */}
+      {config.subScales && config.subScales.length > 0 && (
+        <div className="space-y-3">
+          <p className="text-xs tracking-widest uppercase opacity-35">Subescalas</p>
+          <div className="grid grid-cols-3 gap-3">
+            {config.subScales.map((sub) => {
+              const subScore = getSubScaleScore(sub, answers);
+              const subBand = getSubScaleBand(sub, subScore);
+              return (
+                <div key={sub.label} className="bg-foreground/5 rounded-sm p-3 space-y-1">
+                  <p className="text-xs opacity-40 tracking-wide">{sub.label}</p>
+                  <p className="font-serif text-2xl">{subScore}</p>
+                  <p className={`text-xs font-medium ${subBand.textClass}`}>{subBand.label}</p>
+                  <div className="h-0.5 bg-foreground/10 rounded-full overflow-hidden mt-1">
+                    <div
+                      className={`h-full ${subBand.textClass.replace("text-", "bg-")} transition-all duration-700`}
+                      style={{ width: `${(subScore / sub.maxScore) * 100}%` }}
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* High items */}
       {highItems.length > 0 && (
         <div>
           <p className="text-xs tracking-widest uppercase opacity-35 mb-3">Áreas de mayor atención</p>
           <ul className="space-y-2">
-            {highItems.map(({ i, score: s }) => (
-              <li key={i} className="flex items-start gap-3 text-sm">
-                <span className="w-1 h-1 rounded-full bg-brand-gold flex-shrink-0 mt-1.5" />
-                <span className="opacity-65">
-                  {questions[i]}
-                  <span className="opacity-50 ml-2 text-xs">— {SCALE[s]}</span>
-                </span>
-              </li>
-            ))}
+            {highItems.map(({ i, a }) => {
+              const scaleLabel = config.scale.find((s) => s.value === a)?.full ?? SCALE_LABELS[a] ?? `${a}`;
+              return (
+                <li key={i} className="flex items-start gap-3 text-sm">
+                  <span className="w-1 h-1 rounded-full bg-brand-gold flex-shrink-0 mt-1.5" />
+                  <span className="opacity-65">
+                    {config.shortLabels[i] ?? `Ítem ${i + 1}`}
+                    <span className="opacity-50 ml-2 text-xs">— {scaleLabel}</span>
+                  </span>
+                </li>
+              );
+            })}
           </ul>
         </div>
       )}
 
       <p className="text-xs opacity-25 leading-relaxed border-t border-foreground/10 pt-4">
-        El {test === "PHQ9" ? "PHQ-9" : "GAD-7"} es una herramienta de tamizaje clínico, no un diagnóstico. Los resultados deben interpretarse en contexto y en acompañamiento con un profesional de salud mental.
+        {config.disclaimer}
       </p>
     </div>
   );
