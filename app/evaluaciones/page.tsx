@@ -9,6 +9,7 @@ import GAD7 from "@/components/tests/GAD7";
 import TestRunner from "@/components/tests/TestRunner";
 import ResultCard from "@/components/tests/ResultCard";
 import AIInterpret from "@/components/tests/AIInterpret";
+import SendToTherapist from "@/components/tests/SendToTherapist";
 import { TEST_CONFIGS, type TestId } from "@/lib/testData";
 
 const TEST_ORDER: TestId[] = [
@@ -141,6 +142,8 @@ export default function EvaluacionesPage() {
                 </div>
                 <AIInterpret score={result.score} answers={result.answers} test={selectedTest} />
               </div>
+
+              <SendToTherapist testId={selectedTest} score={result.score} answers={result.answers} />
 
               <div className="border-t border-foreground/10 pt-6 flex flex-wrap gap-6 items-center">
                 <button onClick={() => setResult(null)} className="text-xs opacity-35 hover:opacity-70 transition-opacity underline underline-offset-4">
