@@ -21,11 +21,13 @@ const TEST_ORDER: TestId[] = [
 
 function EvaluacionesPageInner() {
   const searchParams = useSearchParams();
+  const isDirectLink = !!searchParams.get("test");
   const [selectedTest, setSelectedTest] = useState<TestId | null>(() => {
     const param = searchParams.get("test")?.toUpperCase() as TestId | null;
     return param && TEST_CONFIGS[param] ? param : null;
   });
   const [result, setResult] = useState<{ score: number; answers: number[] } | null>(null);
+  const [aiText, setAiText] = useState("");
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -114,12 +116,13 @@ function EvaluacionesPageInner() {
           {/* TEST ACTIVO */}
           {selectedTest && !result && (
             <div className="max-w-3xl space-y-8">
-              <button
-                onClick={() => setSelectedTest(null)}
-                className="text-xs opacity-35 hover:opacity-70 transition-opacity"
-              >
-                ← Elegir otra prueba
-              </button>
+              {isDirectLink ? (
+                <Link href="/" className="text-xs opacity-35 hover:opacity-70 transition-opacity">← Inicio</Link>
+              ) : (
+                <button onClick={() => setSelectedTest(null)} className="text-xs opacity-35 hover:opacity-70 transition-opacity">
+                  ← Elegir otra prueba
+                </button>
+              )}
               {selectedTest === "PHQ9" && (
                 <PHQ9 onComplete={(score, answers) => setResult({ score, answers })} />
               )}
@@ -145,18 +148,24 @@ function EvaluacionesPageInner() {
                     Puedo ofrecerte una interpretación de estos resultados desde una perspectiva transpersonal y somática.
                   </p>
                 </div>
-                <AIInterpret score={result.score} answers={result.answers} test={selectedTest} />
+                <AIInterpret score={result.score} answers={result.answers} test={selectedTest} onComplete={setAiText} />
               </div>
 
-              <SendToTherapist testId={selectedTest} score={result.score} answers={result.answers} />
+              <SendToTherapist testId={selectedTest} score={result.score} answers={result.answers} aiText={aiText} />
 
               <div className="border-t border-foreground/10 pt-6 flex flex-wrap gap-6 items-center">
                 <button onClick={() => setResult(null)} className="text-xs opacity-35 hover:opacity-70 transition-opacity underline underline-offset-4">
                   Repetir esta prueba
                 </button>
-                <button onClick={reset} className="text-xs opacity-35 hover:opacity-70 transition-opacity underline underline-offset-4">
-                  Elegir otra prueba
-                </button>
+                {isDirectLink ? (
+                  <Link href="/" className="text-xs opacity-35 hover:opacity-70 transition-opacity underline underline-offset-4">
+                    ← Inicio
+                  </Link>
+                ) : (
+                  <button onClick={reset} className="text-xs opacity-35 hover:opacity-70 transition-opacity underline underline-offset-4">
+                    Elegir otra prueba
+                  </button>
+                )}
                 <Link href="/#agendar" className="text-xs tracking-widest uppercase text-brand-teal opacity-70 hover:opacity-100 transition-opacity">
                   Agendar sesión →
                 </Link>

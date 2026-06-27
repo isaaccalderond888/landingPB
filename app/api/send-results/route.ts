@@ -15,6 +15,7 @@ export async function POST(req: NextRequest) {
     testId: string;
     score: number;
     answers: number[];
+    aiText?: string;
   };
 
   try {
@@ -23,7 +24,7 @@ export async function POST(req: NextRequest) {
     return Response.json({ error: "JSON inválido" }, { status: 400 });
   }
 
-  const { nombre, apellido, telefono, correo, testId, score, answers } = body;
+  const { nombre, apellido, telefono, correo, testId, score, answers, aiText } = body;
 
   if (!nombre || !apellido || !correo || !testId) {
     return Response.json({ error: "Faltan campos requeridos" }, { status: 400 });
@@ -84,6 +85,15 @@ export async function POST(req: NextRequest) {
         ${itemRows}
       </table>
     </div>
+
+    ${aiText ? `
+    <!-- Análisis AI -->
+    <div style="background:#131d3e;border-radius:4px;padding:20px 24px;margin-bottom:24px">
+      <p style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#5cc4a8;margin:0 0 16px">Interpretación AI</p>
+      ${aiText.split("\n\n").filter(Boolean).map(p =>
+        `<p style="font-size:13px;color:#c8d0e0;line-height:1.7;margin:0 0 12px">${p.trim()}</p>`
+      ).join("")}
+    </div>` : ""}
 
     <p style="font-size:11px;color:#4a5578;text-align:center;margin:0">${config.disclaimer}</p>
   </div>

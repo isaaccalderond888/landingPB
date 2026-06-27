@@ -7,9 +7,10 @@ interface Props {
   testId: TestId;
   score: number;
   answers: number[];
+  aiText?: string;
 }
 
-export default function SendToTherapist({ testId, score, answers }: Props) {
+export default function SendToTherapist({ testId, score, answers, aiText }: Props) {
   const [open, setOpen] = useState(false);
   const [form, setForm] = useState({ nombre: "", apellido: "", telefono: "", correo: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
@@ -29,7 +30,7 @@ export default function SendToTherapist({ testId, score, answers }: Props) {
       const res = await fetch("/api/send-results", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, testId, score, answers }),
+        body: JSON.stringify({ ...form, testId, score, answers, aiText }),
       });
       setStatus(res.ok ? "sent" : "error");
     } catch {

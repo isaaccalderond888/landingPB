@@ -8,9 +8,10 @@ interface Props {
   score: number;
   answers: number[];
   test: TestId;
+  onComplete?: (text: string) => void;
 }
 
-export default function AIInterpret({ score, answers, test }: Props) {
+export default function AIInterpret({ score, answers, test, onComplete }: Props) {
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
@@ -33,14 +34,18 @@ export default function AIInterpret({ score, answers, test }: Props) {
 
       const reader = res.body.getReader();
       const decoder = new TextDecoder();
+      let fullText = "";
 
       while (true) {
         const { done: doneReading, value } = await reader.read();
         if (doneReading) break;
-        setText((prev) => prev + decoder.decode(value, { stream: true }));
+        const chunk = decoder.decode(value, { stream: true });
+        fullText += chunk;
+        setText((prev) => prev + chunk);
       }
 
       setDone(true);
+      onComplete?.(fullText);
     } catch {
       setError(true);
     } finally {
