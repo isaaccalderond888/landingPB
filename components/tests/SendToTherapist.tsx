@@ -49,17 +49,23 @@ export default function SendToTherapist({ testId, score, answers }: Props) {
   }
 
   return (
-    <div className="border border-foreground/10 rounded-sm overflow-hidden">
+    <div className="relative rounded-sm overflow-hidden border border-brand-teal/35 bg-brand-teal/[0.04] shadow-[0_0_24px_rgba(26,150,166,0.08)]">
+      {/* Glow animado en el borde */}
+      <div className="pointer-events-none absolute inset-0 rounded-sm animate-pulse ring-1 ring-brand-teal/20" />
+
       {/* Header / toggle */}
       <button
         onClick={() => setOpen((o) => !o)}
-        className="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-foreground/5 transition-colors"
+        className="relative w-full flex items-center justify-between px-6 py-5 text-left hover:bg-brand-teal/5 transition-colors"
       >
-        <div>
-          <p className="text-sm font-medium tracking-wide">Enviar resultados al terapeuta</p>
-          <p className="text-xs opacity-40 mt-0.5">Isaac recibirá un resumen de esta evaluación</p>
+        <div className="flex items-center gap-3">
+          <span className="w-2 h-2 rounded-full bg-brand-teal animate-pulse flex-shrink-0" />
+          <div>
+            <p className="text-sm font-medium tracking-wide">Enviar resultados al terapeuta</p>
+            <p className="text-xs opacity-40 mt-0.5">Isaac recibirá un resumen de esta evaluación</p>
+          </div>
         </div>
-        <span className={`text-xl opacity-30 transition-transform duration-200 ${open ? "rotate-45" : ""}`}>+</span>
+        <span className={`text-brand-teal text-xl transition-transform duration-200 ${open ? "rotate-45" : ""}`}>+</span>
       </button>
 
       {/* Form */}
