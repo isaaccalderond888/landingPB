@@ -2,9 +2,8 @@ import Anthropic from "@anthropic-ai/sdk";
 import { NextRequest } from "next/server";
 import { TEST_CONFIGS, getBand, type TestId } from "@/lib/testData";
 
-const client = new Anthropic();
-
 export async function POST(req: NextRequest) {
+  const client = new Anthropic();
   let score: number;
   let answers: number[];
   let test: string;
