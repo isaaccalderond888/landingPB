@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Logo from "@/components/Logo";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -19,7 +20,11 @@ const TEST_ORDER: TestId[] = [
 ];
 
 export default function EvaluacionesPage() {
-  const [selectedTest, setSelectedTest] = useState<TestId | null>(null);
+  const searchParams = useSearchParams();
+  const [selectedTest, setSelectedTest] = useState<TestId | null>(() => {
+    const param = searchParams.get("test")?.toUpperCase() as TestId | null;
+    return param && TEST_CONFIGS[param] ? param : null;
+  });
   const [result, setResult] = useState<{ score: number; answers: number[] } | null>(null);
 
   useEffect(() => {
