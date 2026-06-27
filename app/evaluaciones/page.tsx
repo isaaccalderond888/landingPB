@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Logo from "@/components/Logo";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -20,6 +20,10 @@ const TEST_ORDER: TestId[] = [
 export default function EvaluacionesPage() {
   const [selectedTest, setSelectedTest] = useState<TestId | null>(null);
   const [result, setResult] = useState<{ score: number; answers: number[] } | null>(null);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [selectedTest, result]);
 
   function handleComplete(answers: number[]) {
     if (!selectedTest) return;
