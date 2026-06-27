@@ -3,7 +3,7 @@ import { NextRequest } from "next/server";
 import { TEST_CONFIGS, getBand, type TestId } from "@/lib/testData";
 
 const THERAPIST_EMAIL = "psic@isaaccalderon.me";
-const FROM_EMAIL = "evaluaciones@isaaccalderon.me";
+const FROM_EMAIL = "onboarding@resend.dev"; // temporal — cambiar a evaluaciones@isaaccalderon.me al verificar dominio
 
 export async function POST(req: NextRequest) {
   const resend = new Resend(process.env.RESEND_API_KEY);
