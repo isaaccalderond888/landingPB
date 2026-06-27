@@ -2,12 +2,11 @@ import { Resend } from "resend";
 import { NextRequest } from "next/server";
 import { TEST_CONFIGS, getBand, type TestId } from "@/lib/testData";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const THERAPIST_EMAIL = "psic@isaaccalderon.me";
 const FROM_EMAIL = "evaluaciones@isaaccalderon.me";
 
 export async function POST(req: NextRequest) {
+  const resend = new Resend(process.env.RESEND_API_KEY);
   let body: {
     nombre: string;
     apellido: string;
