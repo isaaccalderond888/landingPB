@@ -74,7 +74,7 @@ export default function SendToTherapist({ testId, score, answers }: Props) {
                 onChange={(e) => set("nombre", e.target.value)}
                 placeholder="Juan"
                 required
-                className="w-full bg-foreground/5 border border-foreground/15 rounded-sm px-3 py-2.5 text-sm placeholder:opacity-25 focus:outline-none focus:border-brand-teal/50 transition-colors"
+                className="w-full bg-foreground/5 border border-foreground/15 rounded-sm px-3 py-2.5 text-sm text-gray-900 dark:text-foreground placeholder:opacity-25 focus:outline-none focus:border-brand-teal/50 transition-colors"
               />
             </div>
             <div className="space-y-1.5">
@@ -85,7 +85,7 @@ export default function SendToTherapist({ testId, score, answers }: Props) {
                 onChange={(e) => set("apellido", e.target.value)}
                 placeholder="García"
                 required
-                className="w-full bg-foreground/5 border border-foreground/15 rounded-sm px-3 py-2.5 text-sm placeholder:opacity-25 focus:outline-none focus:border-brand-teal/50 transition-colors"
+                className="w-full bg-foreground/5 border border-foreground/15 rounded-sm px-3 py-2.5 text-sm text-gray-900 dark:text-foreground placeholder:opacity-25 focus:outline-none focus:border-brand-teal/50 transition-colors"
               />
             </div>
           </div>
@@ -98,7 +98,7 @@ export default function SendToTherapist({ testId, score, answers }: Props) {
               onChange={(e) => set("correo", e.target.value)}
               placeholder="correo@ejemplo.com"
               required
-              className="w-full bg-foreground/5 border border-foreground/15 rounded-sm px-3 py-2.5 text-sm placeholder:opacity-25 focus:outline-none focus:border-brand-teal/50 transition-colors"
+              className="w-full bg-foreground/5 border border-foreground/15 rounded-sm px-3 py-2.5 text-sm text-gray-900 dark:text-foreground placeholder:opacity-25 focus:outline-none focus:border-brand-teal/50 transition-colors"
             />
           </div>
 
@@ -109,7 +109,7 @@ export default function SendToTherapist({ testId, score, answers }: Props) {
               value={form.telefono}
               onChange={(e) => set("telefono", e.target.value)}
               placeholder="+52 55 0000 0000"
-              className="w-full bg-foreground/5 border border-foreground/15 rounded-sm px-3 py-2.5 text-sm placeholder:opacity-25 focus:outline-none focus:border-brand-teal/50 transition-colors"
+              className="w-full bg-foreground/5 border border-foreground/15 rounded-sm px-3 py-2.5 text-sm text-gray-900 dark:text-foreground placeholder:opacity-25 focus:outline-none focus:border-brand-teal/50 transition-colors"
             />
           </div>
 
