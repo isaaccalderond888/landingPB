@@ -50,7 +50,7 @@ export default function TestRunner({ config, onComplete }: Props) {
       <div className="hidden md:flex items-center justify-end pr-1">
         {config.scale.map((s) => (
           <span key={s.value} className={`${btnW} text-center text-[10px] tracking-wide opacity-30 leading-tight`}>
-            {s.full}
+            {isWide ? s.full : s.short}
           </span>
         ))}
       </div>
