@@ -17,6 +17,7 @@ const TEST_ORDER: TestId[] = [
   "PHQ9", "GAD7", "DASS21",
   "PCL5", "DESII", "ACE",
   "SDS", "SWLS", "MEQ30",
+  "PERMA", "EBI", "CEQ",
 ];
 
 function EvaluacionesPageInner() {
