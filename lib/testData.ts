@@ -1,4 +1,16 @@
-export type TestId = "PHQ9" | "GAD7" | "DASS21" | "PCL5" | "DESII" | "ACE" | "SDS" | "SWLS" | "MEQ30" | "PERMA" | "EBI" | "CEQ";
+export type TestId = "PHQ9" | "GAD7" | "DASS21" | "PCL5" | "DESII" | "ACE" | "SDS" | "SWLS" | "MEQ30" | "PERMA" | "EBI" | "CEQ" | "CBI" | "AQ10" | "AQ50" | "CATQ" | "ASRS";
+
+export type TestCategory = "clinico" | "trauma" | "bienestar" | "neurodiversidad" | "postsesion";
+
+export const CATEGORY_LABELS: Record<TestCategory, { title: string; description: string }> = {
+  clinico:         { title: "Tamizaje clínico",        description: "Síntomas, deterioro funcional y bienestar laboral" },
+  trauma:          { title: "Trauma y disociación",     description: "Estrés postraumático, disociación y adversidad temprana" },
+  bienestar:       { title: "Bienestar y florecimiento", description: "Satisfacción con la vida y dimensiones del bienestar" },
+  neurodiversidad: { title: "Neurodiversidad",           description: "Perfil autista, enmascaramiento y TDAH en adultos" },
+  postsesion:      { title: "Post-sesión",               description: "Para completar después de sesiones con estados no ordinarios de conciencia" },
+};
+
+export const CATEGORY_ORDER: TestCategory[] = ["clinico", "trauma", "bienestar", "neurodiversidad", "postsesion"];
 
 export interface ScaleOption {
   value: number;
@@ -42,6 +54,7 @@ export interface TestConfig {
   subScales?: SubScale[];
   disclaimer: string;
   note?: string;
+  category: TestCategory;
 }
 
 const B = {
@@ -63,6 +76,7 @@ export const TEST_CONFIGS: Record<TestId, TestConfig> = {
   PHQ9: {
     name: "PHQ-9",
     subtitle: "Depresión",
+    category: "clinico",
     cardDescription: "9 preguntas · ~2 min · Evalúa la presencia y severidad de síntomas depresivos.",
     accentClass: "text-brand-teal",
     borderClass: "border-brand-teal/40 hover:border-brand-teal",
@@ -108,6 +122,7 @@ export const TEST_CONFIGS: Record<TestId, TestConfig> = {
   GAD7: {
     name: "GAD-7",
     subtitle: "Ansiedad",
+    category: "clinico",
     cardDescription: "7 preguntas · ~1 min · Identifica y mide la severidad del trastorno de ansiedad generalizada.",
     accentClass: "text-brand-gold",
     borderClass: "border-brand-gold/40 hover:border-brand-gold",
@@ -150,6 +165,7 @@ export const TEST_CONFIGS: Record<TestId, TestConfig> = {
   DASS21: {
     name: "DASS-21",
     subtitle: "Depresión · Ansiedad · Estrés",
+    category: "clinico",
     cardDescription: "21 preguntas · ~5 min · Evalúa simultáneamente depresión, ansiedad y estrés con tres subescalas.",
     accentClass: "text-brand-mint",
     borderClass: "border-brand-mint/40 hover:border-brand-mint",
@@ -244,6 +260,7 @@ export const TEST_CONFIGS: Record<TestId, TestConfig> = {
   PCL5: {
     name: "PCL-5",
     subtitle: "TEPT / Trauma",
+    category: "trauma",
     cardDescription: "20 preguntas · ~5 min · Evalúa síntomas de estrés postraumático basado en el DSM-5.",
     accentClass: "text-brand-mid",
     borderClass: "border-brand-mid/40 hover:border-brand-mid",
@@ -303,6 +320,7 @@ export const TEST_CONFIGS: Record<TestId, TestConfig> = {
   DESII: {
     name: "DES-II",
     subtitle: "Disociación",
+    category: "trauma",
     cardDescription: "28 preguntas · ~7 min · Mide experiencias disociativas en la vida cotidiana (porcentaje de tiempo).",
     accentClass: "text-brand-teal",
     borderClass: "border-brand-teal/30 hover:border-brand-teal",
@@ -369,6 +387,7 @@ export const TEST_CONFIGS: Record<TestId, TestConfig> = {
   ACE: {
     name: "ACE",
     subtitle: "Experiencias adversas en la infancia",
+    category: "trauma",
     cardDescription: "10 preguntas · ~2 min · Evalúa experiencias adversas antes de los 18 años y su impacto potencial en la salud.",
     accentClass: "text-brand-gold",
     borderClass: "border-brand-gold/40 hover:border-brand-gold",
@@ -413,6 +432,7 @@ export const TEST_CONFIGS: Record<TestId, TestConfig> = {
   SDS: {
     name: "SDS",
     subtitle: "Deterioro funcional",
+    category: "clinico",
     cardDescription: "3 preguntas · ~1 min · Mide el impacto de los síntomas en el trabajo, la vida social y el hogar.",
     accentClass: "text-brand-teal",
     borderClass: "border-brand-teal/30 hover:border-brand-teal",
@@ -448,6 +468,7 @@ export const TEST_CONFIGS: Record<TestId, TestConfig> = {
   SWLS: {
     name: "SWLS",
     subtitle: "Satisfacción con la vida",
+    category: "bienestar",
     cardDescription: "5 afirmaciones · ~1 min · Evalúa la satisfacción global con la vida según tu propia valoración.",
     accentClass: "text-brand-mint",
     borderClass: "border-brand-mint/40 hover:border-brand-mint",
@@ -493,6 +514,7 @@ export const TEST_CONFIGS: Record<TestId, TestConfig> = {
   MEQ30: {
     name: "MEQ-30",
     subtitle: "Experiencia mística",
+    category: "postsesion",
     cardDescription: "30 preguntas · ~5 min · Evalúa la profundidad e intensidad de una experiencia no ordinaria de conciencia.",
     accentClass: "text-brand-gold",
     borderClass: "border-brand-gold/40 hover:border-brand-gold",
@@ -565,6 +587,7 @@ export const TEST_CONFIGS: Record<TestId, TestConfig> = {
   PERMA: {
     name: "PERMA",
     subtitle: "Bienestar general",
+    category: "bienestar",
     cardDescription: "15 preguntas · ~3 min · Evalúa las cinco dimensiones del bienestar: emociones positivas, compromiso, relaciones, significado y logro.",
     accentClass: "text-brand-mint",
     borderClass: "border-brand-mint/40 hover:border-brand-mint",
@@ -674,6 +697,7 @@ export const TEST_CONFIGS: Record<TestId, TestConfig> = {
   EBI: {
     name: "EBI",
     subtitle: "Avance emocional",
+    category: "postsesion",
     cardDescription: "6 preguntas · ~1 min · Evalúa la profundidad del avance emocional vivido en una sesión terapéutica o experiencia de conciencia no ordinaria.",
     accentClass: "text-brand-gold",
     borderClass: "border-brand-gold/40 hover:border-brand-gold",
@@ -718,6 +742,7 @@ export const TEST_CONFIGS: Record<TestId, TestConfig> = {
   CEQ: {
     name: "CEQ",
     subtitle: "Experiencia desafiante",
+    category: "postsesion",
     cardDescription: "26 preguntas · ~5 min · Caracteriza la naturaleza y la intensidad de experiencias difíciles durante una sesión — guía la integración post-sesión.",
     accentClass: "text-brand-mid",
     borderClass: "border-brand-mid/40 hover:border-brand-mid",
@@ -860,6 +885,386 @@ export const TEST_CONFIGS: Record<TestId, TestConfig> = {
       },
     ],
     disclaimer: "El CEQ es de uso libre para investigación (Barrett et al., 2016, Johns Hopkins). No reemplaza la evaluación ni el acompañamiento clínico.",
+  },
+
+  CBI: {
+    name: "CBI",
+    subtitle: "Burnout",
+    category: "clinico",
+    cardDescription: "19 preguntas · ~4 min · Evalúa el agotamiento personal, laboral y relacionado con clientes/pacientes.",
+    accentClass: "text-brand-gold",
+    borderClass: "border-brand-gold/30",
+    btnSelectedClass: "bg-brand-gold/20 border border-brand-gold text-brand-gold",
+    btnHoverClass: "hover:bg-brand-gold/10 hover:border-brand-gold/40",
+    barClass: "bg-brand-gold",
+    instructions: "Piensa en cómo te has sentido en los últimos meses. Elige la opción que mejor describe con qué frecuencia o en qué medida experimenta cada afirmación.",
+    scale: [
+      { value: 0, short: "Nunca",   full: "Nunca / casi nunca" },
+      { value: 25, short: "Poco",   full: "Raramente" },
+      { value: 50, short: "A veces", full: "A veces" },
+      { value: 75, short: "Frecuente", full: "Frecuentemente" },
+      { value: 100, short: "Siempre", full: "Siempre / casi siempre" },
+    ],
+    questions: [
+      "¿Con qué frecuencia te sientes fatigado/a?",
+      "¿Con qué frecuencia te sientes físicamente agotado/a?",
+      "¿Con qué frecuencia te sientes emocionalmente exhausto/a?",
+      "¿Con qué frecuencia piensas 'no puedo más'?",
+      "¿Con qué frecuencia te sientes desgastado/a?",
+      "¿Con qué frecuencia te sientes débil y susceptible a enfermarte?",
+      "¿Tu trabajo te agota emocionalmente?",
+      "¿Te sientes extenuado/a al final de un día de trabajo?",
+      "¿Tu trabajo te frustra?",
+      "¿Te sientes quemado/a por tu trabajo?",
+      "¿Sientes que inviertes más de lo que obtienes en tu trabajo?",
+      "¿Estás cansado/a de tu trabajo?",
+      "¿Alguna vez te preguntas cuánto tiempo más podrás aguantar este trabajo?",
+      "¿Encuentras difícil trabajar con clientes/pacientes?",
+      "¿Trabajar con clientes/pacientes te agota?",
+      "¿A veces desearías no tener que tratar con clientes/pacientes?",
+      "¿Tu trabajo con clientes/pacientes te irrita?",
+      "¿Sientes que das más de lo que recibes al trabajar con clientes/pacientes?",
+      "¿Estás cansado/a de trabajar con clientes/pacientes?",
+    ],
+    shortLabels: ["Nunca", "Raramente", "A veces", "Frecuente", "Siempre"],
+    computeScore: (answers) => Math.round(answers.reduce((s, a) => s + a, 0) / answers.length),
+    maxScore: 100,
+    minScore: 0,
+    bands: [
+      { max: 49,  label: "Sin burnout",       description: "Niveles de agotamiento dentro de lo normal.", ...B.mint,  barClass: B.mint.barClass },
+      { max: 74,  label: "Burnout moderado",  description: "Señales importantes de desgaste que merecen atención.", ...B.gold, barClass: B.gold.barClass },
+      { max: 100, label: "Burnout severo",    description: "Agotamiento intenso: se recomienda intervención.", ...B.red,  barClass: B.red.barClass },
+    ],
+    subScales: [
+      {
+        label: "Agotamiento personal",
+        indices: [0, 1, 2, 3, 4, 5],
+        maxScore: 100,
+        bands: [
+          { max: 49,  label: "Bajo",     textClass: B.mint.textClass },
+          { max: 74,  label: "Moderado", textClass: B.gold.textClass },
+          { max: 100, label: "Alto",     textClass: B.red.textClass },
+        ],
+      },
+      {
+        label: "Burnout laboral",
+        indices: [6, 7, 8, 9, 10, 11, 12],
+        maxScore: 100,
+        bands: [
+          { max: 49,  label: "Bajo",     textClass: B.mint.textClass },
+          { max: 74,  label: "Moderado", textClass: B.gold.textClass },
+          { max: 100, label: "Alto",     textClass: B.red.textClass },
+        ],
+      },
+      {
+        label: "Burnout con clientes",
+        indices: [13, 14, 15, 16, 17, 18],
+        maxScore: 100,
+        bands: [
+          { max: 49,  label: "Bajo",     textClass: B.mint.textClass },
+          { max: 74,  label: "Moderado", textClass: B.gold.textClass },
+          { max: 100, label: "Alto",     textClass: B.red.textClass },
+        ],
+      },
+    ],
+    disclaimer: "El CBI (Copenhagen Burnout Inventory) es de dominio público (Kristensen et al., 2005). No reemplaza la evaluación clínica.",
+  },
+
+  AQ10: {
+    name: "AQ-10",
+    subtitle: "Tamizaje autismo",
+    category: "neurodiversidad",
+    cardDescription: "10 preguntas · ~2 min · Tamizaje breve del espectro autista en adultos. Punto de corte ≥6.",
+    accentClass: "text-brand-teal",
+    borderClass: "border-brand-teal/30",
+    btnSelectedClass: "bg-brand-teal/20 border border-brand-teal text-brand-teal",
+    btnHoverClass: "hover:bg-brand-teal/10 hover:border-brand-teal/40",
+    barClass: "bg-brand-teal",
+    instructions: "Indica en qué medida estás de acuerdo con cada afirmación. No hay respuestas correctas o incorrectas.",
+    scale: [
+      { value: 0, short: "TD",          full: "Totalmente de acuerdo" },
+      { value: 1, short: "De acuerdo",  full: "De acuerdo" },
+      { value: 2, short: "En desac.",   full: "En desacuerdo" },
+      { value: 3, short: "Totalmente",  full: "Totalmente en desacuerdo" },
+    ],
+    questions: [
+      "Noto cuando alguien en un grupo está incómodo o molesto.",
+      "Prefiero hacer las cosas de la misma manera una y otra vez.",
+      "Si trato de imaginar algo, encuentro muy fácil crearme una imagen mental.",
+      "Me absorbo fácilmente en las cosas.",
+      "Noto detalles pequeños que otros no notan.",
+      "Sé cuándo es el turno de hablar en una conversación.",
+      "Cuando leo una historia, me resulta difícil descubrir las intenciones de los personajes.",
+      "Me gustan las reuniones sociales y las ocasiones para hablar con otras personas.",
+      "Me resulta fácil hacer más de una cosa a la vez.",
+      "Cuando tengo una conversación con alguien, presto atención al lenguaje corporal.",
+    ],
+    shortLabels: ["Totalmente de acuerdo", "De acuerdo", "En desacuerdo", "Totalmente en desacuerdo"],
+    computeScore: (answers) => {
+      const reverseIndices = [1, 2, 3, 4, 5, 8];
+      return answers.reduce((sum, val, i) => {
+        const score = reverseIndices.includes(i)
+          ? (val <= 1 ? 1 : 0)
+          : (val >= 2 ? 1 : 0);
+        return sum + score;
+      }, 0);
+    },
+    maxScore: 10,
+    minScore: 0,
+    bands: [
+      { max: 5,  label: "Por debajo del umbral", description: "Puntuación por debajo del umbral de tamizaje.", ...B.mint, barClass: B.mint.barClass },
+      { max: 10, label: "Positivo (≥6)",          description: "Resultado positivo en el tamizaje; se recomienda evaluación diagnóstica.", ...B.teal, barClass: B.teal.barClass },
+    ],
+    disclaimer: "El AQ-10 es una herramienta de tamizaje, no diagnóstica (Allison et al., 2012, Cambridge). Un resultado ≥6 sugiere derivación para evaluación formal.",
+  },
+
+  AQ50: {
+    name: "AQ-50",
+    subtitle: "Autismo (completo)",
+    category: "neurodiversidad",
+    cardDescription: "50 preguntas · ~10 min · Versión completa del Autism Spectrum Quotient. Punto de corte ≥32.",
+    accentClass: "text-brand-teal",
+    borderClass: "border-brand-teal/30",
+    btnSelectedClass: "bg-brand-teal/20 border border-brand-teal text-brand-teal",
+    btnHoverClass: "hover:bg-brand-teal/10 hover:border-brand-teal/40",
+    barClass: "bg-brand-teal",
+    instructions: "Indica en qué medida estás de acuerdo con cada afirmación. No hay respuestas correctas o incorrectas.",
+    scale: [
+      { value: 0, short: "TD",         full: "Totalmente de acuerdo" },
+      { value: 1, short: "De acuerdo", full: "De acuerdo" },
+      { value: 2, short: "En desac.",  full: "En desacuerdo" },
+      { value: 3, short: "Totalmente", full: "Totalmente en desacuerdo" },
+    ],
+    questions: [
+      "Prefiero hacer las cosas con otras personas que solo/a.",
+      "Prefiero hacer las cosas de la misma manera una y otra vez.",
+      "Si trato de imaginar algo, encuentro muy fácil crearme una imagen mental.",
+      "Me absorbo fácilmente en las cosas.",
+      "Noto detalles pequeños que otros no notan.",
+      "En situaciones sociales, no sé de qué hablar.",
+      "Cuando leo una historia, me resulta difícil descubrir las intenciones de los personajes.",
+      "Me gustan las reuniones sociales y las ocasiones para hablar con otras personas.",
+      "Cuando trato de imaginar algo, encuentro muy fácil crear una imagen mental.",
+      "Me resulta difícil captar las intenciones de las personas.",
+      "Me encanta coleccionar información sobre categorías de cosas (por ejemplo, tipos de coches, tipos de pájaros, tipos de trenes, tipos de plantas, etc.).",
+      "Me resulta difícil hacer más de una cosa a la vez.",
+      "Cuando tengo una conversación con alguien, presto atención al lenguaje corporal.",
+      "Tengo tendencia a notar ruidos que otros no notan.",
+      "Prefiero ir a una biblioteca que a una fiesta.",
+      "Encuentro muy difícil el guión de conversaciones sociales.",
+      "Generalmente me resulta difícil hacer nuevos amigos/as.",
+      "Tiendo a hacer las cosas de la misma manera repetidamente.",
+      "Me resulta fácil mantener el hilo de varias conversaciones a la vez.",
+      "Cuando noto una pequeña variación en una rutina cotidiana, me perturba.",
+      "Me resulta fácil distinguir el tono de voz de una persona.",
+      "Noto las sutilezas en las expresiones faciales de las personas.",
+      "Prefiero hacer las cosas de una manera fija y rutinaria.",
+      "Encuentro fácil combinar las cosas para crear algo nuevo.",
+      "Me resulta difícil saber por dónde empezar en una conversación.",
+      "Las sutilezas del lenguaje no siempre son claras para mí.",
+      "Me concentro más en el cuadro general que en los detalles.",
+      "Si hay una interrupción, puedo volver a la tarea que estaba haciendo muy rápidamente.",
+      "Suelo ser la última persona en entender el chiste en una conversación.",
+      "Me resulta fácil realizar varias tareas a la vez.",
+      "Cuando hablo por teléfono, no estoy seguro/a de cuándo es mi turno de hablar.",
+      "Me gustan hacer las cosas espontáneamente.",
+      "Me preocupo por los plazos.",
+      "Disfruto haciendo cosas de forma espontánea.",
+      "Disfruto tanto de las conversaciones informales como de las más serias.",
+      "Noto cuando alguien en un grupo está incómodo o molesto.",
+      "Encuentro fácil leer entre líneas en las conversaciones.",
+      "Me concentro en los detalles más que en el cuadro general.",
+      "Me resulta difícil hablar con personas que no conozco bien.",
+      "Disfruto conociendo gente nueva.",
+      "Si algo es ligeramente diferente de lo que espero, me perturba mucho.",
+      "Sé cómo interpretar las intenciones de las personas.",
+      "Me resulta fácil hacer más de una cosa a la vez.",
+      "Me gustan mucho los rituales cotidianos y me molesta que se alteren.",
+      "Puedo hacer con facilidad una buena lista cuando me propongo hacer varias cosas.",
+      "Me resulta fácil descifrar lo que alguien piensa o siente solo mirando su cara.",
+      "Si se interrumpe mi rutina, me resulta muy difícil retomar lo que estaba haciendo.",
+      "Disfruto de las conversaciones sociales.",
+      "Soy bueno/a con las cifras.",
+      "Me resulta difícil recordar números de teléfono.",
+    ],
+    shortLabels: ["Totalmente de acuerdo", "De acuerdo", "En desacuerdo", "Totalmente en desacuerdo"],
+    computeScore: (answers) => {
+      const reverseIndices = [0, 2, 7, 9, 10, 13, 14, 16, 23, 24, 26, 27, 28, 29, 30, 31, 33, 35, 36, 37, 39, 43, 46, 47, 48, 49];
+      return answers.reduce((sum, val, i) => {
+        const score = reverseIndices.includes(i)
+          ? (val <= 1 ? 1 : 0)
+          : (val >= 2 ? 1 : 0);
+        return sum + score;
+      }, 0);
+    },
+    maxScore: 50,
+    minScore: 0,
+    bands: [
+      { max: 31, label: "Por debajo del umbral", description: "Puntuación por debajo del punto de corte clínico.", ...B.mint, barClass: B.mint.barClass },
+      { max: 50, label: "Positivo (≥32)",         description: "Resultado positivo; se recomienda evaluación diagnóstica formal.", ...B.teal, barClass: B.teal.barClass },
+    ],
+    disclaimer: "El AQ-50 es una herramienta de investigación y tamizaje (Baron-Cohen et al., 2001, Cambridge). No es diagnóstico. Un puntaje ≥32 sugiere derivación para evaluación especializada.",
+  },
+
+  CATQ: {
+    name: "CAT-Q",
+    subtitle: "Enmascaramiento autista",
+    category: "neurodiversidad",
+    cardDescription: "25 preguntas · ~5 min · Mide el enmascaramiento de rasgos autistas en 3 dimensiones: compensación, asimilación y camuflaje.",
+    accentClass: "text-brand-mid",
+    borderClass: "border-brand-mid/30",
+    btnSelectedClass: "bg-brand-mid/20 border border-brand-mid text-brand-mid",
+    btnHoverClass: "hover:bg-brand-mid/10 hover:border-brand-mid/40",
+    barClass: "bg-brand-mid",
+    instructions: "Indica en qué medida cada afirmación te describe a ti. No hay respuestas correctas ni incorrectas.",
+    scale: [
+      { value: 1, short: "1",  full: "Totalmente en desacuerdo" },
+      { value: 2, short: "2",  full: "En desacuerdo" },
+      { value: 3, short: "3",  full: "Algo en desacuerdo" },
+      { value: 4, short: "4",  full: "Ni de acuerdo ni en desacuerdo" },
+      { value: 5, short: "5",  full: "Algo de acuerdo" },
+      { value: 6, short: "6",  full: "De acuerdo" },
+      { value: 7, short: "7",  full: "Totalmente de acuerdo" },
+    ],
+    questions: [
+      "Cuando estoy en una situación social, imito los comportamientos de otras personas para encajar.",
+      "Uso guiones aprendidos (por ejemplo, formas de decir hola, hablar sobre el tiempo) cuando hablo con personas.",
+      "En situaciones sociales, copio los movimientos del cuerpo y las expresiones faciales de los demás.",
+      "Aprendo naturalmente cómo comportarme en situaciones sociales imitando a los demás.",
+      "Me preparo temas de conversación, preguntas y bromas con anticipación para poder usarlos en conversaciones.",
+      "Cuando estoy en una situación social, encuentro difícil saber qué decir o hacer.",
+      "En situaciones sociales, me siento frustrado/a cuando estoy con personas nuevas.",
+      "Me resulta difícil saber cómo comportarme en situaciones sociales, así que presto atención a cómo actúan los demás e intento hacer lo mismo.",
+      "En situaciones sociales, observo cómo se comportan los demás y luego los copio.",
+      "Me siento presionado/a a comportarme de cierta manera en situaciones sociales.",
+      "Cuando estoy en grupos sociales, observo qué hacen los demás y lo adapto.",
+      "Aprendo cómo ser sociable observando a los demás.",
+      "Practico y repito mis expresiones faciales y mi lenguaje corporal para parecer más natural cuando socializo.",
+      "Encuentro difícil leer las señales no verbales de los demás, así que les presto mucha atención.",
+      "Con frecuencia no sé cómo comportarme socialmente y tengo que aprenderlo 'artificialmente'.",
+      "Encuentro los entornos sociales estresantes, así que preparo qué voy a decir con anticipación.",
+      "Pienso cuidadosamente sobre lo que debo decir antes de hablar.",
+      "Cuando hablo con alguien, pienso mucho en lo que estoy haciendo con mi cara y con mi cuerpo.",
+      "Tengo que suprimir tics o comportamientos repetitivos en situaciones sociales.",
+      "Me siento menos bien con mis intereses cuando estoy en un entorno social porque temo que los demás los encuentren raros.",
+      "Me oculto cuando tengo ansiedad o estrés para que los demás no se den cuenta.",
+      "Me ajusto y adapto mi comportamiento dependiendo de con quién estoy.",
+      "Actúo de una manera diferente a cómo me siento por dentro para encajar con los demás.",
+      "Siento que tengo que esforzarme mucho en situaciones sociales para que a los demás les guste.",
+      "Actúo de una manera que no refleja cómo me siento realmente por dentro para encajar socialmente.",
+    ],
+    shortLabels: ["1", "2", "3", "4", "5", "6", "7"],
+    computeScore: (answers) => answers.reduce((s, a) => s + a, 0),
+    maxScore: 175,
+    minScore: 25,
+    bands: [
+      { max: 100, label: "Bajo enmascaramiento",      description: "Niveles bajos de camuflaje de rasgos autistas.", ...B.mint, barClass: B.mint.barClass },
+      { max: 130, label: "Enmascaramiento moderado",  description: "Niveles moderados de compensación y camuflaje social.", ...B.gold, barClass: B.gold.barClass },
+      { max: 175, label: "Alto enmascaramiento",      description: "Niveles elevados de camuflaje; puede asociarse a agotamiento.", ...B.red, barClass: B.red.barClass },
+    ],
+    subScales: [
+      {
+        label: "Compensación",
+        indices: [0, 1, 2, 3, 4, 7, 8, 10, 11, 12, 13, 14],
+        maxScore: 84,
+        bands: [
+          { max: 40,  label: "Bajo",     textClass: B.mint.textClass },
+          { max: 65,  label: "Moderado", textClass: B.gold.textClass },
+          { max: 84,  label: "Alto",     textClass: B.red.textClass },
+        ],
+      },
+      {
+        label: "Asimilación",
+        indices: [5, 6, 9, 15, 16, 17, 18, 19, 20],
+        maxScore: 63,
+        bands: [
+          { max: 30,  label: "Bajo",     textClass: B.mint.textClass },
+          { max: 48,  label: "Moderado", textClass: B.gold.textClass },
+          { max: 63,  label: "Alto",     textClass: B.red.textClass },
+        ],
+      },
+      {
+        label: "Camuflaje",
+        indices: [21, 22, 23, 24],
+        maxScore: 28,
+        bands: [
+          { max: 13,  label: "Bajo",     textClass: B.mint.textClass },
+          { max: 21,  label: "Moderado", textClass: B.gold.textClass },
+          { max: 28,  label: "Alto",     textClass: B.red.textClass },
+        ],
+      },
+    ],
+    disclaimer: "El CAT-Q es libre para uso clínico y de investigación (Hull et al., 2019). No es diagnóstico; evalúa estrategias de enmascaramiento.",
+  },
+
+  ASRS: {
+    name: "ASRS-v1.1",
+    subtitle: "TDAH en adultos",
+    category: "neurodiversidad",
+    cardDescription: "18 preguntas · ~4 min · Escala de la OMS para el TDAH en adultos. Las 6 primeras preguntas (Parte A) son las más sensibles.",
+    accentClass: "text-brand-mint",
+    borderClass: "border-brand-mint/30",
+    btnSelectedClass: "bg-brand-mint/20 border border-brand-mint text-brand-mint",
+    btnHoverClass: "hover:bg-brand-mint/10 hover:border-brand-mint/40",
+    barClass: "bg-brand-mint",
+    instructions: "Piensa en los últimos 6 meses. ¿Con qué frecuencia has tenido los siguientes problemas?",
+    scale: [
+      { value: 0, short: "Nunca",   full: "Nunca" },
+      { value: 1, short: "Raro",    full: "Raramente" },
+      { value: 2, short: "A veces", full: "A veces" },
+      { value: 3, short: "Seguido", full: "Con frecuencia" },
+      { value: 4, short: "Siempre", full: "Muy frecuentemente" },
+    ],
+    questions: [
+      "¿Con qué frecuencia tienes dificultades para completar los detalles finales de un proyecto una vez que ya has superado las partes desafiantes?",
+      "¿Con qué frecuencia tienes dificultades para poner las cosas en orden cuando tienes que hacer una tarea que requiere organización?",
+      "¿Con qué frecuencia tienes problemas para recordar citas u obligaciones?",
+      "Cuando tienes que hacer algo que requiere mucha concentración, ¿con qué frecuencia evitas o pospones comenzarlo?",
+      "¿Con qué frecuencia retuerces o agitas las manos o los pies cuando tienes que estar sentado/a mucho tiempo?",
+      "¿Con qué frecuencia te sientes demasiado activo/a e impulsado/a a hacer cosas, como si te empujara un motor?",
+      "¿Con qué frecuencia cometes errores por descuido cuando tienes que trabajar en un proyecto aburrido o difícil?",
+      "¿Con qué frecuencia tienes dificultades para mantener la atención cuando haces trabajo aburrido o repetitivo?",
+      "¿Con qué frecuencia tienes dificultades para concentrarte en lo que te dicen las personas, incluso cuando te hablan directamente?",
+      "¿Con qué frecuencia extravías objetos o tienes dificultades para encontrar las cosas en casa o en el trabajo?",
+      "¿Con qué frecuencia te distraes con la actividad o el ruido de tu alrededor?",
+      "¿Con qué frecuencia te vas del asiento en reuniones u otras situaciones en las que se supone que debes permanecer sentado/a?",
+      "¿Con qué frecuencia te sientes agitado/a o intranquilo/a?",
+      "¿Con qué frecuencia tienes dificultades para relajarte y descansar cuando tienes tiempo libre?",
+      "¿Con qué frecuencia te encuentras hablando demasiado cuando estás en una situación social?",
+      "Cuando estás en una conversación, ¿con qué frecuencia terminas las frases de las personas con las que hablas antes de que puedan terminar?",
+      "¿Con qué frecuencia tienes dificultades para esperar en situaciones en las que debes esperar tu turno?",
+      "¿Con qué frecuencia interrumpes a los demás cuando están ocupados?",
+    ],
+    shortLabels: ["Nunca", "Raramente", "A veces", "Frecuente", "Muy frecuente"],
+    computeScore: (answers) => answers.reduce((s, a) => s + a, 0),
+    maxScore: 72,
+    minScore: 0,
+    bands: [
+      { max: 23, label: "Sin indicadores",      description: "Puntaje por debajo del umbral de tamizaje.", ...B.mint, barClass: B.mint.barClass },
+      { max: 72, label: "Indicadores de TDAH",  description: "Puntaje elevado; se recomienda evaluación clínica.", ...B.teal, barClass: B.teal.barClass },
+    ],
+    subScales: [
+      {
+        label: "Parte A (diagnóstica)",
+        indices: [0, 1, 2, 3, 4, 5],
+        maxScore: 24,
+        bands: [
+          { max: 13, label: "Bajo",     textClass: B.mint.textClass },
+          { max: 24, label: "Positivo", textClass: B.teal.textClass },
+        ],
+      },
+      {
+        label: "Parte B",
+        indices: [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
+        maxScore: 48,
+        bands: [
+          { max: 24, label: "Bajo",     textClass: B.mint.textClass },
+          { max: 48, label: "Elevado",  textClass: B.teal.textClass },
+        ],
+      },
+    ],
+    note: "La Parte A (ítems 1–6) es la sección de tamizaje más sensible. Cuatro o más respuestas en la zona sombreada (≥2 para ítems 1–3, ≥3 para ítems 4–6) sugieren TDAH en adultos.",
+    disclaimer: "El ASRS-v1.1 es de dominio público (OMS / Kessler et al., 2005). No es diagnóstico; el resultado debe ser evaluado por un profesional.",
   },
 };
 

@@ -11,14 +11,15 @@ import TestRunner from "@/components/tests/TestRunner";
 import ResultCard from "@/components/tests/ResultCard";
 import AIInterpret from "@/components/tests/AIInterpret";
 import SendToTherapist from "@/components/tests/SendToTherapist";
-import { TEST_CONFIGS, type TestId } from "@/lib/testData";
+import { TEST_CONFIGS, CATEGORY_ORDER, CATEGORY_LABELS, type TestId, type TestCategory } from "@/lib/testData";
 
-const TEST_ORDER: TestId[] = [
-  "PHQ9", "GAD7", "DASS21",
-  "PCL5", "DESII", "ACE",
-  "SDS", "SWLS", "MEQ30",
-  "PERMA", "EBI", "CEQ",
-];
+const CATEGORY_TESTS: Record<TestCategory, TestId[]> = {
+  clinico:         ["PHQ9", "GAD7", "DASS21", "SDS", "CBI"],
+  trauma:          ["PCL5", "DESII", "ACE"],
+  bienestar:       ["SWLS", "PERMA"],
+  neurodiversidad: ["AQ10", "AQ50", "CATQ", "ASRS"],
+  postsesion:      ["MEQ30", "EBI", "CEQ"],
+};
 
 function EvaluacionesPageInner() {
   const searchParams = useSearchParams();
@@ -93,22 +94,36 @@ function EvaluacionesPageInner() {
 
           {/* SELECTOR */}
           {!selectedTest && (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {TEST_ORDER.map((id) => {
-                const t = TEST_CONFIGS[id];
+            <div className="space-y-12">
+              {CATEGORY_ORDER.map((cat) => {
+                const { title, description } = CATEGORY_LABELS[cat];
+                const ids = CATEGORY_TESTS[cat];
                 return (
-                  <button
-                    key={id}
-                    onClick={() => setSelectedTest(id)}
-                    className={`group text-left p-6 rounded-sm border bg-brand-navy/40 backdrop-blur-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(0,0,0,0.2)] ${t.borderClass}`}
-                  >
-                    <p className={`text-xs tracking-widest uppercase mb-2 ${t.accentClass}`}>{t.subtitle}</p>
-                    <p className="font-serif text-2xl mb-3">{t.name}</p>
-                    <p className="text-xs leading-relaxed opacity-50">{t.cardDescription}</p>
-                    <p className={`text-xs mt-4 opacity-0 group-hover:opacity-100 transition-opacity ${t.accentClass}`}>
-                      Comenzar →
-                    </p>
-                  </button>
+                  <section key={cat}>
+                    <div className="mb-5 border-l-2 border-brand-gold/40 pl-4">
+                      <h2 className="font-serif text-xl leading-snug">{title}</h2>
+                      <p className="text-xs opacity-40 mt-1">{description}</p>
+                    </div>
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {ids.map((id) => {
+                        const t = TEST_CONFIGS[id];
+                        return (
+                          <button
+                            key={id}
+                            onClick={() => setSelectedTest(id)}
+                            className={`group text-left p-6 rounded-sm border bg-brand-navy/40 backdrop-blur-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(0,0,0,0.2)] ${t.borderClass}`}
+                          >
+                            <p className={`text-xs tracking-widest uppercase mb-2 ${t.accentClass}`}>{t.subtitle}</p>
+                            <p className="font-serif text-2xl mb-3">{t.name}</p>
+                            <p className="text-xs leading-relaxed opacity-50">{t.cardDescription}</p>
+                            <p className={`text-xs mt-4 opacity-0 group-hover:opacity-100 transition-opacity ${t.accentClass}`}>
+                              Comenzar →
+                            </p>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </section>
                 );
               })}
             </div>
