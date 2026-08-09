@@ -1,18 +1,14 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
-import { Playfair_Display } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import CalendlyBadge from "@/components/CalendlyBadge";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-
-const playfair = Playfair_Display({
+// Tipografía única (display + body) — design system "Flores sobre agua"
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-jakarta",
   display: "swap",
 });
 
@@ -42,9 +38,9 @@ export default function RootLayout({
   return (
     <html lang="es" className="dark" suppressHydrationWarning>
       <head>
-        <meta name="theme-color" content="#0D1430" />
+        <meta name="theme-color" content="#0B1830" />
       </head>
-      <body className={`${geistSans.variable} ${playfair.variable} antialiased`}>
+      <body className={`${jakarta.variable} antialiased`}>
         {children}
         <CalendlyBadge />
       </body>

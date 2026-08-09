@@ -79,7 +79,7 @@ export default function TestRunner({ config, onComplete }: Props) {
                         onClick={(e) => { if (answers[qi] === null) handleAnswer(qi, Number(e.currentTarget.value)); }}
                         className="flex-1 h-1.5 cursor-pointer accent-teal-500"
                       />
-                      <span className={`w-12 text-right font-serif text-xl tabular-nums leading-none transition-opacity ${answers[qi] !== null ? "opacity-100" : "opacity-20"}`}>
+                      <span className={`w-12 text-right font-display text-xl tabular-nums leading-none transition-opacity ${answers[qi] !== null ? "opacity-100" : "opacity-20"}`}>
                         {answers[qi] !== null ? answers[qi] : minVal}
                       </span>
                     </div>

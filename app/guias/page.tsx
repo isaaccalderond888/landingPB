@@ -1,14 +1,4 @@
 import type { Metadata } from "next";
-import { Playfair_Display } from "next/font/google";
-import Link from "next/link";
-
-// ── Fuente display (igual que el resto del sitio) ──────────────────
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  style: ["normal", "italic"],
-  variable: "--font-playfair",
-});
 
 // ── Metadata — no indexable, semi-privada ─────────────────────────
 export const metadata: Metadata = {
@@ -126,9 +116,9 @@ const BLOCKS: GuideBlock[] = [
 
 // ── Tag colors ────────────────────────────────────────────────────
 const TAG_STYLES: Record<GuideCard["tagColor"], string> = {
-  gold:  "bg-[#C99328]/10 text-[#C99328]   border border-[#C99328]/20",
-  teal:  "bg-[#1A96A6]/10 text-[#1A96A6]   border border-[#1A96A6]/20",
-  mint:  "bg-[#5CC4A8]/10 text-[#5CC4A8]   border border-[#5CC4A8]/20",
+  gold:  "bg-[#EAD06A]/10 text-[#EAD06A]   border border-[#EAD06A]/20",
+  teal:  "bg-[#256D86]/10 text-[#256D86]   border border-[#256D86]/20",
+  mint:  "bg-[#BCD3D6]/10 text-[#BCD3D6]   border border-[#BCD3D6]/20",
 };
 
 // ── Card ──────────────────────────────────────────────────────────
@@ -137,10 +127,10 @@ function GuideCard({ guide }: { guide: GuideCard }) {
     <div
       className={[
         "group relative flex flex-col gap-4 rounded-xl p-6",
-        "bg-[#313855]/40 border border-white/5",
+        "bg-[#183463]/40 border border-white/5",
         "transition-all duration-300",
         guide.available
-          ? "hover:border-[#C99328]/30 hover:bg-[#313855]/60"
+          ? "hover:border-[#EAD06A]/30 hover:bg-[#183463]/60"
           : "opacity-50",
       ].join(" ")}
     >
@@ -153,10 +143,10 @@ function GuideCard({ guide }: { guide: GuideCard }) {
 
       {/* Texto */}
       <div className="flex flex-col gap-2 flex-1">
-        <h3 className="text-[#e8e8e4] font-medium text-[15px] leading-snug">
+        <h3 className="text-[#eef2ec] font-medium text-[15px] leading-snug">
           {guide.title}
         </h3>
-        <p className="text-[#8A9AB0] text-[13px] leading-relaxed">
+        <p className="text-[#9BBDC2] text-[13px] leading-relaxed">
           {guide.description}
         </p>
       </div>
@@ -169,14 +159,14 @@ function GuideCard({ guide }: { guide: GuideCard }) {
             download
             className={[
               "inline-flex items-center gap-2 text-[13px] font-medium",
-              "text-[#C99328] hover:text-[#e8b84b] transition-colors duration-200",
+              "text-[#EAD06A] hover:text-[#efdb8a] transition-colors duration-200",
             ].join(" ")}
           >
             <DownloadIcon />
             Descargar
           </a>
         ) : (
-          <span className="text-[12px] text-[#8A9AB0]/60 italic">
+          <span className="text-[12px] text-[#9BBDC2]/60 italic">
             Próximamente
           </span>
         )}
@@ -189,13 +179,10 @@ function GuideCard({ guide }: { guide: GuideCard }) {
 function BlockMarker({ label }: { label: string }) {
   return (
     <div className="flex items-center gap-4 mb-8">
-      <span
-        className="font-serif italic text-[#C99328] text-[13px] tracking-widest"
-        style={{ fontFamily: "var(--font-playfair)" }}
-      >
+      <span className="font-display italic font-medium text-[#EAD06A] text-[13px] tracking-widest">
         {label}
       </span>
-      <div className="flex-1 h-px bg-gradient-to-r from-[#C99328]/40 to-transparent" />
+      <div className="flex-1 h-px bg-gradient-to-r from-[#EAD06A]/40 to-transparent" />
     </div>
   );
 }
@@ -225,16 +212,14 @@ function DownloadIcon() {
 // ── Page ──────────────────────────────────────────────────────────
 export default function GuiasPage() {
   return (
-    <main
-      className={`${playfair.variable} min-h-screen bg-[#0a112d] text-[#e8e8e4]`}
-    >
+    <main className="min-h-screen bg-[#0b1830] text-[#eef2ec]">
       {/* Glow ambiental — consistente con el resto del sitio */}
       <div
         aria-hidden="true"
         className="pointer-events-none fixed inset-0 overflow-hidden"
       >
-        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-[#1A96A6]/5 blur-[120px]" />
-        <div className="absolute top-1/3 -right-20 w-[300px] h-[300px] rounded-full bg-[#C99328]/4 blur-[100px]" />
+        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-[#256D86]/5 blur-[120px]" />
+        <div className="absolute top-1/3 -right-20 w-[300px] h-[300px] rounded-full bg-[#EAD06A]/4 blur-[100px]" />
       </div>
 
       <div className="relative mx-auto max-w-4xl px-6 py-20 sm:py-28">
@@ -242,28 +227,25 @@ export default function GuiasPage() {
         {/* ── Encabezado ───────────────────────────────────────── */}
         <header className="mb-20">
           {/* Credencial */}
-          <p className="text-[11px] tracking-[0.18em] uppercase text-[#8A9AB0] mb-6">
+          <p className="text-[11px] tracking-[0.18em] uppercase text-[#9BBDC2] mb-6">
             Psicólogo · Psicoterapeuta Transpersonal
           </p>
 
           {/* Línea gold */}
           <div className="flex items-center gap-4 mb-8">
-            <div className="w-8 h-px bg-[#C99328]" />
-            <span className="text-[#C99328] text-[11px] tracking-widest uppercase">
+            <div className="w-8 h-px bg-[#EAD06A]" />
+            <span className="text-[#EAD06A] text-[11px] tracking-widest uppercase">
               Isaac Calderón Derat
             </span>
           </div>
 
           {/* Título */}
-          <h1
-            className="text-[38px] sm:text-[52px] font-normal leading-[1.1] text-[#e8e8e4] mb-6"
-            style={{ fontFamily: "var(--font-playfair)" }}
-          >
+          <h1 className="font-display text-[38px] sm:text-[52px] font-bold leading-[1.1] text-[#eef2ec] mb-6">
             Guías de{" "}
-            <em className="italic text-[#C99328]">proceso</em>
+            <em className="italic text-[#EAD06A]">proceso</em>
           </h1>
 
-          <p className="text-[#8A9AB0] text-[15px] leading-relaxed max-w-lg">
+          <p className="text-[#9BBDC2] text-[15px] leading-relaxed max-w-lg">
             Documentos de acompañamiento para personas en proceso terapéutico.
             Están aquí para que llegues más preparada, habites mejor la
             experiencia e integres lo que emerja.
@@ -278,13 +260,10 @@ export default function GuiasPage() {
 
               {/* Encabezado del bloque */}
               <div className="mb-8">
-                <h2
-                  className="text-[22px] font-normal text-[#e8e8e4] mb-2"
-                  style={{ fontFamily: "var(--font-playfair)" }}
-                >
+                <h2 className="font-display text-[22px] font-semibold text-[#eef2ec] mb-2">
                   {block.heading}
                 </h2>
-                <p className="text-[#8A9AB0] text-[13px]">
+                <p className="text-[#9BBDC2] text-[13px]">
                   {block.subheading}
                 </p>
               </div>
@@ -302,12 +281,12 @@ export default function GuiasPage() {
         {/* ── Pie ──────────────────────────────────────────────── */}
         <footer className="mt-28 pt-8 border-t border-white/5">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <p className="text-[#8A9AB0] text-[12px]">
+            <p className="text-[#9BBDC2] text-[12px]">
               Cualquier duda sobre estos documentos, escríbeme.
             </p>
             <a
               href="mailto:psic@isaaccalderon.me"
-              className="text-[12px] text-[#C99328] hover:text-[#e8b84b] transition-colors"
+              className="text-[12px] text-[#EAD06A] hover:text-[#efdb8a] transition-colors"
             >
               psic@isaaccalderon.me
             </a>

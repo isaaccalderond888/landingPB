@@ -14,8 +14,8 @@ const PATH =
 
 const RING_SCALES = [1.0, 0.72, 0.518, 0.373, 0.268];
 const GAP_SCALES  = [0.86, 0.618, 0.445, 0.320];
-const PALETTE     = ["#253070", "#3B508A", "#1A96A6", "#5CC4A8", "#C99328"];
-const BG          = "#0D1430";
+const PALETTE     = ["#0f2140", "#183463", "#256D86", "#BCD3D6", "#EAD06A"];
+const BG          = "#0B1830";
 
 function tx(s: number) {
   return `translate(250,253) scale(${s}) translate(-250,-253)`;
@@ -44,7 +44,7 @@ export default async function OGImage() {
             top: 0,
             width: 4,
             height: "100%",
-            background: "linear-gradient(180deg, #253070 0%, #1A96A6 50%, #C99328 100%)",
+            background: "linear-gradient(180deg, #0f2140 0%, #256D86 50%, #EAD06A 100%)",
           }}
         />
 
@@ -59,10 +59,10 @@ export default async function OGImage() {
               marginBottom: 28,
             }}
           >
-            <div style={{ width: 32, height: 2, backgroundColor: "#C99328", opacity: 0.8 }} />
+            <div style={{ width: 32, height: 2, backgroundColor: "#EAD06A", opacity: 0.8 }} />
             <span
               style={{
-                color: "#C99328",
+                color: "#EAD06A",
                 fontSize: 15,
                 letterSpacing: 4,
                 textTransform: "uppercase",
@@ -77,7 +77,7 @@ export default async function OGImage() {
           {/* Nombre */}
           <div
             style={{
-              color: "#e8e8e4",
+              color: "#eef2ec",
               fontSize: 68,
               fontWeight: 700,
               lineHeight: 1.05,
@@ -91,7 +91,7 @@ export default async function OGImage() {
           {/* Tagline */}
           <div
             style={{
-              color: "#e8e8e4",
+              color: "#eef2ec",
               fontSize: 26,
               lineHeight: 1.45,
               opacity: 0.52,
@@ -110,12 +110,12 @@ export default async function OGImage() {
                 width: 7,
                 height: 7,
                 borderRadius: "50%",
-                backgroundColor: "#1A96A6",
+                backgroundColor: "#256D86",
               }}
             />
             <span
               style={{
-                color: "#1A96A6",
+                color: "#256D86",
                 fontSize: 17,
                 letterSpacing: 3,
                 textTransform: "uppercase",
@@ -129,7 +129,7 @@ export default async function OGImage() {
           {/* URL */}
           <div
             style={{
-              color: "#e8e8e4",
+              color: "#eef2ec",
               opacity: 0.22,
               fontSize: 15,
               letterSpacing: 3,

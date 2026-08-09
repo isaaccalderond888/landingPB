@@ -14,7 +14,7 @@ const EVENT_TYPES = [
     label: "Sesión de psicoterapia",
     tag: "55 min",
     description: "Reserva y paga por adelantado para enfocarte completamente en tu proceso. Vía Zoom.",
-    accent: "#1A96A6",
+    accent: "#256D86",
     maxWeeks: 4,
   },
   {
@@ -23,7 +23,7 @@ const EVENT_TYPES = [
     label: "Entrevista informativa",
     tag: "20 min · gratuita",
     description: "Una conversación breve para entender qué te trae y definir juntos qué línea de trabajo tiene sentido para ti.",
-    accent: "#C99328",
+    accent: "#EAD06A",
     maxWeeks: 2,
   },
 ];
@@ -61,7 +61,7 @@ function AccordionItem({ event, defaultOpen }: { event: typeof EVENT_TYPES[0]; d
         <div className="flex items-center gap-4">
           <span className="text-lg w-5 text-center flex-shrink-0" style={{ color: event.accent }} aria-hidden="true">◈</span>
           <div>
-            <span className="font-serif text-lg leading-snug">{event.label}</span>
+            <span className="font-display text-lg leading-snug">{event.label}</span>
             <span className="ml-3 font-sans text-xs tracking-wide opacity-60" style={{ color: event.accent }}>
               {event.tag}
             </span>
@@ -106,7 +106,7 @@ function AccordionItem({ event, defaultOpen }: { event: typeof EVENT_TYPES[0]; d
                     style={{ borderColor: event.accent + "55", color: event.accent }}
                     onMouseEnter={(e) => {
                       (e.currentTarget as HTMLAnchorElement).style.backgroundColor = event.accent;
-                      (e.currentTarget as HTMLAnchorElement).style.color = "#0D1430";
+                      (e.currentTarget as HTMLAnchorElement).style.color = "#0B1830";
                     }}
                     onMouseLeave={(e) => {
                       (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "transparent";

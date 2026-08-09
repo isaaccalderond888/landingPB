@@ -33,10 +33,10 @@ export default function Home() {
               <p className="text-xs tracking-widest uppercase text-brand-gold opacity-90">
                 Psicólogo · Psicoterapeuta Transpersonal
               </p>
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight text-white text-balance">
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight text-white text-balance">
                 Psicoterapia informada en trauma.
               </h1>
-              <p className="font-serif text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight text-brand-mint/60">
+              <p className="font-display text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight text-brand-mint/60">
                 Somática, transpersonal y basada en evidencia.
               </p>
             </div>
@@ -91,7 +91,7 @@ export default function Home() {
 
             <div className="group bg-brand-navy/60 backdrop-blur-sm border border-brand-mid/40 p-6 rounded-sm hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(26,150,166,0.18)] hover:border-brand-teal/40 transition-all duration-300 cursor-default">
               <div className="w-10 h-0.5 bg-brand-gold mb-5 group-hover:w-16 transition-all duration-300" />
-              <h3 className="font-serif text-xl leading-snug mb-3">
+              <h3 className="font-display text-xl leading-snug mb-3">
                 Psicotraumatología y enfoque somático
               </h3>
               <p className="text-sm leading-relaxed opacity-60">
@@ -104,7 +104,7 @@ export default function Home() {
 
             <div className="group bg-brand-navy/60 backdrop-blur-sm border border-brand-mid/40 p-6 rounded-sm hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(26,150,166,0.18)] hover:border-brand-teal/40 transition-all duration-300 cursor-default">
               <div className="w-10 h-0.5 bg-brand-teal mb-5 group-hover:w-16 transition-all duration-300" />
-              <h3 className="font-serif text-xl leading-snug mb-3">
+              <h3 className="font-display text-xl leading-snug mb-3">
                 Neurofeedback e integración neurológica
               </h3>
               <p className="text-sm leading-relaxed opacity-60">
@@ -117,7 +117,7 @@ export default function Home() {
 
             <div className="group bg-brand-navy/60 backdrop-blur-sm border border-brand-mid/40 p-6 rounded-sm hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(26,150,166,0.18)] hover:border-brand-teal/40 transition-all duration-300 cursor-default">
               <div className="w-10 h-0.5 bg-brand-mint mb-5 group-hover:w-16 transition-all duration-300" />
-              <h3 className="font-serif text-xl leading-snug mb-3">
+              <h3 className="font-display text-xl leading-snug mb-3">
                 Terapia asistida con psicodélicos
               </h3>
               <p className="text-sm leading-relaxed opacity-60">
@@ -141,7 +141,7 @@ export default function Home() {
           <div className="space-y-0 divide-y divide-white/10">
 
             <div className="py-7 space-y-2">
-              <h3 className="font-serif text-lg text-white flex items-baseline gap-3">
+              <h3 className="font-display text-lg text-white flex items-baseline gap-3">
                 Entrevista informativa
                 <span className="font-sans text-xs text-brand-gold tracking-wide">20 min · sin costo</span>
               </h3>
@@ -153,7 +153,7 @@ export default function Home() {
             </div>
 
             <div className="py-7 space-y-2">
-              <h3 className="font-serif text-lg text-white">Sesión inicial</h3>
+              <h3 className="font-display text-lg text-white">Sesión inicial</h3>
               <p className="text-sm leading-relaxed text-white/60">
                 Evaluamos el punto de partida: tu historia, tus síntomas,
                 lo que ya has intentado. Definimos el encuadre y la
@@ -162,7 +162,7 @@ export default function Home() {
             </div>
 
             <div className="py-7 space-y-2">
-              <h3 className="font-serif text-lg text-white">Proceso terapéutico</h3>
+              <h3 className="font-display text-lg text-white">Proceso terapéutico</h3>
               <p className="text-sm leading-relaxed text-white/60">
                 No hay fórmula fija. Cada proceso encuentra su propia
                 forma — desde lo fisiológico hasta las creencias, el
@@ -181,7 +181,7 @@ export default function Home() {
           <h2 className="text-xs tracking-widest uppercase text-brand-teal opacity-70 mb-4">
             Agenda una sesión
           </h2>
-          <p className="font-serif text-2xl md:text-3xl mb-7">
+          <p className="font-display text-2xl md:text-3xl mb-7">
             ¿Cuándo empezamos?
           </p>
           <CalendlyAccordion />

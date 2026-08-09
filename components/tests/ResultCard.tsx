@@ -29,7 +29,7 @@ export default function ResultCard({ testId, score, answers }: Props) {
       {/* Score */}
       <div className="flex items-end gap-4">
         <div className="flex items-baseline gap-2">
-          <span className="font-serif text-6xl leading-none">{score}{isDesii ? "%" : ""}</span>
+          <span className="font-display text-6xl leading-none">{score}{isDesii ? "%" : ""}</span>
           {!isDesii && (
             <span className="text-foreground/30 text-base">/&thinsp;{maxScore}</span>
           )}
@@ -68,7 +68,7 @@ export default function ResultCard({ testId, score, answers }: Props) {
               return (
                 <div key={sub.label} className="bg-foreground/5 rounded-sm p-3 space-y-1">
                   <p className="text-xs opacity-40 tracking-wide">{sub.label}</p>
-                  <p className="font-serif text-2xl">{subScore}</p>
+                  <p className="font-display text-2xl">{subScore}</p>
                   <p className={`text-xs font-medium ${subBand.textClass}`}>{subBand.label}</p>
                   <div className="h-0.5 bg-foreground/10 rounded-full overflow-hidden mt-1">
                     <div

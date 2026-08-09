@@ -7,7 +7,7 @@ interface LogoProps {
 }
 
 // Paleta Sea from Space — exterior (oscuro) → interior (oro)
-const PALETTE_COLOR = ["#253070", "#3B508A", "#1A96A6", "#5CC4A8", "#C99328"];
+const PALETTE_COLOR = ["#0f2140", "#183463", "#256D86", "#BCD3D6", "#EAD06A"];
 const PALETTE_MONO  = ["#1a1a18", "#1a1a18", "#1a1a18", "#1a1a18", "#1a1a18"];
 
 // Silueta del cerebro visto desde arriba, bilobal, surco central sutil
@@ -41,7 +41,7 @@ export default function Logo({
   className = "",
 }: LogoProps) {
   const colors   = variant === "mono" ? PALETTE_MONO : PALETTE_COLOR;
-  const gapColor = variant === "dark"  ? "#0D1430" : "white";
+  const gapColor = variant === "dark"  ? "#0B1830" : "white";
 
   // ID único por instancia para evitar colisiones de filtros en el DOM
   const uid = `logo-${variant}-${size}`;

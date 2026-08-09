@@ -23,8 +23,8 @@ export default function CalendlyBadge() {
           window.Calendly.initBadgeWidget({
             url: "https://calendly.com/isaac-calderon-d/sesion-de-psicoterapia",
             text: "Programar sesión",
-            color: "#C99328",
-            textColor: "#0D1430",
+            color: "#EAD06A",
+            textColor: "#0B1830",
             branding: false,
           });
         }

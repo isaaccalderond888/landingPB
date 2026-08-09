@@ -2,21 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Paleta "Flores sobre agua" — design system (claude.ai/design) */
 :root {
-  --background: #fafaf8;
-  --foreground: #1a1a18;
-  /* Paleta Abisal Cosmos */
-  --brand-gold:  #C99328;
-  --brand-mint:  #5CC4A8;
-  --brand-teal:  #1A96A6;
-  --brand-mid:   #313855;
-  --brand-navy:  #171e3a;
-  --brand-night: #0a112d;
+  --background: #eef2ec; /* crema — on-brand para pantalla en modo claro */
+  --foreground: #183463; /* marino */
+  --brand-gold:  #EAD06A; /* sol — acento cálido */
+  --brand-mint:  #BCD3D6; /* bruma — azul claro secundario */
+  --brand-teal:  #256D86; /* petróleo — color primario de marca */
+  --brand-mid:   #183463; /* marino — superficies elevadas / glass */
+  --brand-navy:  #0f2140; /* navy-900 — secciones */
+  --brand-night: #0b1830; /* navy-950 — fondo principal */
 }
 
 .dark {
-  --background: #0a112d;
-  --foreground: #e8e8e4;
+  --background: #0b1830;
+  --foreground: #eef2ec;
 }
 
 html {
@@ -26,9 +26,13 @@ html {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: var(--font-geist-sans), Inter, system-ui, sans-serif;
+  font-family: var(--font-jakarta), Inter, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, .font-display {
+  font-weight: 700;
 }
 
 @layer utilities {
@@ -57,8 +61,8 @@ body {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 20% 85%, rgba(37,48,112,0.35) 0%, transparent 60%),
-    linear-gradient(to bottom, transparent 60%, rgba(13,20,48,0.5) 100%);
+    radial-gradient(ellipse 80% 60% at 20% 85%, rgba(24,52,99,0.35) 0%, transparent 60%),
+    linear-gradient(to bottom, transparent 60%, rgba(11,24,48,0.5) 100%);
   pointer-events: none;
   z-index: 0;
   overflow: hidden;
@@ -71,7 +75,7 @@ body {
   content: "";
   position: absolute;
   inset: -20px;
-  background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(26,150,166,0.25) 0%, transparent 70%);
+  background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(37,109,134,0.25) 0%, transparent 70%);
   z-index: -1;
   filter: blur(30px);
 }

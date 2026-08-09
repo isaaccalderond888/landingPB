@@ -10,20 +10,20 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        serif: ["var(--font-playfair)", "Georgia", "serif"],
-        sans: ["var(--font-geist-sans)", "Inter", "system-ui", "sans-serif"],
+        display: ["var(--font-jakarta)", "system-ui", "sans-serif"],
+        sans: ["var(--font-jakarta)", "Inter", "system-ui", "sans-serif"],
       },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        // Paleta Sea from Space — Isaac Calderón Derat
+        // Paleta "Flores sobre agua" — Isaac Calderón Derat (design system)
         brand: {
-          gold:   "#C99328", // oro cálido   — centro / acento
-          mint:   "#5CC4A8", // menta turquesa
-          teal:   "#1A96A6", // teal profundo — color primario de marca
-          mid:    "#313855", // azul medio — glass/floating
-          navy:   "#171e3a", // azul marino  — secciones
-          night:  "#0a112d", // azul noche   — fondo principal
+          gold:   "#EAD06A", // sol — acento cálido
+          mint:   "#BCD3D6", // bruma — azul claro secundario
+          teal:   "#256D86", // petróleo — color primario de marca
+          mid:    "#183463", // marino — superficies elevadas / glass
+          navy:   "#0f2140", // navy-900 — secciones
+          night:  "#0b1830", // navy-950 — fondo principal
         },
       },
     },

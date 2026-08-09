@@ -77,7 +77,7 @@ function EvaluacionesPageInner() {
           <p className="text-xs tracking-widest uppercase text-brand-gold opacity-80">
             Herramientas clínicas
           </p>
-          <h1 className="font-serif text-4xl md:text-5xl leading-tight">
+          <h1 className="font-display text-4xl md:text-5xl leading-tight">
             {test ? `${test.name} — ${test.subtitle}` : "Evaluaciones"}
           </h1>
           {!selectedTest && (
@@ -101,7 +101,7 @@ function EvaluacionesPageInner() {
                 return (
                   <section key={cat}>
                     <div className="mb-5 border-l-2 border-brand-gold/40 pl-4">
-                      <h2 className="font-serif text-xl leading-snug">{title}</h2>
+                      <h2 className="font-display text-xl leading-snug">{title}</h2>
                       <p className="text-xs opacity-40 mt-1">{description}</p>
                     </div>
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -114,7 +114,7 @@ function EvaluacionesPageInner() {
                             className={`group text-left p-6 rounded-sm border bg-brand-navy/40 backdrop-blur-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(0,0,0,0.2)] ${t.borderClass}`}
                           >
                             <p className={`text-xs tracking-widest uppercase mb-2 ${t.accentClass}`}>{t.subtitle}</p>
-                            <p className="font-serif text-2xl mb-3">{t.name}</p>
+                            <p className="font-display text-2xl mb-3">{t.name}</p>
                             <p className="text-xs leading-relaxed opacity-50">{t.cardDescription}</p>
                             <p className={`text-xs mt-4 opacity-0 group-hover:opacity-100 transition-opacity ${t.accentClass}`}>
                               Comenzar →
@@ -159,7 +159,7 @@ function EvaluacionesPageInner() {
               <div className="border-t border-foreground/10 pt-8">
                 <div className="mb-5 space-y-1">
                   <p className="text-xs tracking-widest uppercase opacity-35">Paso siguiente</p>
-                  <p className="font-serif text-xl leading-snug">¿Quieres una lectura más contextualizada?</p>
+                  <p className="font-display text-xl leading-snug">¿Quieres una lectura más contextualizada?</p>
                   <p className="text-sm opacity-55 leading-relaxed max-w-lg">
                     Puedo ofrecerte una interpretación de estos resultados desde una perspectiva transpersonal y somática.
                   </p>
