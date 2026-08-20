@@ -25,7 +25,7 @@ export default function ResultCard({ testId, score, answers }: Props) {
   const isSwls = testId === "SWLS";
 
   return (
-    <div className="border border-foreground/10 rounded-sm p-6 bg-brand-navy/40 backdrop-blur-sm space-y-6">
+    <div className="border border-border-theme rounded-sm p-6 bg-surface space-y-6">
       {/* Score */}
       <div className="flex items-end gap-4">
         <div className="flex items-baseline gap-2">

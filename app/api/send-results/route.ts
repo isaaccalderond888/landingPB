@@ -52,7 +52,7 @@ export async function POST(req: NextRequest) {
 <!DOCTYPE html>
 <html lang="es">
 <head><meta charset="UTF-8"><title>Resultados ${config.name}</title></head>
-<body style="margin:0;padding:0;background:#0b1830;font-family:'Georgia',serif;color:#eef2ec">
+<body style="margin:0;padding:0;background:#0b1830;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;color:#eef2ec">
   <div style="max-width:640px;margin:0 auto;padding:40px 24px">
 
     <p style="font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:#ead06a;margin:0 0 8px">Evaluación clínica · isaaccalderon.me</p>

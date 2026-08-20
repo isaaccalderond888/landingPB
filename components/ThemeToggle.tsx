@@ -32,7 +32,7 @@ export default function ThemeToggle() {
     <button
       onClick={toggle}
       aria-label="Cambiar modo de color"
-      className="text-xs tracking-widest uppercase opacity-50 hover:opacity-100 transition-opacity"
+      className="rounded-sm text-xs tracking-widest uppercase opacity-70 hover:opacity-100 transition-opacity"
     >
       {isDark ? (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4" aria-hidden="true">

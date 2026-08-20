@@ -16,6 +16,11 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        surface: "var(--surface)",
+        "surface-elevated": "var(--surface-elevated)",
+        "interactive-text": "var(--interactive-text)",
+        "accent-text": "var(--accent-text)",
+        "border-theme": "var(--border-theme)",
         // Paleta "Flores sobre agua" — Isaac Calderón Derat (design system)
         brand: {
           gold:   "#EAD06A", // sol — acento cálido

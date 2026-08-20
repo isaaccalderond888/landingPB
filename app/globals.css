@@ -6,6 +6,11 @@
 :root {
   --background: #eef2ec; /* crema — on-brand para pantalla en modo claro */
   --foreground: #183463; /* marino */
+  --surface: #eaf0ea;
+  --surface-elevated: #ffffff;
+  --interactive-text: #1f6079;
+  --accent-text: #8a6b22;
+  --border-theme: rgba(24, 52, 99, 0.12);
   --brand-gold:  #EAD06A; /* sol — acento cálido */
   --brand-mint:  #BCD3D6; /* bruma — azul claro secundario */
   --brand-teal:  #256D86; /* petróleo — color primario de marca */
@@ -17,6 +22,11 @@
 .dark {
   --background: #0b1830;
   --foreground: #eef2ec;
+  --surface: #142b52;
+  --surface-elevated: #183463;
+  --interactive-text: #69a5bb;
+  --accent-text: #efdb8a;
+  --border-theme: rgba(238, 242, 236, 0.10);
 }
 
 html {
@@ -33,6 +43,11 @@ body {
 
 h1, h2, h3, .font-display {
   font-weight: 700;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand-gold);
+  outline-offset: 4px;
 }
 
 @layer utilities {

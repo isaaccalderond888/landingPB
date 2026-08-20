@@ -10,17 +10,17 @@ export default function Home() {
     <div className="bg-background text-foreground min-h-screen">
 
       {/* NAV */}
-      <nav aria-label="Navegación principal" className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-5 bg-background/80 backdrop-blur-sm border-b border-foreground/5">
+      <nav aria-label="Navegación principal" className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-5 bg-brand-night/90 text-[#EEF2EC] backdrop-blur-md border-b border-white/10 shadow-[0_4px_24px_rgba(11,24,48,0.18)]">
         <div className="flex items-center gap-3">
           <Logo size={32} variant="color" />
-          <span className="text-sm tracking-widest uppercase opacity-60 hidden sm:block">
+          <span className="text-sm tracking-widest uppercase text-white/65 hidden sm:block">
             Isaac Calderón Derat
           </span>
         </div>
         <div className="flex items-center gap-6 md:gap-8">
-          <a href="#enfoque" className="text-xs tracking-widest uppercase opacity-50 hover:text-brand-teal hover:opacity-100 transition-all hidden md:block">Enfoque</a>
-          <a href="#proceso" className="text-xs tracking-widest uppercase opacity-50 hover:text-brand-teal hover:opacity-100 transition-all hidden md:block">Proceso</a>
-          <a href="#agendar" className="text-xs tracking-widest uppercase opacity-50 hover:text-brand-teal hover:opacity-100 transition-all hidden md:block">Agendar</a>
+          <a href="#enfoque" className="rounded-sm text-xs tracking-widest uppercase text-white/60 hover:text-[#69A5BB] transition-colors hidden md:block">Enfoque</a>
+          <a href="#proceso" className="rounded-sm text-xs tracking-widest uppercase text-white/60 hover:text-[#69A5BB] transition-colors hidden md:block">Proceso</a>
+          <a href="#agendar" className="rounded-sm text-xs tracking-widest uppercase text-white/60 hover:text-[#69A5BB] transition-colors hidden md:block">Agendar</a>
           <ThemeToggle />
         </div>
       </nav>
@@ -74,7 +74,7 @@ export default function Home() {
               alt="Isaac Calderón Derat, psicoterapeuta transpersonal en Ciudad de México"
               width={520}
               height={520}
-              className="aspect-square object-cover w-full max-w-[520px] rounded-full relative z-10"
+              className="aspect-[4/5] object-cover object-center w-full max-w-[420px] rounded-[20px] border border-white/10 shadow-[0_24px_60px_rgba(0,0,0,0.28)] relative z-10"
               priority
             />
           </div>
@@ -82,19 +82,19 @@ export default function Home() {
       </section>
 
       {/* SECCIÓN 2 — ENFOQUE */}
-      <section id="enfoque" className="px-6 md:px-12 lg:px-20 py-14 bg-background">
+      <section id="enfoque" className="scroll-mt-20 px-6 md:px-12 lg:px-20 py-14 bg-background">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-xs tracking-widest uppercase text-brand-teal opacity-70 mb-8">
             Cómo trabajo
           </h2>
           <div className="grid md:grid-cols-3 gap-5">
 
-            <div className="group bg-brand-navy/60 backdrop-blur-sm border border-brand-mid/40 p-6 rounded-sm hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(26,150,166,0.18)] hover:border-brand-teal/40 transition-all duration-300 cursor-default">
+            <div className="group bg-surface border border-border-theme p-6 rounded-sm hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(37,109,134,0.18)] hover:border-brand-teal/40 transition-all duration-300 cursor-default">
               <div className="w-10 h-0.5 bg-brand-gold mb-5 group-hover:w-16 transition-all duration-300" />
               <h3 className="font-display text-xl leading-snug mb-3">
                 Psicotraumatología y enfoque somático
               </h3>
-              <p className="text-sm leading-relaxed opacity-60">
+              <p className="text-sm leading-relaxed text-foreground/70">
                 El trauma vive en el cuerpo — en los patrones de activación
                 del sistema nervioso, en lo que no pudo ser procesado.
                 Trabajo con protocolos actualizados donde el cuerpo es
@@ -102,12 +102,12 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="group bg-brand-navy/60 backdrop-blur-sm border border-brand-mid/40 p-6 rounded-sm hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(26,150,166,0.18)] hover:border-brand-teal/40 transition-all duration-300 cursor-default">
+            <div className="group bg-surface border border-border-theme p-6 rounded-sm hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(37,109,134,0.18)] hover:border-brand-teal/40 transition-all duration-300 cursor-default">
               <div className="w-10 h-0.5 bg-brand-teal mb-5 group-hover:w-16 transition-all duration-300" />
               <h3 className="font-display text-xl leading-snug mb-3">
                 Neurofeedback e integración neurológica
               </h3>
-              <p className="text-sm leading-relaxed opacity-60">
+              <p className="text-sm leading-relaxed text-foreground/70">
                 Cuando el proceso lo requiere, integro evaluación y
                 entrenamiento de ondas cerebrales. No como tecnología
                 separada — como una capa más de comprensión del
@@ -115,12 +115,12 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="group bg-brand-navy/60 backdrop-blur-sm border border-brand-mid/40 p-6 rounded-sm hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(26,150,166,0.18)] hover:border-brand-teal/40 transition-all duration-300 cursor-default">
+            <div className="group bg-surface border border-border-theme p-6 rounded-sm hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(37,109,134,0.18)] hover:border-brand-teal/40 transition-all duration-300 cursor-default">
               <div className="w-10 h-0.5 bg-brand-mint mb-5 group-hover:w-16 transition-all duration-300" />
               <h3 className="font-display text-xl leading-snug mb-3">
                 Terapia asistida con psicodélicos
               </h3>
-              <p className="text-sm leading-relaxed opacity-60">
+              <p className="text-sm leading-relaxed text-foreground/70">
                 Acompaño preparación, sesión e integración con sustancias
                 psicoactivas en contexto clínico y ético. Como director
                 de Ciencia Psicodélica, este trabajo tiene el rigor
@@ -133,9 +133,9 @@ export default function Home() {
       </section>
 
       {/* SECCIÓN 3 — EL PROCESO */}
-      <section id="proceso" className="px-6 md:px-12 lg:px-20 py-14 bg-brand-navy">
+      <section id="proceso" className="scroll-mt-20 px-6 md:px-12 lg:px-20 py-14 bg-brand-navy">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-xs tracking-widest uppercase text-brand-teal opacity-70 mb-8">
+          <h2 className="text-xs tracking-widest uppercase text-[#69A5BB] mb-8">
             El proceso
           </h2>
           <div className="space-y-0 divide-y divide-white/10">
@@ -176,7 +176,7 @@ export default function Home() {
       </section>
 
       {/* SECCIÓN 4 — AGENDAR */}
-      <section id="agendar" className="px-6 md:px-12 lg:px-20 py-14 bg-background">
+      <section id="agendar" className="scroll-mt-20 px-6 md:px-12 lg:px-20 py-14 bg-background">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-xs tracking-widest uppercase text-brand-teal opacity-70 mb-4">
             Agenda una sesión
@@ -191,14 +191,14 @@ export default function Home() {
       {/* SECCIÓN 5 — CONTEXTO COLABORATIVO */}
       <section className="px-6 md:px-12 lg:px-20 py-10 border-t border-foreground/10">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-xs tracking-widest uppercase text-brand-teal opacity-40 mb-8">
+          <h2 className="text-xs tracking-widest uppercase text-interactive-text mb-8">
             Contexto colaborativo
           </h2>
           <div className="flex flex-wrap gap-x-10 gap-y-3">
-            <a href="https://ayam.world" target="_blank" rel="noopener noreferrer" className="text-sm opacity-35 hover:text-brand-teal hover:opacity-100 transition-all">Ayam Studio ↗</a>
-            <a href="https://newman.institute" target="_blank" rel="noopener noreferrer" className="text-sm opacity-35 hover:text-brand-teal hover:opacity-100 transition-all">Neuroclínica Newman ↗</a>
-            <a href="https://cienciapsicodelica.com" target="_blank" rel="noopener noreferrer" className="text-sm opacity-35 hover:text-brand-teal hover:opacity-100 transition-all">Ciencia Psicodélica ↗</a>
-            <a href="https://enteogenesis.com" target="_blank" rel="noopener noreferrer" className="text-sm opacity-35 hover:text-brand-teal hover:opacity-100 transition-all">Enteogénesis ↗</a>
+            <a href="https://ayam.world" target="_blank" rel="noopener noreferrer" className="text-sm text-foreground/60 hover:text-interactive-text transition-colors">Ayam Studio ↗</a>
+            <a href="https://newman.institute" target="_blank" rel="noopener noreferrer" className="text-sm text-foreground/60 hover:text-interactive-text transition-colors">Neuroclínica Newman ↗</a>
+            <a href="https://cienciapsicodelica.com" target="_blank" rel="noopener noreferrer" className="text-sm text-foreground/60 hover:text-interactive-text transition-colors">Ciencia Psicodélica ↗</a>
+            <a href="https://enteogenesis.com" target="_blank" rel="noopener noreferrer" className="text-sm text-foreground/60 hover:text-interactive-text transition-colors">Enteogénesis ↗</a>
           </div>
         </div>
       </section>
@@ -207,11 +207,11 @@ export default function Home() {
       <footer className="px-6 md:px-12 lg:px-20 py-10 border-t border-foreground/10">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div className="flex flex-wrap gap-x-6 gap-y-2">
-            <p className="text-sm opacity-35">Ciudad de México</p>
-            <a href="mailto:psic@isaaccalderon.me" className="text-sm opacity-35 hover:text-brand-teal hover:opacity-100 transition-all">psic@isaaccalderon.me</a>
-            <a href={WA} target="_blank" rel="noopener noreferrer" className="text-sm opacity-35 hover:text-brand-teal hover:opacity-100 transition-all">WhatsApp ↗</a>
+            <p className="text-sm text-foreground/60">Ciudad de México</p>
+            <a href="mailto:psic@isaaccalderon.me" className="text-sm text-foreground/60 hover:text-interactive-text transition-colors">psic@isaaccalderon.me</a>
+            <a href={WA} target="_blank" rel="noopener noreferrer" className="text-sm text-foreground/60 hover:text-interactive-text transition-colors">WhatsApp ↗</a>
           </div>
-          <p className="text-xs opacity-20">© Isaac Calderón Derat</p>
+          <p className="text-xs text-foreground/40">© Isaac Calderón Derat</p>
         </div>
       </footer>
 

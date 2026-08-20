@@ -48,7 +48,7 @@ export default function CalendlyEmbed({ slug, hideDetails = true }: CalendlyEmbe
   const params = new URLSearchParams({
     hide_event_type_details: hideDetails ? "1" : "0",
     hide_gdpr_banner: "1",
-    primary_color: "C99328",
+    primary_color: "EAD06A",
   });
 
   const url = `https://calendly.com/isaac-calderon-d/${slug}?${params.toString()}`;

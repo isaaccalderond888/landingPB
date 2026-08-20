@@ -81,7 +81,7 @@ export default async function OGImage() {
               fontSize: 68,
               fontWeight: 700,
               lineHeight: 1.05,
-              fontFamily: "serif",
+              fontFamily: "sans-serif",
               marginBottom: 24,
             }}
           >
@@ -95,7 +95,7 @@ export default async function OGImage() {
               fontSize: 26,
               lineHeight: 1.45,
               opacity: 0.52,
-              fontFamily: "serif",
+              fontFamily: "sans-serif",
               marginBottom: 36,
             }}
           >
@@ -115,7 +115,7 @@ export default async function OGImage() {
             />
             <span
               style={{
-                color: "#256D86",
+                color: "#69A5BB",
                 fontSize: 17,
                 letterSpacing: 3,
                 textTransform: "uppercase",

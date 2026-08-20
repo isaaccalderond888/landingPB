@@ -15,6 +15,7 @@ const EVENT_TYPES = [
     tag: "55 min",
     description: "Reserva y paga por adelantado para enfocarte completamente en tu proceso. Vía Zoom.",
     accent: "#256D86",
+    ink: "var(--interactive-text)",
     maxWeeks: 4,
   },
   {
@@ -24,6 +25,7 @@ const EVENT_TYPES = [
     tag: "20 min · gratuita",
     description: "Una conversación breve para entender qué te trae y definir juntos qué línea de trabajo tiene sentido para ti.",
     accent: "#EAD06A",
+    ink: "var(--accent-text)",
     maxWeeks: 2,
   },
 ];
@@ -49,7 +51,7 @@ function AccordionItem({ event, defaultOpen }: { event: typeof EVENT_TYPES[0]; d
       .catch(() => setSlots([]));
   }, [event.uri, event.maxWeeks]);
 
-  const fallback = `https://calendly.com/isaac-calderon-d/${event.slug}?hide_gdpr_banner=1&primary_color=C99328`;
+  const fallback = `https://calendly.com/isaac-calderon-d/${event.slug}?hide_gdpr_banner=1&primary_color=EAD06A`;
 
   return (
     <div className="border-t border-foreground/10">
@@ -62,7 +64,7 @@ function AccordionItem({ event, defaultOpen }: { event: typeof EVENT_TYPES[0]; d
           <span className="text-lg w-5 text-center flex-shrink-0" style={{ color: event.accent }} aria-hidden="true">◈</span>
           <div>
             <span className="font-display text-lg leading-snug">{event.label}</span>
-            <span className="ml-3 font-sans text-xs tracking-wide opacity-60" style={{ color: event.accent }}>
+            <span className="ml-3 font-sans text-xs tracking-wide" style={{ color: event.ink }}>
               {event.tag}
             </span>
           </div>
@@ -77,7 +79,7 @@ function AccordionItem({ event, defaultOpen }: { event: typeof EVENT_TYPES[0]; d
 
       {open && (
         <div className="pb-7 pl-9">
-          <p className="text-sm leading-relaxed opacity-55 mb-5 max-w-lg">
+          <p className="text-sm leading-relaxed text-foreground/65 mb-5 max-w-lg">
             {event.description}
           </p>
 
@@ -103,14 +105,14 @@ function AccordionItem({ event, defaultOpen }: { event: typeof EVENT_TYPES[0]; d
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs px-3 py-1.5 rounded-sm border transition-all duration-150 font-medium"
-                    style={{ borderColor: event.accent + "55", color: event.accent }}
+                    style={{ borderColor: event.accent + "55", color: event.ink }}
                     onMouseEnter={(e) => {
                       (e.currentTarget as HTMLAnchorElement).style.backgroundColor = event.accent;
                       (e.currentTarget as HTMLAnchorElement).style.color = "#0B1830";
                     }}
                     onMouseLeave={(e) => {
                       (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "transparent";
-                      (e.currentTarget as HTMLAnchorElement).style.color = event.accent;
+                      (e.currentTarget as HTMLAnchorElement).style.color = event.ink;
                     }}
                   >
                     {formatSlot(s.start_time)}

@@ -50,7 +50,7 @@ export default function SendToTherapist({ testId, score, answers, aiText }: Prop
   }
 
   return (
-    <div className="relative rounded-sm overflow-hidden border border-brand-teal/35 bg-brand-teal/[0.04] shadow-[0_0_24px_rgba(26,150,166,0.08)]">
+    <div className="relative rounded-sm overflow-hidden border border-brand-teal/35 bg-brand-teal/[0.04] shadow-[0_0_24px_rgba(37,109,134,0.08)]">
       {/* Glow animado en el borde */}
       <div className="pointer-events-none absolute inset-0 rounded-sm animate-pulse ring-1 ring-brand-teal/20" />
 
@@ -81,7 +81,7 @@ export default function SendToTherapist({ testId, score, answers, aiText }: Prop
                 onChange={(e) => set("nombre", e.target.value)}
                 placeholder="Juan"
                 required
-                className="w-full bg-foreground/5 border border-foreground/15 rounded-sm px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-brand-teal/50 transition-colors"
+                className="w-full bg-foreground/5 border border-foreground/15 rounded-sm px-3 py-2.5 text-sm text-foreground placeholder:text-foreground/35 focus:outline-none focus:border-brand-teal/50 transition-colors"
               />
             </div>
             <div className="space-y-1.5">
@@ -92,7 +92,7 @@ export default function SendToTherapist({ testId, score, answers, aiText }: Prop
                 onChange={(e) => set("apellido", e.target.value)}
                 placeholder="García"
                 required
-                className="w-full bg-foreground/5 border border-foreground/15 rounded-sm px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-brand-teal/50 transition-colors"
+                className="w-full bg-foreground/5 border border-foreground/15 rounded-sm px-3 py-2.5 text-sm text-foreground placeholder:text-foreground/35 focus:outline-none focus:border-brand-teal/50 transition-colors"
               />
             </div>
           </div>
@@ -105,7 +105,7 @@ export default function SendToTherapist({ testId, score, answers, aiText }: Prop
               onChange={(e) => set("correo", e.target.value)}
               placeholder="correo@ejemplo.com"
               required
-              className="w-full bg-foreground/5 border border-foreground/15 rounded-sm px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-brand-teal/50 transition-colors"
+              className="w-full bg-foreground/5 border border-foreground/15 rounded-sm px-3 py-2.5 text-sm text-foreground placeholder:text-foreground/35 focus:outline-none focus:border-brand-teal/50 transition-colors"
             />
           </div>
 
@@ -116,7 +116,7 @@ export default function SendToTherapist({ testId, score, answers, aiText }: Prop
               value={form.telefono}
               onChange={(e) => set("telefono", e.target.value)}
               placeholder="+52 55 0000 0000"
-              className="w-full bg-foreground/5 border border-foreground/15 rounded-sm px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-brand-teal/50 transition-colors"
+              className="w-full bg-foreground/5 border border-foreground/15 rounded-sm px-3 py-2.5 text-sm text-foreground placeholder:text-foreground/35 focus:outline-none focus:border-brand-teal/50 transition-colors"
             />
           </div>
 

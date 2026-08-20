@@ -55,16 +55,16 @@ function EvaluacionesPageInner() {
       {/* NAV */}
       <nav
         aria-label="Navegación"
-        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-5 bg-background/80 backdrop-blur-sm border-b border-foreground/5"
+        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-5 bg-brand-night/90 text-[#EEF2EC] backdrop-blur-md border-b border-white/10 shadow-[0_4px_24px_rgba(11,24,48,0.18)]"
       >
         <Link href="/" className="flex items-center gap-3 group">
           <Logo size={32} variant="color" />
-          <span className="text-sm tracking-widest uppercase opacity-50 group-hover:opacity-100 transition-opacity hidden sm:block">
+          <span className="text-sm tracking-widest uppercase text-white/65 group-hover:text-white transition-colors hidden sm:block">
             Isaac Calderón Derat
           </span>
         </Link>
         <div className="flex items-center gap-6 md:gap-8">
-          <Link href="/#agendar" className="text-xs tracking-widest uppercase opacity-50 hover:text-brand-teal hover:opacity-100 transition-all hidden md:block">
+          <Link href="/#agendar" className="rounded-sm text-xs tracking-widest uppercase text-white/60 hover:text-[#69A5BB] transition-colors hidden md:block">
             Agendar sesión
           </Link>
           <ThemeToggle />
@@ -72,7 +72,7 @@ function EvaluacionesPageInner() {
       </nav>
 
       {/* HERO */}
-      <section className="pt-32 pb-12 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-brand-night via-brand-navy/60 to-background">
+      <section className="pt-32 pb-12 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-brand-night via-brand-navy to-brand-night text-[#EEF2EC]">
         <div className="max-w-4xl mx-auto space-y-4">
           <p className="text-xs tracking-widest uppercase text-brand-gold opacity-80">
             Herramientas clínicas
@@ -102,7 +102,7 @@ function EvaluacionesPageInner() {
                   <section key={cat}>
                     <div className="mb-5 border-l-2 border-brand-gold/40 pl-4">
                       <h2 className="font-display text-xl leading-snug">{title}</h2>
-                      <p className="text-xs opacity-40 mt-1">{description}</p>
+                      <p className="text-xs text-foreground/60 mt-1">{description}</p>
                     </div>
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                       {ids.map((id) => {
@@ -111,11 +111,11 @@ function EvaluacionesPageInner() {
                           <button
                             key={id}
                             onClick={() => setSelectedTest(id)}
-                            className={`group text-left p-6 rounded-sm border bg-brand-navy/40 backdrop-blur-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(0,0,0,0.2)] ${t.borderClass}`}
+                            className={`group text-left p-6 rounded-sm border bg-surface transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(37,109,134,0.16)] ${t.borderClass}`}
                           >
                             <p className={`text-xs tracking-widest uppercase mb-2 ${t.accentClass}`}>{t.subtitle}</p>
                             <p className="font-display text-2xl mb-3">{t.name}</p>
-                            <p className="text-xs leading-relaxed opacity-50">{t.cardDescription}</p>
+                            <p className="text-xs leading-relaxed text-foreground/65">{t.cardDescription}</p>
                             <p className={`text-xs mt-4 opacity-0 group-hover:opacity-100 transition-opacity ${t.accentClass}`}>
                               Comenzar →
                             </p>
@@ -195,10 +195,10 @@ function EvaluacionesPageInner() {
       <footer className="mt-24 px-6 md:px-12 lg:px-20 py-10 border-t border-foreground/10">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div className="flex flex-wrap gap-x-6 gap-y-2">
-            <Link href="/" className="text-sm opacity-35 hover:text-brand-teal hover:opacity-100 transition-all">← Inicio</Link>
-            <a href="mailto:psic@isaaccalderon.me" className="text-sm opacity-35 hover:text-brand-teal hover:opacity-100 transition-all">psic@isaaccalderon.me</a>
+            <Link href="/" className="text-sm text-foreground/60 hover:text-interactive-text transition-colors">← Inicio</Link>
+            <a href="mailto:psic@isaaccalderon.me" className="text-sm text-foreground/60 hover:text-interactive-text transition-colors">psic@isaaccalderon.me</a>
           </div>
-          <p className="text-xs opacity-20">© Isaac Calderón Derat</p>
+          <p className="text-xs text-foreground/40">© Isaac Calderón Derat</p>
         </div>
       </footer>
 
