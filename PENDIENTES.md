@@ -327,3 +327,98 @@ biofeedback aplicados a psicotrauma, marzo de 2025.
 **Escuela de Psicología Transpersonal (EPTI):** Especialización en Psicoterapia
 Transpersonal-Integral, Coaching Primordial, y Danza Primal. Fue **director
 académico y luego director de la sede México**, unos seis años.
+
+---
+
+## 8. Reparto de tareas entre Grok y Claude
+
+Isaac trabaja con dos sistemas. Este reparto existe para que no se pisen ni se
+queden esperando el uno al otro. **La regla de frontera es simple: lo que vive
+dentro de este repositorio es de Claude; lo que vive fuera —la máquina de Isaac,
+AgendaPro, WhatsApp, el calendario— es de Grok.**
+
+### Le toca a Grok (Prefrontis, Hipocampus, Manitas)
+
+Todo lo que exige operar una interfaz ajena, correr en la máquina de Isaac, o
+tener acceso al segundo cerebro.
+
+| # | Tarea | Notas |
+|---|---|---|
+| G1 | **Resolver su lado del 502** (§4.1) | Confirmar si la rutina «Lead presencial · webhook» registró la llamada del 13 de septiembre, y si la URL es `https://` pública alcanzable desde internet |
+| G2 | Exponer el webhook si hace falta | Si Prefrontis corre local, necesita túnel. Isaac ya tiene Cloudflare Tunnel funcionando para `nube.isaaccalderon.me`; el patrón está resuelto |
+| G3 | Operar AgendaPro | Consultar huecos, proponer horarios en punto, reservar en `Neurofeedback 2`, espejar al calendario. Ya lo hace |
+| G4 | Responder por WhatsApp | Hoy el patrón seguro son borradores al chat de Isaac y él envía. Que el bot escriba directo al paciente **requiere autorización explícita de Isaac** y nunca debe incluir contenido clínico |
+| G5 | Averiguar el plan Pro de AgendaPro | Costo y cómo se pide la API Key. **Ojo:** Isaac dijo que quiere salir de AgendaPro, así que quizá no valga la pena pagarlo. Decisión suya |
+| G6 | Consultar la bóveda cuando Claude lo pida | Hipocampus tiene el acceso. Útil para §4.2 y §4.3, donde hace falta material clínico real |
+
+### Le toca a Claude o a Codex (dentro del repositorio)
+
+| # | Tarea | Sección | Depende de |
+|---|---|---|---|
+| C1 | Diagnóstico del 502 desde el lado del sitio | §4.1 | Que Grok confirme G1 |
+| C2 | Sección «para quién es esto» | §4.2 | Material de la bóveda (G6) o de Isaac |
+| C3 | Preguntas frecuentes | §4.3 | Isaac debe responder «¿cuánto dura un proceso?» |
+| C4 | Arreglar el hero en móvil | §4.4 | Nada. **Se puede hacer ya** |
+| C5 | SEO: sitemap, robots, JSON-LD | §4.6 | Nada. **Se puede hacer ya** |
+| C6 | Quitar el destello de tema | §4.7 | Nada. **Se puede hacer ya** |
+| C7 | Quitar el badge flotante de Calendly | §4.8 | Nada. **Se puede hacer ya** |
+| C8 | Dirección fotográfica | §4.5 | Isaac debe decir qué material tiene |
+
+**C4, C5, C6 y C7 no dependen de nadie.** Si alguien tiene tiempo y no sabe por
+dónde empezar, son esos cuatro.
+
+### Sólo puede hacerlo Isaac
+
+| # | Decisión | Por qué nadie más |
+|---|---|---|
+| I1 | Revisión legal del aviso (§4.9) | Hace falta criterio jurídico. Ni Claude ni Grok lo tienen |
+| I2 | Mirar los logs de Vercel para el 502 | Requiere su sesión en Vercel |
+| I3 | ¿Cuánto dura un proceso terapéutico? | Es su criterio clínico. **No inventarlo** |
+| I4 | Qué material fotográfico existe | Sólo él sabe |
+| I5 | Si se queda en AgendaPro o sale | Afecta a toda la clínica, no sólo a él |
+| I6 | Autorizar que el bot escriba directo al paciente | Es su relación clínica |
+
+### El traspaso que desbloquea el 502
+
+Es el único punto donde los dos sistemas tienen que hablarse, así que conviene
+que sea explícito.
+
+**Grok le dice a Claude:**
+
+1. Si la rutina recibió la llamada del 13 de septiembre. Sí o no.
+2. Si es que no: cuál es la URL pública `https://` correcta, una vez expuesta.
+3. Si es que sí, pero la rechazó: qué devolvió y por qué — autenticación,
+   formato del cuerpo, campo faltante.
+
+**Claude entonces:**
+
+- Si fue la URL: Isaac actualiza `GROK_WEBHOOK_URL` en Vercel y se relanza la
+  prueba. Probablemente no haga falta tocar código.
+- Si fue el formato: se ajusta el cuerpo en `app/api/agendar/route.ts`. El
+  contrato acordado con Grok está en el commit `2c5592c`; los campos son
+  `request_id`, `servicio`, `nombre`, `apellido`, `telefono`, `correo`,
+  `dias_preferidos`, `franja`, `nota`, `consentimiento_at`, `origen`,
+  `callback_url`.
+- Si fue la autenticación: el código manda `Authorization: Bearer <key>`, que es
+  lo que Grok especificó. Habría que confirmar el nombre de la cabecera.
+
+**La prueba de que quedó resuelto** es un POST a
+`https://www.isaaccalderon.me/api/agendar` con datos válidos que devuelva
+`200 {"ok":true,"request_id":"…"}` y que Isaac reciba el lead. Hasta entonces no
+está hecho, aunque el código compile.
+
+⚠️ Ese POST manda un lead real al WhatsApp de Isaac. Marcarlo como prueba en el
+campo `nota` y avisarle antes.
+
+### Cómo coordinarse
+
+- **Antes de tocar un archivo, decir cuál.** Esta sesión tuvo tres sesiones de
+  Claude trabajando en paralelo sin un solo conflicto, y fue por avisar.
+- **No publicar el trabajo de otro sin avisarle.** Pasó una vez esta sesión: un
+  push arrastró un commit ajeno. No rompió nada porque estaba terminado, pero la
+  decisión de publicarlo no era de quien empujó.
+- **Verificar antes de reportar.** Y verificar sobre lo compilado o sobre
+  producción, no sobre el código fuente (§5).
+- **Cuando algo sea decisión de Isaac, citarlo con sus palabras**, no
+  parafrasearlo. Una paráfrasis perdió su motivo real para no enlazar
+  `/evaluaciones` y costó una ronda entera de trabajo mal dirigido.
