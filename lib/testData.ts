@@ -926,7 +926,9 @@ export const TEST_CONFIGS: Record<TestId, TestConfig> = {
       "¿Sientes que das más de lo que recibes al trabajar con clientes/pacientes?",
       "¿Estás cansado/a de trabajar con clientes/pacientes?",
     ],
-    shortLabels: ["Nunca", "Raramente", "A veces", "Frecuente", "Siempre"],
+    shortLabels: [], // vacío a propósito: estas etiquetas son resúmenes por ÍTEM,
+    // no anclas de la escala. Sin ellas, ResultCard muestra la pregunta
+    // completa, que siempre es exacta.
     computeScore: (answers) => Math.round(answers.reduce((s, a) => s + a, 0) / answers.length),
     maxScore: 100,
     minScore: 0,
@@ -999,7 +1001,9 @@ export const TEST_CONFIGS: Record<TestId, TestConfig> = {
       "Me resulta fácil hacer más de una cosa a la vez.",
       "Cuando tengo una conversación con alguien, presto atención al lenguaje corporal.",
     ],
-    shortLabels: ["Totalmente de acuerdo", "De acuerdo", "En desacuerdo", "Totalmente en desacuerdo"],
+    shortLabels: [], // vacío a propósito: estas etiquetas son resúmenes por ÍTEM,
+    // no anclas de la escala. Sin ellas, ResultCard muestra la pregunta
+    // completa, que siempre es exacta.
     computeScore: (answers) => {
       const reverseIndices = [1, 2, 3, 4, 5, 8];
       return answers.reduce((sum, val, i) => {
@@ -1087,7 +1091,9 @@ export const TEST_CONFIGS: Record<TestId, TestConfig> = {
       "Soy bueno/a con las cifras.",
       "Me resulta difícil recordar números de teléfono.",
     ],
-    shortLabels: ["Totalmente de acuerdo", "De acuerdo", "En desacuerdo", "Totalmente en desacuerdo"],
+    shortLabels: [], // vacío a propósito: estas etiquetas son resúmenes por ÍTEM,
+    // no anclas de la escala. Sin ellas, ResultCard muestra la pregunta
+    // completa, que siempre es exacta.
     computeScore: (answers) => {
       const reverseIndices = [0, 2, 7, 9, 10, 13, 14, 16, 23, 24, 26, 27, 28, 29, 30, 31, 33, 35, 36, 37, 39, 43, 46, 47, 48, 49];
       return answers.reduce((sum, val, i) => {
@@ -1153,7 +1159,9 @@ export const TEST_CONFIGS: Record<TestId, TestConfig> = {
       "Siento que tengo que esforzarme mucho en situaciones sociales para que a los demás les guste.",
       "Actúo de una manera que no refleja cómo me siento realmente por dentro para encajar socialmente.",
     ],
-    shortLabels: ["1", "2", "3", "4", "5", "6", "7"],
+    shortLabels: [], // vacío a propósito: estas etiquetas son resúmenes por ÍTEM,
+    // no anclas de la escala. Sin ellas, ResultCard muestra la pregunta
+    // completa, que siempre es exacta.
     computeScore: (answers) => answers.reduce((s, a) => s + a, 0),
     maxScore: 175,
     minScore: 25,
@@ -1235,7 +1243,9 @@ export const TEST_CONFIGS: Record<TestId, TestConfig> = {
       "¿Con qué frecuencia tienes dificultades para esperar en situaciones en las que debes esperar tu turno?",
       "¿Con qué frecuencia interrumpes a los demás cuando están ocupados?",
     ],
-    shortLabels: ["Nunca", "Raramente", "A veces", "Frecuente", "Muy frecuente"],
+    shortLabels: [], // vacío a propósito: estas etiquetas son resúmenes por ÍTEM,
+    // no anclas de la escala. Sin ellas, ResultCard muestra la pregunta
+    // completa, que siempre es exacta.
     computeScore: (answers) => answers.reduce((s, a) => s + a, 0),
     maxScore: 72,
     minScore: 0,
