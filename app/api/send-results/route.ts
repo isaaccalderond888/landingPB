@@ -32,7 +32,6 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const resend = new Resend(process.env.RESEND_API_KEY);
   let body: {
     nombre: string;
     apellido: string;
@@ -42,6 +41,8 @@ export async function POST(req: NextRequest) {
     score: number;
     answers: number[];
     aiText?: string;
+    consiente?: boolean;
+    consentimientoEn?: string;
   };
 
   try {
@@ -51,9 +52,23 @@ export async function POST(req: NextRequest) {
   }
 
   const { nombre, apellido, telefono, correo, testId, score, answers, aiText } = body;
+  const { consiente, consentimientoEn } = body;
 
   if (!nombre || !apellido || !correo || !testId) {
     return Response.json({ error: "Faltan campos requeridos" }, { status: 400 });
+  }
+
+  // Las respuestas de un instrumento clínico son datos personales sensibles:
+  // sin consentimiento expreso no se procesan, aunque la interfaz ya lo exija.
+  if (consiente !== true) {
+    return Response.json(
+      { error: "Falta el consentimiento expreso para el tratamiento de datos sensibles" },
+      { status: 400 }
+    );
+  }
+
+  if (!Array.isArray(answers) || answers.some((a) => typeof a !== "number")) {
+    return Response.json({ error: "Respuestas inválidas" }, { status: 400 });
   }
 
   const config = TEST_CONFIGS[testId as TestId];
@@ -121,10 +136,27 @@ export async function POST(req: NextRequest) {
       ).join("")}
     </div>` : ""}
 
+    <!-- Constancia de consentimiento: evidencia de que se otorgó y cuándo -->
+    <div style="border-top:1px solid #142b52;padding-top:16px;margin-bottom:16px">
+      <p style="font-size:11px;color:#9bbdc2;margin:0 0 4px">Constancia de consentimiento</p>
+      <p style="font-size:12px;color:#eef2ec;margin:0">
+        Consentimiento expreso otorgado el ${
+          consentimientoEn
+            ? new Date(consentimientoEn).toLocaleString("es-MX", { timeZone: "America/Mexico_City" })
+            : "(sin marca de tiempo)"
+        }
+      </p>
+    </div>
+
     <p style="font-size:11px;color:#4a72ab;text-align:center;margin:0">${config.disclaimer}</p>
   </div>
 </body>
 </html>`;
+
+  // Se construye al final, ya validado todo: el constructor de Resend lanza si
+  // falta la credencial, y hacerlo antes convertía cualquier error de datos en
+  // un 500 con rastro de pila en lugar del 400 que corresponde.
+  const resend = new Resend(process.env.RESEND_API_KEY);
 
   try {
     await resend.emails.send({

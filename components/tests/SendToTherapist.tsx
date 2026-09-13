@@ -39,7 +39,17 @@ export default function SendToTherapist({ testId, score, answers, aiText }: Prop
       const res = await fetch("/api/send-results", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, testId, score, answers, aiText }),
+        // Se envía constancia del consentimiento: el aviso de privacidad
+        // promete consentimiento expreso, así que tiene que quedar registro.
+        body: JSON.stringify({
+          ...form,
+          testId,
+          score,
+          answers,
+          aiText,
+          consiente,
+          consentimientoEn: new Date().toISOString(),
+        }),
       });
 
       if (!res.ok) {

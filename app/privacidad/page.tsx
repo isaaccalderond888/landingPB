@@ -169,8 +169,15 @@ export default function PrivacidadPage() {
               <li><strong className="text-foreground">Calendly</strong> — agendado de citas, si decides usarlo.</li>
             </ul>
             <p>
-              Estos proveedores pueden procesar información fuera de México. Al usar el
-              sitio consientes ese tratamiento en los términos aquí descritos.
+              La ley distingue dos cosas distintas, y conviene decir cuál aplica:{" "}
+              <strong className="text-foreground">estas empresas son encargados</strong>, es
+              decir, tratan tus datos únicamente siguiendo mis instrucciones y para prestarme
+              el servicio. Eso es una remisión, no una transferencia.{" "}
+              <strong className="text-foreground">No transfiero tus datos a terceros que los
+              usen para sus propios fines</strong>, ni los vendo.
+            </p>
+            <p>
+              Estos proveedores pueden procesar información fuera de México.
             </p>
             <div className="border border-brand-teal/25 bg-brand-teal/[0.04] rounded-sm p-4 space-y-2">
               <p className="text-xs tracking-widest uppercase text-interactive-text">
@@ -215,6 +222,16 @@ export default function PrivacidadPage() {
               procedente, se hará efectivo dentro de los 15 días hábiles siguientes.
             </p>
             <p>
+              Además de los derechos ARCO puedes pedirme que{" "}
+              <strong className="text-foreground">limite el uso o la divulgación</strong> de
+              tus datos sin llegar a cancelarlos: por ejemplo, que conserve el expediente
+              pero deje de contactarte. Se solicita por el mismo correo.
+            </p>
+            <p>
+              Al no ser una organización con áreas, quien atiende personalmente estas
+              solicitudes soy yo mismo, en la dirección de contacto de la sección 1.
+            </p>
+            <p>
               Si consideras que tu derecho a la protección de datos fue vulnerado, puedes
               acudir ante la autoridad garante en materia de protección de datos personales.
             </p>
@@ -239,7 +256,21 @@ export default function PrivacidadPage() {
             </p>
           </Seccion>
 
-          <Seccion n="9" titulo="Cookies y tecnologías similares">
+          <Seccion n="9" titulo="Seguridad y avisos de vulneración">
+            <p>
+              Mantengo medidas de seguridad administrativas, técnicas y físicas razonables
+              para proteger tus datos: el sitio viaja cifrado, el buzón donde llegan usa
+              cifrado de acceso cero, el acceso está protegido con segundo factor y los
+              datos sensibles no se comparten por canales abiertos.
+            </p>
+            <p>
+              Si ocurriera una vulneración que afecte de forma significativa tus derechos
+              patrimoniales o morales, te lo comunicaré sin demora para que puedas tomar
+              medidas.
+            </p>
+          </Seccion>
+
+          <Seccion n="10" titulo="Cookies y tecnologías similares">
             <p>
               Este sitio no usa cookies propias de seguimiento ni herramientas de analítica
               que te perfilen. Los servicios embebidos de terceros —el agendado de
@@ -251,7 +282,7 @@ export default function PrivacidadPage() {
             </p>
           </Seccion>
 
-          <Seccion n="10" titulo="Cambios a este aviso">
+          <Seccion n="11" titulo="Cambios a este aviso">
             <p>
               Cualquier modificación se publicará en esta misma página, con la fecha de
               actualización visible en el encabezado. Te recomiendo revisarla

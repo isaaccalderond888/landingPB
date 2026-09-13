@@ -74,8 +74,14 @@ const CERTIFICACIONES: Certificacion[] = [
 const NEWMAN = [
   { titulo: "Diplomado en Psicotraumatología CPT-III", detalle: "120 horas · diciembre 2024" },
   { titulo: "Diplomado en Terapia Asistida con Psicodélicos (TAPS)", detalle: "febrero 2026" },
-  { titulo: "TIST — Trauma Informed Stabilization Treatment, nivel 1", detalle: "diciembre 2025" },
-  { titulo: "Finding Solid Ground", detalle: "diciembre 2025" },
+  {
+    titulo: "Tratamiento de Estabilización Informado en Trauma, Nivel 1 (TIST-N1)",
+    detalle: "12 horas · 28 y 29 de noviembre de 2025 · con Janina Fisher",
+  },
+  {
+    titulo: "Taller Finding Solid Ground",
+    detalle: "16 horas · 14 y 15 de noviembre de 2025 · con Bethany Brand y Ruth Lanius",
+  },
 ];
 
 const NEUROFEEDBACK = [
