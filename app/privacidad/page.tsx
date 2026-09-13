@@ -115,10 +115,21 @@ export default function PrivacidadPage() {
                 recabo únicamente tu correo electrónico. Nada más: ni nombre, ni teléfono.
               </li>
             </ul>
+            <ul className="list-disc pl-5 space-y-1.5 marker:text-brand-teal">
+              <li>
+                <strong className="text-foreground">Datos para agendar una cita presencial:</strong>{" "}
+                nombre, apellido, teléfono, correo, el servicio que te interesa y tu
+                preferencia de días y franja horaria. El campo de nota es para avisos
+                prácticos —accesibilidad, restricciones de horario—,{" "}
+                <strong className="text-foreground">no para contarme lo que te ocurre</strong>:
+                eso se conversa en sesión, no por formulario.
+              </li>
+            </ul>
             <p>
               Las evaluaciones se pueden responder sin identificarte, y el contenido de las
               guías se puede leer completo en el sitio sin dejar ningún dato. Los datos de
-              contacto sólo se recaban si decides enviarme tus resultados o pedir el PDF.
+              contacto sólo se recaban si decides enviarme tus resultados, pedir el PDF o
+              solicitar una cita.
             </p>
           </Seccion>
 
@@ -130,8 +141,14 @@ export default function PrivacidadPage() {
               resultados. Si no la marcas, no se envía nada.
             </p>
             <p>
-              Puedes revocar tu consentimiento en cualquier momento escribiéndome al correo
-              de contacto.
+              El formulario de <strong className="text-foreground">cita presencial</strong> pide
+              un consentimiento distinto y por separado. Ahí no recabo datos de salud: lo que
+              autorizas es que use tus datos de contacto para proponerte horarios y que se
+              transfieran a Clínica Newman para crear la cita, según la sección 6.
+            </p>
+            <p>
+              Puedes revocar cualquiera de estos consentimientos en cualquier momento
+              escribiéndome al correo de contacto.
             </p>
           </Seccion>
 
@@ -144,6 +161,10 @@ export default function PrivacidadPage() {
               <li>Leer y valorar los resultados que me envías.</li>
               <li>Ponerme en contacto contigo para responder o proponer una cita.</li>
               <li>Integrar la información a tu proceso si decides iniciar uno conmigo.</li>
+              <li>
+                Proponerte horarios y reservar tu cita presencial en la agenda de Clínica
+                Newman, cuando lo solicitas.
+              </li>
               <li>
                 Enviarte por correo la guía en PDF que hayas pedido.{" "}
                 <strong className="text-foreground">Ese correo se usa para eso y nada
@@ -183,7 +204,15 @@ export default function PrivacidadPage() {
               <li><strong className="text-foreground">Resend</strong> — envío del correo con tus resultados.</li>
               <li><strong className="text-foreground">Proton</strong> — el buzón donde recibo y conservo ese correo.</li>
               <li><strong className="text-foreground">Anthropic</strong> — interpretación opcional con IA, en los términos de la sección 5.</li>
-              <li><strong className="text-foreground">Calendly</strong> — agendado de citas, si decides usarlo.</li>
+              <li><strong className="text-foreground">Calendly</strong> — agendado de citas en línea, si decides usarlo.</li>
+              <li><strong className="text-foreground">AgendaPro</strong> — el sistema de agenda de Clínica Newman, donde queda registrada una cita presencial.</li>
+              <li><strong className="text-foreground">Meta (WhatsApp)</strong> — si pides cita presencial, por ahí te propongo horarios.</li>
+              <li>
+                <strong className="text-foreground">Mi propia automatización</strong> — un
+                sistema de asistentes que reviso yo, que consulta huecos en la agenda y
+                prepara la reserva. Opera siguiendo mis instrucciones y no usa tus datos
+                para nada más.
+              </li>
             </ul>
             <p>
               La ley distingue dos cosas distintas, y conviene decir cuál aplica:{" "}
@@ -212,6 +241,25 @@ export default function PrivacidadPage() {
                 trayecto hasta el buzón no va cifrado de extremo a extremo. Si necesitas
                 comunicarme algo especialmente delicado, lo conversamos en sesión y no por
                 escrito.
+              </p>
+            </div>
+            <div className="border border-brand-gold/30 bg-brand-gold/[0.05] rounded-sm p-4 space-y-2">
+              <p className="text-xs tracking-widest uppercase text-accent-text">
+                Una transferencia real, y conviene decirlo claro
+              </p>
+              <p>
+                Todo lo anterior son encargados. <strong className="text-foreground">Clínica
+                Newman no lo es.</strong> Si pides una cita presencial, la consulta ocurre
+                en sus instalaciones y tu cita queda en su agenda, así que la clínica
+                recibe tu nombre y tus datos de contacto y los trata como responsable
+                propio, bajo su propio aviso de privacidad. Eso es una transferencia, no
+                una remisión.
+              </p>
+              <p>
+                Por eso el formulario de cita presencial pide tu consentimiento de forma
+                expresa. Si prefieres no transferir tus datos a la clínica, escríbeme y lo
+                resolvemos por otra vía, o agenda una sesión en línea, que no pasa por
+                ella.
               </p>
             </div>
             <p>
