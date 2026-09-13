@@ -2,12 +2,12 @@
 
 - **Versión:** 2.0
 - **Actualizada:** 2026-08-20
-- **Sistema visual:** “Flores sobre agua” v0.1
+- **Sistema visual:** "Sistema de Diseño - Marca Personal ICD" v0.1
 - **Estado verbal:** provisional; no tratar como identidad definitiva
 
 ## Fuente de verdad
 
-Antes de hacer cambios durables, consultar la nota canónica `Isaac-Calderon-Sistema-de-Diseno.md` del vault y los archivos locales `tokens.css`, `README.md` y `preview.html` del sistema “Flores sobre agua”.
+Antes de hacer cambios durables, consultar la nota canónica `Isaac-Calderon-Sistema-de-Diseno.md` del vault y los archivos locales `tokens.css`, `README.md` y `preview.html` del "Sistema de Diseño - Marca Personal ICD".
 
 Esta guía sustituye la versión de abril de 2026 basada en “Sea from Space”. No recuperar por inercia:
 

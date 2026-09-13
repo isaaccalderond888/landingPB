@@ -22,7 +22,7 @@ const config: Config = {
         "interactive-text": "var(--interactive-text)",
         "accent-text": "var(--accent-text)",
         "border-theme": "var(--border-theme)",
-        // Paleta "Flores sobre agua" — Isaac Calderón Derat (design system)
+        // Paleta del Sistema de Diseño - Marca Personal ICD — Isaac Calderón Derat
         brand: {
           gold:   "#EAD06A", // sol — acento cálido
           mint:   "#BCD3D6", // bruma — azul claro secundario

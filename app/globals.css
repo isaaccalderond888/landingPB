@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Paleta "Flores sobre agua" — design system (claude.ai/design) */
+/* Paleta del Sistema de Diseño - Marca Personal ICD (claude.ai/design) */
 :root {
   --background: #eef2ec; /* crema — on-brand para pantalla en modo claro */
   --foreground: #183463; /* marino */

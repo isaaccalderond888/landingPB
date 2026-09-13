@@ -3,7 +3,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import CalendlyBadge from "@/components/CalendlyBadge";
 
-// Tipografía única (display + body) — design system "Flores sobre agua"
+// Tipografía única (display + body) — Sistema de Diseño - Marca Personal ICD
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],

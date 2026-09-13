@@ -18,7 +18,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load Plus Jakarta Sans, the type family defined by the “Flores sobre agua” design system.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load Plus Jakarta Sans, the type family defined by the "Sistema de Diseño - Marca Personal ICD" design system.
 
 ## Learn More
 
