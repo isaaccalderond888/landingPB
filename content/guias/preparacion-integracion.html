@@ -65,10 +65,16 @@
 
   /* ── PORTADA ──────────────────────────────────────────────────── */
   .portada {
-    background: var(--noche);
+    /* Arte de portada: curvas de nivel, generado con codex-img sobre la paleta
+       de marca. El color de fondo queda debajo por si la imagen no carga. */
+    background-color: var(--noche);
+    background-image: url("portadas/A-curvas-print.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: var(--crema);
     page: portada;
-    padding: 55mm 22mm 30mm;
+    padding: 34mm 22mm 30mm;
     margin: 0;
     height: 297mm;
     break-after: page;
@@ -76,21 +82,41 @@
     position: relative;
   }
   .portada .credencial {
+    position: relative; z-index: 1;
     font-size: 8pt; letter-spacing: .2em; text-transform: uppercase;
-    color: var(--bruma); margin: 0 0 42mm;
+    color: var(--bruma); margin: 0 0 32mm;
   }
-  .portada .regla { width: 24mm; height: 2px; background: var(--sol); margin: 0 0 8mm; }
+  .portada .regla { position: relative; z-index: 1; width: 24mm; height: 2px; background: var(--sol); margin: 0 0 8mm; }
   .portada h1 {
+    position: relative; z-index: 1;
     font-size: 34pt; line-height: 1.06; font-weight: 800;
     margin: 0 0 6mm; color: #fff; letter-spacing: -.01em;
   }
   .portada h1 em { font-style: italic; font-weight: 500; color: var(--sol); }
   .portada .bajada {
+    position: relative; z-index: 1;
     font-size: 13pt; font-weight: 300; line-height: 1.45;
     color: var(--bruma); margin: 0 0 auto; max-width: 112mm;
   }
+  /* Velo superior: el bloque de título cae justo donde arrancan las curvas.
+     Un degradado las apaga arriba y las deja intactas en la mitad inferior. */
+  .portada::before {
+    content: "";
+    position: absolute; left: 0; right: 0; top: 0; height: 62%;
+    background: linear-gradient(to bottom,
+      rgba(11,24,48,.95) 0%, rgba(11,24,48,.95) 50%,
+      rgba(11,24,48,.70) 68%, rgba(11,24,48,0) 100%);
+    pointer-events: none;
+  }
+  /* Velo inferior: abajo las líneas se hacen densas y competirían con el pie. */
+  .portada::after {
+    content: "";
+    position: absolute; left: 0; right: 0; bottom: 0; height: 95mm;
+    background: linear-gradient(to bottom, rgba(11,24,48,0) 0%, rgba(11,24,48,.86) 55%, rgba(11,24,48,.97) 100%);
+    pointer-events: none;
+  }
   .portada .pie {
-    position: absolute; left: 22mm; right: 22mm; bottom: 26mm;
+    position: absolute; left: 22mm; right: 22mm; bottom: 26mm; z-index: 1;
     border-top: 1px solid rgba(238,242,236,.16);
     padding-top: 6mm; font-size: 9pt; color: var(--bruma);
   }
