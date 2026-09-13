@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Preparación e integración — Isaac Calderón Derat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ── Sistema de Diseño - Marca Personal ICD ─────────────────────
+     Versión clara, pensada para impresión y lectura en pantalla.   */
+  :root {
+    --marino:  #183463;
+    --petroleo:#256D86;
+    --bruma:   #BCD3D6;
+    --crema:   #EEF2EC;
+    --sol:     #EAD06A;
+    --noche:   #0B1830;
+    --acento-texto: #8A6B22;  /* el sol nunca va como texto sobre claro */
+    --tinta:   #183463;
+    --tinta-suave: #40567f;
+  }
+
+  @page {
+    size: A4;
+    margin: 18mm 16mm 20mm 16mm;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.62;
+    color: var(--tinta);
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Portada ─────────────────────────────────────────────────── */
+  .portada {
+    background: var(--noche);
+    color: var(--crema);
+    padding: 34mm 20mm 26mm;
+    margin: -18mm -16mm 14mm;
+    page-break-after: always;
+  }
+  .portada .credencial {
+    font-size: 8.5pt;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--bruma);
+    margin: 0 0 26mm;
+  }
+  .portada .regla {
+    width: 22mm; height: 2px; background: var(--sol);
+    margin: 0 0 7mm;
+  }
+  .portada h1 {
+    font-size: 31pt;
+    line-height: 1.1;
+    font-weight: 700;
+    margin: 0 0 5mm;
+    color: #fff;
+  }
+  .portada h1 em { font-style: italic; color: var(--sol); }
+  .portada .bajada {
+    font-size: 13pt;
+    font-weight: 300;
+    line-height: 1.45;
+    color: var(--bruma);
+    margin: 0 0 18mm;
+    max-width: 115mm;
+  }
+  .portada .firma {
+    border-top: 1px solid rgba(238,242,236,.18);
+    padding-top: 6mm;
+    font-size: 9.5pt;
+    color: var(--bruma);
+  }
+  .portada .firma strong { color: #fff; font-weight: 600; display: block; margin-bottom: 1.5mm; }
+  .portada .firma a { color: var(--sol); text-decoration: none; }
+
+  /* ── Jerarquía ───────────────────────────────────────────────── */
+  h2 {
+    font-size: 15pt;
+    font-weight: 700;
+    color: var(--marino);
+    margin: 11mm 0 3mm;
+    padding-bottom: 2mm;
+    border-bottom: 1px solid rgba(24,52,99,.14);
+    page-break-after: avoid;
+  }
+  h2 .num {
+    color: var(--petroleo);
+    font-weight: 500;
+    margin-right: 2.5mm;
+  }
+  h3 {
+    font-size: 11pt;
+    font-weight: 600;
+    color: var(--petroleo);
+    margin: 6mm 0 1.5mm;
+    page-break-after: avoid;
+  }
+  p { margin: 0 0 3mm; }
+  strong { font-weight: 600; color: var(--marino); }
+
+  ul, ol { margin: 0 0 4mm; padding-left: 5mm; }
+  li { margin-bottom: 1.6mm; }
+  li::marker { color: var(--petroleo); }
+
+  a { color: var(--petroleo); }
+
+  /* ── Bloques destacados ──────────────────────────────────────── */
+  .cita {
+    border-left: 2px solid var(--sol);
+    padding: 1mm 0 1mm 5mm;
+    margin: 5mm 0;
+    font-size: 11pt;
+    font-style: italic;
+    color: var(--marino);
+    page-break-inside: avoid;
+  }
+  .nota {
+    background: var(--crema);
+    border-radius: 2mm;
+    padding: 4mm 5mm;
+    margin: 5mm 0;
+    page-break-inside: avoid;
+  }
+  .nota p:last-child { margin-bottom: 0; }
+
+  .alerta {
+    background: #fdf6e3;
+    border: 1px solid rgba(138,107,34,.3);
+    border-radius: 2mm;
+    padding: 4mm 5mm;
+    margin: 5mm 0;
+    page-break-inside: avoid;
+  }
+  .alerta .etiqueta {
+    font-size: 8pt;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--acento-texto);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2mm;
+  }
+  .alerta p:last-child { margin-bottom: 0; }
+
+  /* ── Renglones para escribir ─────────────────────────────────── */
+  .campo { margin: 0 0 5mm; page-break-inside: avoid; }
+  .campo .etiqueta {
+    display: block;
+    font-size: 9.5pt;
+    font-weight: 600;
+    color: var(--marino);
+    margin-bottom: 2mm;
+  }
+  .linea {
+    border-bottom: 1px solid rgba(24,52,99,.22);
+    height: 7mm;
+  }
+  .linea + .linea { margin-top: 1mm; }
+
+  .seccion { page-break-inside: auto; }
+  .juntos { page-break-inside: avoid; }
+
+  /* ── Cierre ──────────────────────────────────────────────────── */
+  .cierre {
+    margin-top: 12mm;
+    padding-top: 5mm;
+    border-top: 2px solid var(--sol);
+    page-break-inside: avoid;
+  }
+  .cierre .firma-final {
+    font-size: 10pt;
+    color: var(--marino);
+  }
+  .cierre .firma-final strong { display: block; font-size: 11pt; }
+
+  .legal {
+    margin-top: 8mm;
+    font-size: 8.5pt;
+    line-height: 1.55;
+    color: var(--tinta-suave);
+  }
+  .legal h3 { font-size: 9pt; margin-top: 4mm; }
+
+  .refs { font-size: 9pt; line-height: 1.5; }
+  .refs li { margin-bottom: 2mm; }
+</style>
+</head>
+<body>
+
+<!-- ════════════ PORTADA ════════════ -->
+<section class="portada">
+  <p class="credencial">Psicólogo · Psicoterapeuta Transpersonal</p>
+  <div class="regla"></div>
+  <h1>Preparación e <em>integración</em></h1>
+  <p class="bajada">Un mapa de cuidado antes, durante y después de una experiencia en estados ampliados de conciencia.</p>
+  <div class="firma">
+    <strong>Isaac Calderón Derat</strong>
+    Ciudad de México · <a href="https://isaaccalderon.me">isaaccalderon.me</a> · <a href="mailto:psic@isaaccalderon.me">psic@isaaccalderon.me</a>
+  </div>
+</section>
+
+<!-- ════════════ CÓMO USAR ════════════ -->
+<section class="seccion">
+  <h2>Cómo usar esta guía</h2>
+
+  <p>Escribí esta guía para las personas que acompaño y para quienes están considerando una experiencia en estados ampliados de conciencia, ya la vivieron, o forman parte de la red de apoyo de alguien que la vivió.</p>
+
+  <p><strong>No enseña a conseguir, dosificar ni administrar sustancias, y no sustituye una evaluación médica, psicológica o psiquiátrica.</strong> Es un mapa para hacer mejores preguntas, reconocer límites y traducir una experiencia intensa en cuidado cotidiano.</p>
+
+  <p>Puedes recorrerla de principio a fin o ir directo a la sección que corresponda a tu momento. Hay espacios para escribir: úsalos, o no. Este documento es tuyo.</p>
+
+  <h3>Tres ideas para orientarte</h3>
+  <ol>
+    <li><strong>La sustancia no es la terapia.</strong> Una experiencia puede abrir posibilidades, pero el cambio depende del contexto, las relaciones, el seguimiento y lo que se practica después.</li>
+    <li><strong>Difícil no significa dañino; pero tampoco todo sufrimiento es terapéutico.</strong> La seguridad se evalúa por el funcionamiento, la capacidad de pedir ayuda y la presencia de riesgo real.</li>
+    <li><strong>Integrar no es encontrar una explicación definitiva.</strong> Es relacionarte con lo vivido con curiosidad, cuerpo, tiempo, discernimiento y acciones sostenibles.</li>
+  </ol>
+
+  <div class="cita">La preparación no busca controlar la experiencia. Busca crear condiciones para que lo que ocurra pueda ser sostenido, escuchado e integrado.</div>
+</section>
+
+<!-- ════════════ 1 ════════════ -->
+<section class="seccion">
+  <h2><span class="num">1</span>La pregunta central</h2>
+
+  <p>Antes de pensar en sustancia, fecha o facilitador, la pregunta es otra:</p>
+
+  <div class="cita">¿Hay condiciones para que lo que se abra pueda ser sostenido?</div>
+
+  <p>La respuesta no depende sólo de cuánto deseas la experiencia. Incluye tu estado físico y emocional, el entorno, la calidad del acompañamiento, los límites, el consentimiento y la red disponible después.</p>
+
+  <h3>Inventario breve</h3>
+  <ul>
+    <li>¿Tengo estabilidad básica en sueño, alimentación, vivienda y relaciones?</li>
+    <li>¿Estoy atravesando una crisis activa, un duelo reciente o una urgencia extrema?</li>
+    <li>¿Puedo decir «no», pedir una pausa y cambiar de opinión?</li>
+    <li>¿Conozco los límites y la formación de quien acompaña?</li>
+    <li>¿Existe un plan si me desregulo o necesito atención médica?</li>
+    <li>¿Tengo apoyo disponible en los días posteriores?</li>
+    <li>¿Estoy dispuesta o dispuesto a integrar, aunque la experiencia no sea la que espero?</li>
+  </ul>
+
+  <div class="nota">
+    <p><strong>Pausar no es fracasar.</strong> Pausar también puede ser una forma profunda de cuidado. En mi práctica, más de una vez la decisión más terapéutica ha sido esperar.</p>
+  </div>
+</section>
+
+<!-- ════════════ 2 ════════════ -->
+<section class="seccion">
+  <h2><span class="num">2</span>Preparación: cuatro capas</h2>
+
+  <p>Conviene mirar la preparación en cuatro capas interdependientes. Ninguna garantiza una experiencia «buena»; juntas permiten valorar si existe un contenedor suficiente.</p>
+
+  <h3>Capa corporal</h3>
+  <p>El cuerpo no es el vehículo que te lleva a la experiencia: forma parte de ella. Observa sueño, descanso, alimentación, enfermedad reciente, dolor, agotamiento y uso de medicamentos.</p>
+  <ul>
+    <li>No suspendas medicamentos ni cambies dosis sin acompañamiento médico.</li>
+    <li>Consulta posibles interacciones con un profesional que conozca tu historia clínica.</li>
+    <li>Evita llegar exhausto, deshidratado o en crisis.</li>
+    <li>Practica formas sencillas de regulación que ya conozcas: caminar, respirar sin forzar, sentir los pies, descansar.</li>
+  </ul>
+
+  <h3>Capa emocional</h3>
+  <p>No todo miedo significa «no»; tampoco todo deseo significa «sí». Un miedo que permite pensar y pedir apoyo puede expresar respeto por el proceso. Terror, presión, desesperación o la sensación de no tener opción piden pausa y evaluación.</p>
+  <ul>
+    <li>¿Mi intención nace de curiosidad y cuidado, o de urgencia y escape?</li>
+    <li>¿Qué espero que la experiencia resuelva por mí?</li>
+    <li>¿Qué parte de mí quiere avanzar y qué parte necesita protección?</li>
+    <li>¿Podría aceptar que la experiencia no cumpla mis expectativas?</li>
+  </ul>
+
+  <h3>Capa relacional</h3>
+  <p>Las personas no se regulan en aislamiento. Una apertura profunda necesita red, no sólo intensidad.</p>
+  <ul>
+    <li>¿Quién estará presente y cuál es su función?</li>
+    <li>¿Cómo se acuerdan el contacto físico y los límites?</li>
+    <li>¿Qué ocurre si retiro mi consentimiento?</li>
+    <li>¿Quién sabe dónde estoy?</li>
+    <li>¿Quién puede acompañarme después sin imponer una interpretación?</li>
+    <li>¿Hay seguimiento o sólo una experiencia aislada?</li>
+  </ul>
+
+  <h3>Capa contextual</h3>
+  <p>No existe un contexto automáticamente seguro por llamarse clínico, ceremonial, médico o espiritual. Cada uno tiene potencia y riesgos. Evalúa formación, selección de participantes, plan de emergencia, límites, número de personas, privacidad, seguimiento y transparencia económica.</p>
+
+  <div class="cita">No es sólo qué sustancia. Es qué persona, en qué momento, en qué contexto, con qué sostén y para qué.</div>
+</section>
+
+<!-- ════════════ 3 ════════════ -->
+<section class="seccion">
+  <h2><span class="num">3</span>Intención encarnada</h2>
+
+  <p>Una intención madura orienta; no controla. En lugar de buscar una frase perfecta, escucha cómo responde tu cuerpo.</p>
+
+  <h3>Práctica de cinco minutos</h3>
+  <ol>
+    <li>Siente el peso de los pies y haz tres respiraciones cómodas.</li>
+    <li>Pregunta: «¿Qué necesito en este momento de mi vida?».</li>
+    <li>Deja que aparezca una palabra, una imagen o una sensación.</li>
+    <li>Nota dónde se siente: apertura, contracción, calma, urgencia o ambivalencia.</li>
+    <li>Pregunta: «¿De dónde viene esto: amor, curiosidad, cansancio, miedo o escape?».</li>
+    <li>Escribe una frase sin convertirla en mandato.</li>
+  </ol>
+
+  <div class="campo">
+    <span class="etiqueta">Mi intención provisional</span>
+    <div class="linea"></div>
+    <div class="linea"></div>
+  </div>
+
+  <div class="campo">
+    <span class="etiqueta">Lo que necesitaría para sentirme sostenida o sostenido</span>
+    <div class="linea"></div>
+    <div class="linea"></div>
+  </div>
+</section>
+
+<!-- ════════════ 4 ════════════ -->
+<section class="seccion">
+  <h2><span class="num">4</span>Durante: orientación sin prescripción</h2>
+
+  <p>Las experiencias pueden incluir cambios intensos en emociones, percepción, memoria, sentido de identidad y sensaciones corporales. Un <em>insight</em> puede sentirse absolutamente verdadero sin ser necesariamente un hecho verificable.</p>
+
+  <h3>Tres anclas sencillas</h3>
+  <ol>
+    <li><strong>Orientación.</strong> Nombra dónde estás, quién te acompaña y que el estado es temporal.</li>
+    <li><strong>Cuerpo.</strong> Siente superficies estables, temperatura, postura y respiración sin forzar.</li>
+    <li><strong>Comunicación.</strong> Expresa con claridad si necesitas menos estímulo, distancia, apoyo o atención médica.</li>
+  </ol>
+
+  <div class="nota">
+    <p><strong>El consentimiento es continuo.</strong> Haber aceptado participar no significa aceptar cualquier intervención. El contacto físico, los cambios de espacio y las decisiones clínicas requieren acuerdos claros y respetan un «no» en cualquier momento.</p>
+  </div>
+</section>
+
+<!-- ════════════ 5 ════════════ -->
+<section class="seccion">
+  <h2><span class="num">5</span>Las primeras 24 a 48 horas</h2>
+
+  <p>Después de una experiencia intensa, prioriza aterrizaje y funcionamiento antes que interpretación.</p>
+
+  <h3>Puede ayudar</h3>
+  <ul>
+    <li>Dormir y recuperar rutinas básicas de alimentación e hidratación.</li>
+    <li>Reducir compromisos y estímulos innecesarios.</li>
+    <li>Registrar recuerdos sin exigir coherencia.</li>
+    <li>Hablar con alguien capaz de escuchar sin dramatizar ni idealizar.</li>
+    <li>Posponer decisiones irreversibles hasta recuperar estabilidad y perspectiva.</li>
+  </ul>
+
+  <h3>Conviene evitar</h3>
+  <ul>
+    <li>Convertir de inmediato cada imagen en una certeza literal.</li>
+    <li>Publicar detalles íntimos por impulso.</li>
+    <li>Tomar nuevas sustancias para «completar» o corregir lo vivido.</li>
+    <li>Aislarte si notas confusión, miedo o deterioro de tu funcionamiento.</li>
+    <li>Permitir que otra persona defina por ti el significado de la experiencia.</li>
+  </ul>
+</section>
+
+<!-- ════════════ 6 ════════════ -->
+<section class="seccion">
+  <h2><span class="num">6</span>Qué significa integrar</h2>
+
+  <p>Bathje, Majeski y Kudowor describen la integración como un proceso activo de revisar, trabajar, traducir y procesar una experiencia para incorporar gradualmente aprendizajes a la vida. No existe una única técnica ni un plazo universal.</p>
+
+  <div class="cita">Integrar es pasar del insight al hábito, del símbolo a la relación, y de la experiencia extraordinaria a una vida cotidiana más habitable.</div>
+
+  <div class="juntos">
+    <h3>Integración sí es</h3>
+    <ul>
+      <li>Dar tiempo a que el significado cambie.</li>
+      <li>Contrastar <em>insights</em> con la realidad y con personas confiables.</li>
+      <li>Cuidar cuerpo, relaciones, descanso y límites.</li>
+      <li>Traducir una comprensión en una acción pequeña y repetible.</li>
+      <li>Buscar apoyo cuando el material excede tus recursos actuales.</li>
+    </ul>
+  </div>
+
+  <div class="juntos">
+    <h3>Integración no es</h3>
+    <ul>
+      <li>Obedecer toda revelación como mandato.</li>
+      <li>Demostrar que la experiencia fue profunda.</li>
+      <li>Repetir experiencias para evitar el trabajo cotidiano.</li>
+      <li>Adoptar la cosmovisión de quien facilita.</li>
+      <li>Llamar «sanación» a un deterioro persistente del funcionamiento.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ════════════ 7 ════════════ -->
+<section class="seccion">
+  <h2><span class="num">7</span>Seis territorios para revisar</h2>
+
+  <p>El Modelo Sintetizado de Integración organiza el proceso en seis dominios. Úsalos como preguntas, no como una lista que debas completar.</p>
+
+  <h3>Mente</h3>
+  <p>¿Qué creencias se flexibilizaron? ¿Qué interpretación necesita permanecer provisional? ¿Qué hechos puedo verificar?</p>
+
+  <h3>Cuerpo</h3>
+  <p>¿Cómo están mi sueño, apetito, energía, tensión y sensación de seguridad? ¿Qué práctica corporal me ayuda a volver al presente?</p>
+
+  <h3>Espíritu y sentido</h3>
+  <p>¿Cambió mi relación con el propósito, la muerte, lo sagrado o la pertenencia? ¿Puedo honrarlo sin usarlo para evitar dolor psicológico o responsabilidades concretas?</p>
+
+  <h3>Relaciones</h3>
+  <p>¿Qué conversaciones, reparaciones o límites aparecen? Poner un límite también puede ser integración.</p>
+
+  <h3>Vida cotidiana</h3>
+  <p>¿Qué cambio pequeño sería observable y sostenible durante las próximas dos semanas? Evita planes grandiosos; elige una práctica que pueda repetirse.</p>
+
+  <h3>Naturaleza y contexto</h3>
+  <p>¿Cambió mi relación con el mundo natural, mi comunidad o las culturas de las que provienen ciertas prácticas? ¿Cómo puedo responder con reciprocidad y cuidado?</p>
+</section>
+
+<!-- ════════════ 8 ════════════ -->
+<section class="seccion">
+  <h2><span class="num">8</span>Tu mapa de integración</h2>
+
+  <p>Completa este mapa varias veces: al día siguiente, una semana después, y cuando cambie tu comprensión. Que las respuestas cambien es señal de que el proceso está vivo.</p>
+
+  <div class="campo">
+    <span class="etiqueta">Lo que viví</span>
+    <div class="linea"></div>
+    <div class="linea"></div>
+  </div>
+
+  <div class="campo">
+    <span class="etiqueta">Lo que siento en el cuerpo al recordarlo</span>
+    <div class="linea"></div>
+    <div class="linea"></div>
+  </div>
+
+  <div class="campo">
+    <span class="etiqueta">El significado provisional que le doy hoy</span>
+    <div class="linea"></div>
+    <div class="linea"></div>
+  </div>
+
+  <div class="campo">
+    <span class="etiqueta">Lo que todavía no sé</span>
+    <div class="linea"></div>
+    <div class="linea"></div>
+  </div>
+
+  <div class="campo">
+    <span class="etiqueta">Una acción pequeña y verificable</span>
+    <div class="linea"></div>
+    <div class="linea"></div>
+  </div>
+
+  <div class="campo">
+    <span class="etiqueta">La persona o el recurso que puede sostenerme</span>
+    <div class="linea"></div>
+    <div class="linea"></div>
+  </div>
+</section>
+
+<!-- ════════════ 9 ════════════ -->
+<section class="seccion">
+  <h2><span class="num">9</span>Prácticas de integración</h2>
+
+  <p>Elige pocas prácticas y observa su efecto. Más actividad no equivale a más integración.</p>
+
+  <h3>Escritura</h3>
+  <p>Registra escenas, emociones, sensaciones y preguntas. Distingue entre «lo que ocurrió», «lo que interpreté» y «lo que quiero explorar».</p>
+
+  <h3>Focusing o escucha corporal</h3>
+  <p>Nota una sensación concreta antes de explicarla. Dale una palabra o imagen provisional y pregunta qué necesita. Si esto aumenta mucho la activación, detente y busca acompañamiento.</p>
+
+  <h3>Arte y simbolización</h3>
+  <p>Dibujo, música, movimiento o collage pueden dar forma a contenido que todavía no cabe en palabras. La obra no necesita ser bonita ni interpretada.</p>
+
+  <h3>Conversación y comunidad</h3>
+  <p>Comparte con alguien que escuche sin convertir tu experiencia en diagnóstico, profecía o doctrina. Pregunta antes si la otra persona tiene capacidad para recibir el relato.</p>
+
+  <h3>Acción cotidiana</h3>
+  <p>Convierte un <em>insight</em> en una conducta delimitada: una conversación preparada, una hora de sueño protegida, una cita profesional, un límite, o diez minutos de práctica diaria.</p>
+</section>
+
+<!-- ════════════ 10 ════════════ -->
+<section class="seccion">
+  <h2><span class="num">10</span>Discernimiento y ética</h2>
+
+  <p>Marc Aixalà propone una postura de no directividad, colaboración, curiosidad, compasión, límites y humildad. Sirve también para evaluar a quien te acompaña — incluido yo.</p>
+
+  <h3>Una persona acompañante responsable</h3>
+  <ul>
+    <li>No impone significados ni afirma conocer tu «verdad profunda».</li>
+    <li>Distingue apoyo de psicoterapia y reconoce sus competencias.</li>
+    <li>Mantiene límites claros, especialmente en estados de vulnerabilidad.</li>
+    <li>No sexualiza la relación ni usa el contacto físico de forma ambigua.</li>
+    <li>Acepta supervisión, deriva cuando corresponde y documenta acuerdos.</li>
+    <li>No promete curación ni atribuye todo malestar a un «proceso espiritual».</li>
+  </ul>
+
+  <p>Las experiencias místicas, energéticas o de unidad pueden ser significativas. También pueden coexistir con insomnio, manía, psicosis, disociación u otras condiciones que requieren evaluación. <strong>Ninguna interpretación espiritual debe retrasar ayuda clínica cuando existe riesgo o pérdida de funcionamiento.</strong></p>
+</section>
+
+<!-- ════════════ 11 ════════════ -->
+<section class="seccion">
+  <h2><span class="num">11</span>Señales de cuidado y señales de alerta</h2>
+
+  <h3>Indicadores de integración saludable</h3>
+  <ul>
+    <li>Recuperas o mejoras gradualmente el sueño y las rutinas.</li>
+    <li>Puedes sostener ambigüedad sin actuar impulsivamente.</li>
+    <li>Aumenta tu conexión con el cuerpo y con personas confiables.</li>
+    <li>Los cambios son pequeños, observables y compatibles con tus responsabilidades.</li>
+    <li>Puedes pedir ayuda y aceptar retroalimentación.</li>
+  </ul>
+
+  <h3>Busca apoyo profesional pronto si</h3>
+  <ul>
+    <li>El miedo, la confusión, la despersonalización o el insomnio persisten o aumentan.</li>
+    <li>Hay deterioro en trabajo, estudio, autocuidado o relaciones.</li>
+    <li>Aparecen pensamientos suicidas, conducta peligrosa, agitación extrema, paranoia o pérdida de contacto con la realidad.</li>
+    <li>No puedes alimentarte, dormir o mantenerte en seguridad.</li>
+    <li>La experiencia activó un trauma que te desborda.</li>
+  </ul>
+
+  <div class="alerta">
+    <span class="etiqueta">Emergencia</span>
+    <p><strong>Si existe peligro inmediato, riesgo suicida o una emergencia médica o de salud mental, contacta los servicios locales de emergencia.</strong> En México, la Línea de la Vida atiende las 24 horas en el <strong>800 911 2000</strong>. Los servicios de integración y las líneas de apoyo no sustituyen atención de urgencia.</p>
+  </div>
+</section>
+
+<!-- ════════════ 12 ════════════ -->
+<section class="seccion">
+  <h2><span class="num">12</span>Plan personal de continuidad</h2>
+
+  <h3>En las próximas 48 horas</h3>
+  <div class="campo">
+    <span class="etiqueta">Mi prioridad corporal es</span>
+    <div class="linea"></div>
+  </div>
+  <div class="campo">
+    <span class="etiqueta">La persona a quien contactaré es</span>
+    <div class="linea"></div>
+  </div>
+  <div class="campo">
+    <span class="etiqueta">La decisión que voy a posponer es</span>
+    <div class="linea"></div>
+  </div>
+
+  <h3>Durante las próximas dos semanas</h3>
+  <div class="campo">
+    <span class="etiqueta">La práctica pequeña que probaré es</span>
+    <div class="linea"></div>
+  </div>
+  <div class="campo">
+    <span class="etiqueta">La señal que me indicará que me ayuda es</span>
+    <div class="linea"></div>
+  </div>
+  <div class="campo">
+    <span class="etiqueta">La señal que me indicará que necesito otro apoyo es</span>
+    <div class="linea"></div>
+  </div>
+
+  <h3>Mi red</h3>
+  <div class="campo">
+    <span class="etiqueta">Apoyo personal</span>
+    <div class="linea"></div>
+  </div>
+  <div class="campo">
+    <span class="etiqueta">Profesional de salud</span>
+    <div class="linea"></div>
+  </div>
+  <div class="campo">
+    <span class="etiqueta">Servicio de emergencia local</span>
+    <div class="linea"></div>
+  </div>
+</section>
+
+<!-- ════════════ CIERRE ════════════ -->
+<section class="cierre">
+  <p>Si algo de lo que aparece en estas páginas necesita ser conversado, escríbeme. Acompaño procesos de preparación e integración en Ciudad de México y en línea.</p>
+  <p class="firma-final">
+    <strong>Isaac Calderón Derat</strong>
+    Psicólogo · Psicoterapeuta Transpersonal<br>
+    <a href="mailto:psic@isaaccalderon.me">psic@isaaccalderon.me</a> · <a href="https://isaaccalderon.me">isaaccalderon.me</a>
+  </p>
+</section>
+
+<!-- ════════════ RECURSOS Y LEGAL ════════════ -->
+<section class="legal">
+  <h3>Recursos</h3>
+  <ul>
+    <li><strong>Línea de la Vida (México):</strong> apoyo en crisis, 24 horas. 800 911 2000</li>
+    <li><strong>ICEERS Support Center:</strong> apoyo e integración de experiencias difíciles; no sustituye diagnóstico ni tratamiento. iceers.org/en/support-and-integration/</li>
+    <li><strong>Fireside Project:</strong> apoyo emocional entre pares; no es un servicio de emergencias. firesideproject.org</li>
+    <li><strong>NCCIH:</strong> información pública de seguridad sobre psilocibina. nccih.nih.gov</li>
+  </ul>
+
+  <h3>Referencias esenciales</h3>
+  <ul class="refs">
+    <li>Aixalà, M. (2022). <em>Psychedelic Integration: Psychotherapy for Non-Ordinary States of Consciousness</em>. Synergetic Press.</li>
+    <li>Bathje, G. J., Majeski, E. y Kudowor, M. (2022). «Psychedelic integration: An analysis of the concept and its practice». <em>Frontiers in Psychology, 13</em>, 824077.</li>
+    <li>Gendlin, E. T. (1978). <em>Focusing</em>. Everest House.</li>
+    <li>Multidisciplinary Association for Psychedelic Studies. (2025). <em>The MAPS Psychedelic Integration Workbook</em>.</li>
+    <li>Richards, W. A. (2015). <em>Sacred Knowledge</em>. Columbia University Press.</li>
+    <li>Schwartz, R. C. (2021). <em>No Bad Parts</em>. Sounds True.</li>
+  </ul>
+
+  <h3>Nota editorial y de seguridad</h3>
+  <p>Esta guía es material educativo y de reducción de riesgos. <strong>No constituye una recomendación para consumir sustancias, no contiene instrucciones de administración ni de dosificación, y no sustituye atención médica, psicológica o psiquiátrica.</strong> Leerla no establece una relación terapéutica.</p>
+  <p>Adapta para mi práctica clínica el manual de preparación e integración de <em>Psicodélicos sin mitos</em> (Ciencia Psicodélica), y dialoga con el trabajo de integración de Marc Aixalà, <em>The MAPS Psychedelic Integration Workbook</em> y el Modelo Sintetizado de Integración de Bathje, Majeski y Kudowor.</p>
+  <p>© Isaac Calderón Derat. Puedes compartir este documento íntegro y sin modificaciones.</p>
+</section>
+
+</body>
+</html>

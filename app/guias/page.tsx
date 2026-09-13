@@ -20,6 +20,8 @@ interface GuideCard {
   tagColor: "gold" | "teal" | "mint";
   filename: string; // PDF en /public/guias/
   available: boolean;
+  /** Texto cuando no hay descarga. Por defecto, "Próximamente". */
+  notaNoDisponible?: string;
 }
 
 interface GuideBlock {
@@ -34,27 +36,28 @@ const BLOCKS: GuideBlock[] = [
   {
     marker: "I",
     heading: "Antes de la sesión",
-    subheading: "Preparación integral — cuerpo, mente, emoción y suplementación.",
+    subheading: "Preparación integral — cuerpo, emoción, vínculo y contexto.",
     guides: [
       {
-        id: "preparacion-completa",
-        title: "Guía completa de preparación",
+        id: "preparacion-integracion",
+        title: "Preparación e integración",
         description:
-          "Nutrición física, emocional, mental y del alma para los días previos a la sesión. Incluye el objeto sagrado.",
-        tag: "Preparación",
+          "Un mapa de cuidado antes, durante y después: las cuatro capas de preparación, la intención encarnada, las primeras 48 horas, los seis territorios de integración y las señales de alerta.",
+        tag: "Guía completa",
         tagColor: "gold",
-        filename: "Guia_Completa_Participantes.pdf",
+        filename: "Guia-Preparacion-Integracion.pdf",
         available: true,
       },
       {
         id: "suplementacion",
         title: "Protocolo de suplementación",
         description:
-          "Sugerencias de stack antioxidante y serotoninérgico antes, durante y después de la sesión.",
-        tag: "MDMA",
+          "Sugerencias de cuidado antioxidante y serotoninérgico alrededor de la sesión. Se entrega de forma personalizada, no como descarga abierta.",
+        tag: "Personalizado",
         tagColor: "teal",
         filename: "Protocolo_Cuidado_Participantes.pdf",
-        available: true,
+        available: false,
+        notaNoDisponible: "Escríbeme para recibirlo",
       },
     ],
   },
@@ -167,7 +170,7 @@ function GuideCard({ guide }: { guide: GuideCard }) {
           </a>
         ) : (
           <span className="text-[12px] text-[#9BBDC2]/60 italic">
-            Próximamente
+            {guide.notaNoDisponible ?? "Próximamente"}
           </span>
         )}
       </div>
