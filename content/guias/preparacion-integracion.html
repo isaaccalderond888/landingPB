@@ -57,6 +57,10 @@
   li::marker { color: var(--petroleo); }
 
   .evitar-corte { break-inside: avoid; page-break-inside: avoid; }
+  /* Excepción: una sección que debe caber completa en una sola hoja, para
+     poder imprimirse suelta y seguir siendo útil por sí misma. */
+  .hoja-suelta { break-inside: avoid; page-break-inside: avoid; }
+  .hoja-suelta .abre { margin-top: 0; }
   .nueva-pagina { break-before: page; page-break-before: always; }
 
   /* ── PORTADA ──────────────────────────────────────────────────── */
@@ -595,6 +599,8 @@
 </div>
 
 <!-- ══════════════════════ 8 ══════════════════════ -->
+<!-- Se mantiene entera en una sola hoja: está pensada para imprimirse suelta. -->
+<section class="hoja-suelta">
 <div class="abre"><span class="num">8</span><h2>Tu mapa de integración</h2></div>
 
 <p>Completa este mapa varias veces: al día siguiente, una semana después, y cuando cambie tu comprensión. Que las respuestas cambien es señal de que el proceso está vivo.</p>
@@ -632,6 +638,7 @@
     <div class="linea-escritura"></div>
   </div>
 </div>
+</section>
 
 <!-- ══════════════════════ 9 ══════════════════════ -->
 <div class="abre"><span class="num">9</span><h2>Prácticas de integración</h2></div>
