@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 // ── Metadata — no indexable, semi-privada ─────────────────────────
 export const metadata: Metadata = {
   title: "Guías de proceso · Isaac Calderón Derat",
-  description: "Documentos de preparación, protocolo y integración para personas en proceso terapéutico.",
+  description: "Documentos de preparación e integración para personas en procesos de terapia asistida con psicodélicos y estados ampliados de conciencia.",
   robots: {
     index: false,
     follow: false,
@@ -36,7 +36,7 @@ const BLOCKS: GuideBlock[] = [
   {
     marker: "I",
     heading: "Antes de la sesión",
-    subheading: "Preparación integral — cuerpo, emoción, vínculo y contexto.",
+    subheading: "Preparación integral antes de una sesión — cuerpo, emoción, vínculo y contexto.",
     guides: [
       {
         id: "preparacion-integracion",
@@ -64,7 +64,7 @@ const BLOCKS: GuideBlock[] = [
   {
     marker: "II",
     heading: "Durante el proceso",
-    subheading: "Qué esperar en la sesión experimental y cómo habitarla.",
+    subheading: "Qué esperar durante la sesión y cómo habitarla.",
     guides: [
       {
         id: "que-esperar",
@@ -97,7 +97,7 @@ const BLOCKS: GuideBlock[] = [
         id: "integracion",
         title: "Guía de integración",
         description:
-          "Ejes de trabajo, herramientas y estructura de las semanas siguientes a la sesión experimental.",
+          "Ejes de trabajo, herramientas y estructura de las semanas siguientes a la sesión.",
         tag: "Integración",
         tagColor: "gold",
         filename: "Guia_Integracion.pdf",
@@ -107,7 +107,7 @@ const BLOCKS: GuideBlock[] = [
         id: "banderas-rojas",
         title: "Señales de alerta",
         description:
-          "Cuándo contactar al equipo, qué síntomas requieren atención y cómo acceder a apoyo urgente.",
+          "Cuándo escribirme, qué síntomas requieren atención y cómo acceder a apoyo urgente.",
         tag: "Seguridad",
         tagColor: "mint",
         filename: "Senales_Alerta.pdf",
@@ -249,14 +249,15 @@ export default function GuiasPage() {
 
           {/* Título */}
           <h1 className="font-display text-[38px] sm:text-[52px] font-bold leading-[1.1] text-[#eef2ec] mb-6">
-            Guías de{" "}
-            <em className="italic text-[#EAD06A]">proceso</em>
+            Preparación e{" "}
+            <em className="italic text-[#EAD06A]">integración</em>
           </h1>
 
           <p className="text-[#9BBDC2] text-[15px] leading-relaxed max-w-lg">
-            Documentos de acompañamiento para personas en proceso terapéutico.
-            Están aquí para que llegues más preparada, habites mejor la
-            experiencia e integres lo que emerja.
+            Documentos de acompañamiento para personas en procesos de terapia
+            asistida con psicodélicos y experiencias en estados ampliados de
+            conciencia. Están aquí para que llegues con más preparación, habites
+            mejor la experiencia e integres lo que emerja.
           </p>
         </header>
 

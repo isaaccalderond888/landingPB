@@ -99,7 +99,7 @@ function EvaluacionesPageInner() {
           </h1>
           {!selectedTest && (
             <p className="text-base leading-relaxed opacity-60 max-w-xl">
-              Instrumentos de tamizaje validados. Elige la prueba que quieras realizar.
+              Instrumentos de tamizaje y cuestionarios de investigación, cada uno con su fuente y sus límites. Elige el que quieras responder.
             </p>
           )}
         </div>
@@ -178,7 +178,7 @@ function EvaluacionesPageInner() {
                   <p className="text-xs tracking-widest uppercase opacity-35">Paso siguiente</p>
                   <p className="font-display text-xl leading-snug">¿Quieres una lectura más contextualizada?</p>
                   <p className="text-sm opacity-55 leading-relaxed max-w-lg">
-                    Puedo ofrecerte una interpretación de estos resultados desde una perspectiva transpersonal y somática.
+                    Puedes generar una lectura de estos resultados con un modelo de lenguaje, orientada desde una perspectiva transpersonal y somática. La escribe una inteligencia artificial, no Isaac.
                   </p>
                 </div>
                 <AIInterpret score={result.score} answers={result.answers} test={selectedTest} onComplete={setAiText} />

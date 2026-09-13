@@ -44,14 +44,14 @@ export default function Home() {
                 Psicoterapia informada en trauma.
               </h1>
               <p className="font-display text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight text-brand-mint/60">
-                Somática, transpersonal y basada en evidencia.
+                Trabajo con el cuerpo, el sistema nervioso y lo que no
+                pudo ser procesado.
               </p>
             </div>
 
             <p className="text-base md:text-lg leading-relaxed text-white/70 max-w-md">
-              Acompaño procesos de transformación real desde la integración de
-              cuerpo, sistema nervioso y psique. Presencial en Ciudad de México
-              y online para hispanohablantes.
+              Acompañamiento terapéutico presencial en Ciudad de México y
+              en línea para hispanohablantes.
             </p>
 
             <div className="flex flex-wrap gap-3">
@@ -104,15 +104,15 @@ export default function Home() {
               <p className="text-sm leading-relaxed text-foreground/70">
                 El trauma vive en el cuerpo — en los patrones de activación
                 del sistema nervioso, en lo que no pudo ser procesado.
-                Trabajo con protocolos actualizados donde el cuerpo es
-                parte central de la solución.
+                Trabajo desde la psicotraumatología clínica en la que estoy
+                certificado, donde el cuerpo es parte central del proceso.
               </p>
             </div>
 
             <div className="group bg-surface border border-border-theme p-6 rounded-sm hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(37,109,134,0.18)] hover:border-brand-teal/40 transition-all duration-300 cursor-default">
               <div className="w-10 h-0.5 bg-brand-teal mb-5 group-hover:w-16 transition-all duration-300" />
               <h3 className="font-display text-xl leading-snug mb-3">
-                Neurofeedback e integración neurológica
+                Neurofeedback informado en trauma
               </h3>
               <p className="text-sm leading-relaxed text-foreground/70">
                 Cuando el proceso lo requiere, integro evaluación y
@@ -202,7 +202,7 @@ export default function Home() {
       <section className="px-6 md:px-12 lg:px-20 py-10 border-t border-foreground/10">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-xs tracking-widest uppercase text-interactive-text mb-8">
-            Contexto colaborativo
+            Dónde más trabajo
           </h2>
           <div className="flex flex-wrap gap-x-10 gap-y-3">
             <a href="https://ayam.world" target="_blank" rel="noopener noreferrer" className="text-sm text-foreground/60 hover:text-interactive-text transition-colors">Ayam Studio ↗</a>

@@ -60,7 +60,11 @@ export async function POST(req: NextRequest) {
     })
     .join("\n");
 
-  const prompt = `Eres Isaac Calderón, psicoterapeuta transpersonal con formación en psicotraumatología somática, neurofeedback y perspectiva transpersonal. Una persona ha completado el ${config.name} (${config.subtitle}) con los siguientes resultados:
+  // El modelo NO escribe como Isaac. Antes el prompt empezaba con "Eres Isaac
+  // Calderón…", así que una persona recibía una lectura clínica sobre su trauma
+  // en la voz de su posible terapeuta, sin que nada dijera que la generó una
+  // máquina. La interfaz ahora lo declara y el prompt ya no suplanta a nadie.
+  const prompt = `Redactas una lectura orientativa de resultados para la práctica clínica de Isaac Calderón, psicoterapeuta transpersonal con formación en psicotraumatología somática, neurofeedback y perspectiva transpersonal. No hablas como él, no firmas como él y no te presentas como si fueras una persona: el texto se muestra explícitamente como generado por inteligencia artificial. Una persona ha completado el ${config.name} (${config.subtitle}) con los siguientes resultados:
 
 Puntuación total: ${score}/${maxScore} — ${band.label}
 
@@ -72,7 +76,7 @@ Escribe una interpretación personalizada en 3-4 párrafos. Debe:
 - Validar la experiencia sin dramatizar ni minimizar
 - Contextualizar el puntaje con perspectiva transpersonal y somática
 - Destacar con cuidado los ítems de mayor puntuación como áreas de atención
-- Cerrar con una invitación honesta a profundizar si el proceso lo requiere, sin presionar
+- Cerrar sugiriendo que, si algo de esto resuena, vale la pena conversarlo con un profesional; sin presionar y sin hablar en nombre de Isaac
 
 Tono: humano, clínico con alma. No emitir diagnóstico definitivo. En español.`;
 

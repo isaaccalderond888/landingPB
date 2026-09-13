@@ -65,15 +65,31 @@ export default function AIInterpret({ score, answers, test, onComplete }: Props)
     .map((p) => p.trim())
     .filter(Boolean);
 
+  const mostrandoTexto = loading || !!text || done;
+
   return (
     <div className="space-y-5">
+      {/* Declaración obligatoria: la persona debe saber que esto lo escribió un
+          modelo y no Isaac. Va encima del texto, no en el pie, porque abajo
+          llega cuando ya lo leyó todo. */}
+      {mostrandoTexto && (
+        <div className="flex items-start gap-2.5 border border-brand-gold/25 bg-brand-gold/[0.06] rounded-sm px-4 py-3">
+          <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-accent-text" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} aria-hidden="true">
+            <circle cx="12" cy="12" r="9" /><path d="M12 8h.01M11 12h1v4h1" strokeLinecap="round" />
+          </svg>
+          <p className="text-xs leading-relaxed text-foreground/70">
+            <strong className="text-accent-text font-medium">Generado con inteligencia artificial.</strong>{" "}
+            Isaac no ha leído estos resultados. Si quieres que los vea, usa el envío de abajo.
+          </p>
+        </div>
+      )}
       {/* Button — shown before text starts streaming */}
       {!text && !loading && !done && (
         <button
           onClick={interpret}
           className="w-full border border-brand-gold/40 text-brand-gold py-3.5 text-sm tracking-widest uppercase hover:bg-brand-gold/8 transition-all duration-300"
         >
-          Obtener interpretación personalizada
+          Generar interpretación con IA
         </button>
       )}
 
