@@ -27,6 +27,13 @@ export default function Home() {
 
       {/* SECCIÓN 1 — HERO */}
       <section className="min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20 pt-24 pb-14 bg-gradient-to-br from-brand-night via-brand-navy to-brand-night noise-texture radial-glow relative overflow-hidden">
+        {/* Curvas de nivel al pie del hero — el mismo motivo que la portada de
+            la guía descargable. Decorativo: no lleva texto ni interacción. */}
+        <div
+          aria-hidden="true"
+          className="curvas-hero pointer-events-none absolute inset-x-0 bottom-0 h-[44%] z-0"
+        />
+
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center relative z-10">
           <div className="space-y-6">
             <div className="space-y-3">

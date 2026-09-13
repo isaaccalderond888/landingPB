@@ -83,6 +83,33 @@ h1, h2, h3, .font-display {
   overflow: hidden;
 }
 
+/* Curvas de nivel del hero — mismo motivo que la portada de la guía.
+   Se monta como máscara CSS para que el SVG quede cacheado aparte y el color
+   lo decida el tema, no el archivo. */
+.curvas-hero {
+  background-color: #EAD06A;
+  /* Dos máscaras cruzadas: el dibujo de curvas y un degradado que lo apaga
+     hacia arriba. Así el motivo nunca sube hasta el texto del hero. */
+  -webkit-mask-image: url("/arte/curvas-hero.svg"),
+                      linear-gradient(to top, #000 0%, #000 38%, transparent 92%);
+  mask-image: url("/arte/curvas-hero.svg"),
+              linear-gradient(to top, #000 0%, #000 38%, transparent 92%);
+  -webkit-mask-size: cover, 100% 100%;
+  mask-size: cover, 100% 100%;
+  -webkit-mask-position: bottom center, bottom center;
+  mask-position: bottom center, bottom center;
+  -webkit-mask-repeat: no-repeat, no-repeat;
+  mask-repeat: no-repeat, no-repeat;
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  opacity: 0.22;
+}
+
+/* En pantallas chicas el contenido ocupa todo el alto: el motivo estorbaría. */
+@media (max-width: 767px) {
+  .curvas-hero { display: none; }
+}
+
 .teal-glow {
   position: relative;
 }
