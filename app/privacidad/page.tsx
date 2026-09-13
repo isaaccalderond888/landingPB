@@ -10,13 +10,14 @@ export const metadata: Metadata = {
 };
 
 /**
- * BORRADOR — pendiente de revisión legal.
- *
  * Redactado siguiendo la estructura que pide la Ley Federal de Protección de
  * Datos Personales en Posesión de los Particulares (LFPDPPP) y su Reglamento
- * para un aviso integral. Los campos marcados con PENDIENTE requieren un dato
- * que sólo Isaac puede aportar (domicilio fiscal, número de cédula, plazos de
- * conservación). No publicar sin que lo revise una persona con criterio legal.
+ * para un aviso integral. Domicilio y plazo de conservación los aportó Isaac;
+ * el plazo corresponde al mínimo de la NOM-004-SSA3-2012.
+ *
+ * PENDIENTE DE REVISIÓN LEGAL: el texto no ha sido revisado por una persona
+ * con criterio legal. Quien lo modifique, que mantenga ese pendiente a la
+ * vista hasta que ocurra.
  */
 
 const ACTUALIZADO = "13 de septiembre de 2026";
@@ -83,8 +84,9 @@ export default function PrivacidadPage() {
                 psic@isaaccalderon.me
               </a>
             </p>
-            <p className="text-foreground/50">
-              Domicilio para oír y recibir notificaciones: <em>PENDIENTE</em>.
+            <p>
+              Domicilio para oír y recibir notificaciones: Paseo de las Palmas 765,
+              Lomas de Chapultepec, C.P. 11000, Ciudad de México.
             </p>
           </Seccion>
 
@@ -162,6 +164,7 @@ export default function PrivacidadPage() {
             <ul className="list-disc pl-5 space-y-1.5 marker:text-brand-teal">
               <li><strong className="text-foreground">Vercel</strong> — alojamiento del sitio.</li>
               <li><strong className="text-foreground">Resend</strong> — envío del correo con tus resultados.</li>
+              <li><strong className="text-foreground">Proton</strong> — el buzón donde recibo y conservo ese correo.</li>
               <li><strong className="text-foreground">Anthropic</strong> — interpretación opcional con IA, en los términos de la sección 5.</li>
               <li><strong className="text-foreground">Calendly</strong> — agendado de citas, si decides usarlo.</li>
             </ul>
@@ -169,6 +172,24 @@ export default function PrivacidadPage() {
               Estos proveedores pueden procesar información fuera de México. Al usar el
               sitio consientes ese tratamiento en los términos aquí descritos.
             </p>
+            <div className="border border-brand-teal/25 bg-brand-teal/[0.04] rounded-sm p-4 space-y-2">
+              <p className="text-xs tracking-widest uppercase text-interactive-text">
+                Sobre el buzón donde acaban tus datos
+              </p>
+              <p>
+                Uso <strong className="text-foreground">Proton Mail</strong>, no un correo
+                comercial financiado con publicidad. Una vez que el mensaje llega, Proton lo
+                guarda con cifrado de acceso cero: queda cifrado con mi clave y ni Proton
+                puede leerlo.
+              </p>
+              <p>
+                Para ser preciso y no prometer de más: ese cifrado protege el mensaje{" "}
+                <em>una vez almacenado</em>. Como el correo lo envía un servicio externo, el
+                trayecto hasta el buzón no va cifrado de extremo a extremo. Si necesitas
+                comunicarme algo especialmente delicado, lo conversamos en sesión y no por
+                escrito.
+              </p>
+            </div>
             <p>
               También podría revelar datos cuando una autoridad competente lo requiera
               legalmente, en los supuestos del artículo 37 de la LFPDPPP.
@@ -205,8 +226,16 @@ export default function PrivacidadPage() {
               cuando corresponde, durante el plazo que la normativa aplicable al expediente
               clínico exige. Concluido ese plazo, los datos se eliminan o se anonimizan.
             </p>
-            <p className="text-foreground/50">
-              Plazo concreto de conservación: <em>PENDIENTE</em>.
+            <p>
+              En concreto: conservo la información durante{" "}
+              <strong className="text-foreground">cinco años</strong> contados desde la
+              última sesión o el último contacto, que es el mínimo que fija la
+              NOM-004-SSA3-2012 para el expediente clínico. Si la persona era menor de
+              edad, el plazo corre hasta que cumpla la mayoría de edad más cinco años.
+            </p>
+            <p>
+              Si me escribes antes para pedir la eliminación de tus datos, procedo salvo
+              que exista una obligación legal de conservarlos durante ese plazo.
             </p>
           </Seccion>
 
