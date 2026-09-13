@@ -122,6 +122,36 @@ h1, h2, h3, .font-display {
   filter: blur(30px);
 }
 
+/* Cabeceras con arte de fondo. El velo en degradado es obligatorio: sin él
+   el título compite con la imagen, que es el error que ya cometí tres veces
+   en la portada del PDF y en el hero. */
+.cabecera-arte {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--brand-night);
+}
+.cabecera-arte::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    rgba(11, 24, 48, 0.93) 0%,
+    rgba(11, 24, 48, 0.80) 40%,
+    rgba(11, 24, 48, 0.42) 72%,
+    rgba(11, 24, 48, 0.25) 100%
+  );
+  pointer-events: none;
+}
+.cabecera-arte > * {
+  position: relative;
+  z-index: 1;
+}
+.arte-vetas { background-image: url("/arte/vetas.jpg"); }
+.arte-bruma { background-image: url("/arte/bruma.jpg"); }
+
 /* Accesibilidad: respeta preferencia de movimiento reducido */
 @media (prefers-reduced-motion: reduce) {
   html {

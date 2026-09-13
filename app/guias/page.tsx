@@ -215,14 +215,19 @@ function DownloadIcon() {
 // ── Page ──────────────────────────────────────────────────────────
 export default function GuiasPage() {
   return (
-    <main className="min-h-screen bg-[#0b1830] text-[#eef2ec]">
-      {/* Glow ambiental — consistente con el resto del sitio */}
+    <main className="relative min-h-screen bg-[#0b1830] text-[#eef2ec]">
+      {/* Arte de cabecera: vetas doradas, el mismo registro que la portada del
+          documento que esta página ofrece. Se desvanece hacia abajo para que
+          el texto de las tarjetas nunca compita con la imagen. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none fixed inset-0 overflow-hidden"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[560px] overflow-hidden"
       >
-        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-[#256D86]/5 blur-[120px]" />
-        <div className="absolute top-1/3 -right-20 w-[300px] h-[300px] rounded-full bg-[#EAD06A]/4 blur-[100px]" />
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/arte/vetas.jpg')" }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0b1830]/55 via-[#0b1830]/80 to-[#0b1830]" />
       </div>
 
       <div className="relative mx-auto max-w-4xl px-6 py-20 sm:py-28">

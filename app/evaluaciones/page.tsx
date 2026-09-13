@@ -89,7 +89,7 @@ function EvaluacionesPageInner() {
       </nav>
 
       {/* HERO */}
-      <section className="pt-32 pb-12 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-brand-night via-brand-navy to-brand-night text-[#EEF2EC]">
+      <section className="cabecera-arte arte-bruma pt-32 pb-12 px-6 md:px-12 lg:px-20 text-[#EEF2EC]">
         <div className="max-w-4xl mx-auto space-y-4">
           <p className="text-xs tracking-widest uppercase text-brand-gold opacity-80">
             Herramientas clínicas
