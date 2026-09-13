@@ -6,24 +6,17 @@ export default function ThemeToggle() {
   const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
-    const stored = localStorage.getItem("theme");
-    if (stored === "light") {
-      setIsDark(false);
-      document.documentElement.classList.remove("dark");
-    } else {
-      setIsDark(true);
-      document.documentElement.classList.add("dark");
-    }
+    setIsDark(document.documentElement.classList.contains("dark"));
   }, []);
 
   function toggle() {
     if (isDark) {
       document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
+      try { localStorage.setItem("theme", "light"); } catch { /* Storage may be unavailable. */ }
       setIsDark(false);
     } else {
       document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
+      try { localStorage.setItem("theme", "dark"); } catch { /* Storage may be unavailable. */ }
       setIsDark(true);
     }
   }
@@ -32,7 +25,7 @@ export default function ThemeToggle() {
     <button
       onClick={toggle}
       aria-label="Cambiar modo de color"
-      className="rounded-sm text-xs tracking-widest uppercase opacity-70 hover:opacity-100 transition-opacity"
+      className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-sm text-xs tracking-widest uppercase opacity-70 hover:opacity-100 transition-opacity"
     >
       {isDark ? (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4" aria-hidden="true">

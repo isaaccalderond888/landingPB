@@ -6,22 +6,61 @@ import Logo from "@/components/Logo";
 
 const WA = "https://wa.me/524424752806?text=Hola%20Isaac%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20tu%20trabajo";
 
+export const metadata = { alternates: { canonical: "https://www.isaaccalderon.me/" } };
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://www.isaaccalderon.me/#isaac",
+      "name": "Isaac Calderón Derat",
+      "url": "https://www.isaaccalderon.me",
+      "image": "https://www.isaaccalderon.me/isaac.jpg",
+      "jobTitle": "Psicólogo y psicoterapeuta transpersonal",
+      "knowsLanguage": "es",
+      "subjectOf": {
+        "@type": "WebPage",
+        "url": "https://www.isaaccalderon.me/formacion"
+      }
+    },
+    {
+      "@type": "MedicalBusiness",
+      "@id": "https://www.isaaccalderon.me/#consulta",
+      "name": "Consulta de Isaac Calderón Derat",
+      "url": "https://www.isaaccalderon.me",
+      "employee": {
+        "@id": "https://www.isaaccalderon.me/#isaac"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Avenida Paseo de las Palmas 765, interior 202",
+        "addressLocality": "Ciudad de México",
+        "addressCountry": "MX"
+      },
+      "description": "Consulta presencial de psicoterapia en Clínica Newman y atención en línea."
+    }
+  ]
+};
+
 export default function Home() {
   return (
     <div className="bg-background text-foreground min-h-screen">
 
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\u003c") }} />
+
       {/* NAV */}
-      <nav aria-label="Navegación principal" className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-5 bg-brand-night/90 text-[#EEF2EC] backdrop-blur-md border-b border-white/10 shadow-[0_4px_24px_rgba(11,24,48,0.18)]">
+      <nav aria-label="Navegación principal" className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between gap-2 px-4 sm:px-6 md:px-12 py-3 md:py-5 bg-brand-night/90 text-[#EEF2EC] backdrop-blur-md border-b border-white/10 shadow-[0_4px_24px_rgba(11,24,48,0.18)]">
         <div className="flex items-center gap-3">
           <Logo size={32} variant="color" />
-          <span className="text-sm tracking-widest uppercase text-white/65 hidden sm:block">
+          <span className="text-xs sm:text-sm tracking-wide sm:tracking-widest uppercase text-white/80 max-w-[125px] sm:max-w-none">
             Isaac Calderón Derat
           </span>
         </div>
-        <div className="flex items-center gap-6 md:gap-8">
+        <div className="flex items-center gap-2 md:gap-8">
           <a href="#enfoque" className="rounded-sm text-xs tracking-widest uppercase text-white/60 hover:text-[#69A5BB] transition-colors hidden md:block">Enfoque</a>
           <a href="#proceso" className="rounded-sm text-xs tracking-widest uppercase text-white/60 hover:text-[#69A5BB] transition-colors hidden md:block">Proceso</a>
-          <a href="#agendar" className="rounded-sm text-xs tracking-widest uppercase text-white/60 hover:text-[#69A5BB] transition-colors hidden md:block">Agendar</a>
+          <a href="#agendar" className="rounded-sm text-xs tracking-widest uppercase text-white/60 hover:text-[#69A5BB] transition-colors inline-flex min-h-11 items-center px-2">Agendar</a>
           <ThemeToggle />
         </div>
       </nav>
@@ -36,7 +75,7 @@ export default function Home() {
         />
 
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center relative z-10">
-          <div className="space-y-6">
+          <div className="space-y-6 order-2 md:order-1">
             <div className="space-y-3">
               <p className="text-xs tracking-widest uppercase text-brand-gold opacity-90">
                 Psicólogo · Psicoterapeuta Transpersonal
@@ -76,13 +115,14 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="hidden md:flex items-center justify-center teal-glow">
+          <div className="flex order-1 md:order-2 items-center justify-center teal-glow">
             <Image
               src="/isaac.jpg"
               alt="Isaac Calderón Derat, psicoterapeuta transpersonal en Ciudad de México"
               width={520}
               height={520}
-              className="aspect-[4/5] object-cover object-center w-full max-w-[420px] rounded-[20px] border border-white/10 shadow-[0_24px_60px_rgba(0,0,0,0.28)] relative z-10"
+              className="aspect-[4/5] object-cover object-center w-32 sm:w-40 md:w-full max-w-[420px] rounded-[20px] border border-white/10 shadow-[0_24px_60px_rgba(0,0,0,0.28)] relative z-10"
+              sizes="(max-width: 639px) 128px, (max-width: 767px) 160px, 420px"
               priority
             />
           </div>

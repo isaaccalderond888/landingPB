@@ -422,3 +422,29 @@ campo `nota` y avisarle antes.
 - **Cuando algo sea decisión de Isaac, citarlo con sus palabras**, no
   parafrasearlo. Una paráfrasis perdió su motivo real para no enlazar
   `/evaluaciones` y costó una ronda entera de trabajo mal dirigido.
+
+## 9. Avance Codex — C4–C7 (2026-09-13)
+
+Preparado en la rama `codex/c4-c7-web`, copia aislada
+`C:/Users/isaac/isaaccalderon.me/.worktrees/codex-c4-c7` (NOMADVIVO),
+con base `40578a2`. No integrado a main ni publicado en producción.
+
+- C4: nombre y enlace Agendar visibles en móvil; retrato existente compacto.
+- C5: sitemap con solo inicio, formación y privacidad; robots; JSON-LD Person y
+  MedicalBusiness para la consulta; base www y canonical de inicio. Se conserva
+  noindex de guías. No se cambió la indexación de evaluaciones.
+- C6: preferencia de tema aplicada antes del body; tolera almacenamiento bloqueado.
+- C7: retirado el montaje global del badge; se conserva la sección de agendado.
+
+Verificación: TypeScript, lint y next build exitosos; navegador a 375 px con
+retrato y navegación visibles, sin desbordamiento horizontal; tema claro persistente
+tras recargar; JSON-LD válido como JSON en HTML compilado; sitemap y robots HTTP 200
+local. Script de tema comprobado con claro, oscuro, sin preferencia y almacenamiento
+bloqueado. La copia no tiene credenciales de servicios: no valida entrega de leads,
+correo ni disponibilidad real de Calendly. No se enviaron formularios.
+
+G1–G4 siguen en Grok. No se cambiaron APIs, variables de Vercel, DNS, AgendaPro ni
+WhatsApp. I2 ya pudo comprobarlo Codex mediante el conector Vercel: la ejecución
+registrada a las 20:07:30 UTC devolvió 502 con ERR_INVALID_URL antes de contactar
+al destino. Esto describe esa ejecución; no prueba la configuración actual.
+No copiar valores de configuración de los logs.
