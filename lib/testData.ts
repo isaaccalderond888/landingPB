@@ -321,7 +321,7 @@ export const TEST_CONFIGS: Record<TestId, TestConfig> = {
     name: "DES-II",
     subtitle: "Disociación",
     category: "trauma",
-    cardDescription: "28 preguntas · ~7 min · Mide experiencias disociativas en la vida cotidiana (porcentaje de tiempo).",
+    cardDescription: "28 preguntas · ~7 min · Mide experiencias disociativas en la vida cotidiana (porcentaje de tiempo). Se aplica en entrevista, acompañado por el clínico.",
     accentClass: "text-interactive-text",
     borderClass: "border-brand-teal/30 hover:border-brand-teal",
     btnSelectedClass: "bg-brand-teal border-brand-teal text-white",
@@ -381,7 +381,7 @@ export const TEST_CONFIGS: Record<TestId, TestConfig> = {
       { max: 49, label: "Moderada",            ...B.gold, description: "Nivel moderado de disociación que puede merecer exploración con un especialista en trauma." },
       { max: 100, label: "Significativa",      ...B.red,  description: "Puntaje ≥30 sugiere disociación clínicamente significativa. Se recomienda evaluación especializada." },
     ],
-    disclaimer: "El DES-II es de dominio público (Carlson & Putnam). El puntaje es el promedio de tus respuestas expresado en porcentaje.",
+    disclaimer: "El DES-II es de dominio público (Carlson & Putnam). El puntaje es el promedio de las respuestas expresado en porcentaje. Está diseñado para aplicarse en entrevista, acompañado por el clínico; no como cuestionario autoadministrado.",
   },
 
   ACE: {

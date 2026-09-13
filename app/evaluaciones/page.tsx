@@ -24,9 +24,15 @@ import { TEST_CONFIGS, CATEGORY_ORDER, CATEGORY_LABELS, type TestId, type TestCa
 // TEST_CONFIGS para uso investigativo propio por enlace directo; no deben volver
 // al menú público ni entrar en una versión comercial sin licencia de ARC.
 // Ver: https://www.autismresearchcentre.com/tests/
+//
+// DESII también está fuera, pero por una razón clínica, no de licencia: el DES-II
+// se administra en entrevista y lo responde el clínico, no la persona por su
+// cuenta. Autoadministrarlo produce lecturas poco fiables justo en el terreno más
+// delicado —disociación— y sin nadie presente para contener lo que despierte.
+// Sigue disponible por enlace directo (?test=DESII) para aplicarlo en sesión.
 const CATEGORY_TESTS: Record<TestCategory, TestId[]> = {
   clinico:         ["PHQ9", "GAD7", "DASS21", "SDS", "CBI"],
-  trauma:          ["PCL5", "DESII", "ACE"],
+  trauma:          ["PCL5", "ACE"],
   bienestar:       ["SWLS", "PERMA"],
   neurodiversidad: ["CATQ", "ASRS"],
   postsesion:      ["MEQ30", "EBI", "CEQ"],
