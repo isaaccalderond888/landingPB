@@ -13,11 +13,22 @@ import AIInterpret from "@/components/tests/AIInterpret";
 import SendToTherapist from "@/components/tests/SendToTherapist";
 import { TEST_CONFIGS, CATEGORY_ORDER, CATEGORY_LABELS, type TestId, type TestCategory } from "@/lib/testData";
 
+// Qué se muestra en el selector público. NO es el catálogo: el catálogo completo
+// vive en TEST_CONFIGS, y el deeplink (?test=XXX) lo lee de ahí directamente.
+// Por eso una prueba puede quedar fuera de este menú y seguir siendo enviable por
+// enlace directo a una persona concreta.
+//
+// AQ10 y AQ50 están fuera a propósito. El Autism Research Centre (Cambridge) los
+// licencia solo para uso investigativo NO comercial y no permite adaptarlos sin
+// permiso — la traducción al español ya es una adaptación. Se conservan en
+// TEST_CONFIGS para uso investigativo propio por enlace directo; no deben volver
+// al menú público ni entrar en una versión comercial sin licencia de ARC.
+// Ver: https://www.autismresearchcentre.com/tests/
 const CATEGORY_TESTS: Record<TestCategory, TestId[]> = {
   clinico:         ["PHQ9", "GAD7", "DASS21", "SDS", "CBI"],
   trauma:          ["PCL5", "DESII", "ACE"],
   bienestar:       ["SWLS", "PERMA"],
-  neurodiversidad: ["AQ10", "AQ50", "CATQ", "ASRS"],
+  neurodiversidad: ["CATQ", "ASRS"],
   postsesion:      ["MEQ30", "EBI", "CEQ"],
 };
 

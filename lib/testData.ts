@@ -1194,7 +1194,7 @@ export const TEST_CONFIGS: Record<TestId, TestConfig> = {
         ],
       },
     ],
-    disclaimer: "El CAT-Q es libre para uso clínico y de investigación (Hull et al., 2019). No es diagnóstico; evalúa estrategias de enmascaramiento.",
+    disclaimer: "El CAT-Q se publicó bajo licencia Creative Commons CC-BY 4.0 (Hull et al., 2019, Journal of Autism and Developmental Disorders), que permite su uso y reproducción con atribución. No es diagnóstico; evalúa estrategias de enmascaramiento.",
   },
 
   ASRS: {
