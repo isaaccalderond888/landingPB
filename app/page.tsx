@@ -121,10 +121,10 @@ export default function Home() {
                 Terapia asistida con psicodélicos
               </h3>
               <p className="text-sm leading-relaxed text-foreground/70">
-                Acompaño preparación, sesión e integración con sustancias
-                psicoactivas en contexto clínico y ético. Como director
-                de Ciencia Psicodélica, este trabajo tiene el rigor
-                que merece.
+                Acompaño preparación e integración con sustancias
+                psicoactivas o enteógenas en contexto clínico y ético.
+                Tengo la fortuna de dirigir Ciencia Psicodélica, y desde
+                ahí cuido que este trabajo tenga el rigor que merece.
               </p>
             </div>
 
@@ -198,7 +198,7 @@ export default function Home() {
             <a href="https://ayam.world" target="_blank" rel="noopener noreferrer" className="text-sm text-foreground/60 hover:text-interactive-text transition-colors">Ayam Studio ↗</a>
             <a href="https://newman.institute" target="_blank" rel="noopener noreferrer" className="text-sm text-foreground/60 hover:text-interactive-text transition-colors">Neuroclínica Newman ↗</a>
             <a href="https://cienciapsicodelica.com" target="_blank" rel="noopener noreferrer" className="text-sm text-foreground/60 hover:text-interactive-text transition-colors">Ciencia Psicodélica ↗</a>
-            <a href="https://enteogenesis.com" target="_blank" rel="noopener noreferrer" className="text-sm text-foreground/60 hover:text-interactive-text transition-colors">Enteogénesis ↗</a>
+            <a href="https://terrasana.pro/products/25-27-septiembre-enteogenesis-retiro-de-exploracion-interior" target="_blank" rel="noopener noreferrer" className="text-sm text-foreground/60 hover:text-interactive-text transition-colors">Enteogénesis ↗</a>
           </div>
         </div>
       </section>
