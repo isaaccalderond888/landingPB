@@ -24,7 +24,9 @@
       "mcp__stitch__list_projects",
       "Bash(python -c \"import json,sys; data=json.load\\(sys.stdin\\); [print\\(p[''''name''''], p.get\\(''''displayName'''',''''''''\\), p.get\\(''''id'''',''''''''\\)\\) for p in data.get\\(''''projects'''',[]\\)]\")",
       "Bash(python -c \"import json,sys; data=json.load\\(sys.stdin\\); print\\(json.dumps\\(data.get\\(''''projects'''',[]\\)[0], indent=2\\)\\)\")",
-      "mcp__stitch__list_screens"
+      "mcp__stitch__list_screens",
+      "mcp__stitch__generate_screen_from_text",
+      "Bash(python -c \":*)"
     ]
   }
 }
