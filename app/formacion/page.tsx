@@ -17,8 +17,9 @@ export const metadata: Metadata = {
  *
  * Cada insignia es el archivo oficial del emisor, sin recolorear ni alterar:
  * modificar una marca de certificación normalmente infringe sus condiciones
- * de uso. Por eso viven aquí, sobre fondo neutro, y no dentro del sistema
- * visual del sitio.
+ * de uso. Conservan su transparencia original, así que se apoyan directamente
+ * sobre la tarjeta. Por eso esta página existe aparte: cuatro sellos de dos
+ * emisores distintos no se integran al sistema visual del sitio, se contienen.
  */
 
 interface Certificacion {
@@ -74,6 +75,18 @@ const NEWMAN = [
   { titulo: "Diplomado en Psicotraumatología CPT-III", detalle: "120 horas · diciembre 2024" },
   { titulo: "Diplomado en Terapia Asistida con Psicodélicos (TAPS)", detalle: "febrero 2026" },
   { titulo: "TIST — Trauma Informed Stabilization Treatment, nivel 1", detalle: "diciembre 2025" },
+  { titulo: "Finding Solid Ground", detalle: "diciembre 2025" },
+];
+
+const NEUROFEEDBACK = [
+  {
+    titulo: "Uso clínico del neurofeedback y desarrollo de protocolos, teoría y práctica",
+    detalle: "nivel intermedio · 3 a 5 de marzo de 2025",
+  },
+  {
+    titulo: "Un enfoque integral sobre la aplicación de Neurofeedback y Biofeedback en Psicotrauma",
+    detalle: "nivel intermedio · 6 y 7 de marzo de 2025",
+  },
 ];
 
 const EPTI = [
@@ -135,17 +148,15 @@ export default function FormacionPage() {
                   rel="noopener noreferrer"
                   className="group flex gap-5 items-start p-5 rounded-sm border border-border-theme bg-surface hover:border-brand-teal/40 hover:shadow-[0_8px_32px_rgba(37,109,134,0.12)] transition-all duration-200"
                 >
-                  {/* Fondo blanco fijo: la insignia es marca del emisor y no se
-                      adapta al tema del sitio. */}
-                  <span className="flex-shrink-0 rounded-sm bg-white p-1.5">
-                    <Image
-                      src={c.insignia}
-                      alt={`Insignia de la certificación ${c.sigla}`}
-                      width={64}
-                      height={64}
-                      className="w-16 h-16 object-contain"
-                    />
-                  </span>
+                  {/* Las insignias traen transparencia real: van sueltas sobre
+                      la tarjeta, sin recuadro que la desperdicie. */}
+                  <Image
+                    src={c.insignia}
+                    alt={`Insignia de la certificación ${c.sigla}`}
+                    width={72}
+                    height={72}
+                    className="flex-shrink-0 w-[72px] h-[72px] object-contain"
+                  />
                   <span className="min-w-0">
                     <span className="block font-display text-lg leading-none mb-1.5">{c.sigla}</span>
                     <span className="block text-xs leading-relaxed text-foreground/70 mb-2.5">{c.nombre}</span>
@@ -179,6 +190,29 @@ export default function FormacionPage() {
                 </li>
               ))}
             </ul>
+          </section>
+
+          {/* ── Neurofeedback ────────────────────────────────── */}
+          <section>
+            <div className="mb-6 border-l-2 border-brand-teal/40 pl-4">
+              <h2 className="font-display text-xl leading-snug">Neurofeedback</h2>
+              <p className="text-xs text-foreground/60 mt-1">
+                Boston NeuroDynamics · Applied Neuroscience Center, Ciudad de México
+              </p>
+            </div>
+            <ul className="divide-y divide-foreground/10 border-t border-foreground/10">
+              {NEUROFEEDBACK.map((n) => (
+                <li key={n.titulo} className="py-4 space-y-1">
+                  <p className="text-sm leading-snug">{n.titulo}</p>
+                  <p className="text-xs text-foreground/45">{n.detalle}</p>
+                </li>
+              ))}
+            </ul>
+            <p className="text-sm leading-relaxed text-foreground/70 mt-5">
+              Integro evaluación y entrenamiento de ondas cerebrales en el proceso
+              terapéutico. <strong className="text-foreground">La certificación está en
+              proceso:</strong> quedan pendientes supervisiones y examen.
+            </p>
           </section>
 
           {/* ── EPTI ─────────────────────────────────────────── */}
