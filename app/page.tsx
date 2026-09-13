@@ -1,6 +1,7 @@
 import Image from "next/image";
 import ThemeToggle from "@/components/ThemeToggle";
 import CalendlyAccordion from "@/components/CalendlyAccordion";
+import AgendarPresencial from "@/components/AgendarPresencial";
 import Logo from "@/components/Logo";
 
 const WA = "https://wa.me/524424752806?text=Hola%20Isaac%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20tu%20trabajo";
@@ -195,6 +196,9 @@ export default function Home() {
             ¿Cuándo empezamos?
           </p>
           <CalendlyAccordion />
+          {/* Presencial va junto a lo online, no aparte: quien busca cita no
+              debería tener que averiguar cuál sistema le toca. */}
+          <AgendarPresencial />
         </div>
       </section>
 
