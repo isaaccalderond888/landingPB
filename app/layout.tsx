@@ -16,11 +16,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://isaaccalderon.me"),
   title: "Isaac Calderón Derat — Psicoterapeuta Transpersonal | CDMX",
   description:
-    "Psicoterapia informada en trauma, somática y transpersonal. Acompaño procesos de transformación real integrando psicotraumatología, neurofeedback y estados ampliados de conciencia. Online para hispanohablantes y presencial en CDMX.",
+    "Psicoterapia informada en trauma. Trabajo con el cuerpo, el sistema nervioso y lo que no pudo ser procesado, integrando psicotraumatología clínica, neurofeedback informado en trauma y estados ampliados de conciencia. Presencial en Ciudad de México y en línea para hispanohablantes.",
   openGraph: {
     title: "Isaac Calderón Derat — Psicoterapeuta Transpersonal | CDMX",
     description:
-      "Psicoterapia informada en trauma, somática y transpersonal. Acompaño procesos de transformación real integrando psicotraumatología, neurofeedback y estados ampliados de conciencia. Online para hispanohablantes y presencial en CDMX.",
+      "Psicoterapia informada en trauma. Trabajo con el cuerpo, el sistema nervioso y lo que no pudo ser procesado, integrando psicotraumatología clínica, neurofeedback informado en trauma y estados ampliados de conciencia. Presencial en Ciudad de México y en línea para hispanohablantes.",
     url: "https://isaaccalderon.me",
     siteName: "Isaac Calderón Derat",
     locale: "es_MX",
