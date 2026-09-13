@@ -4,6 +4,12 @@
 
 /* Paleta del Sistema de Diseño - Marca Personal ICD (claude.ai/design) */
 :root {
+  /* Le dice al navegador con qué paleta dibujar los controles NATIVOS: el
+     desplegable de un <select>, las barras de scroll, los selectores de fecha
+     y el autorrelleno. Sin esto, en modo oscuro el navegador abre el menú del
+     select con fondo blanco del sistema mientras las <option> heredan el texto
+     claro del tema — y las opciones quedan invisibles. */
+  color-scheme: light;
   --background: #eef2ec; /* crema — on-brand para pantalla en modo claro */
   --foreground: #183463; /* marino */
   --surface: #eaf0ea;
@@ -20,6 +26,7 @@
 }
 
 .dark {
+  color-scheme: dark;
   --background: #0b1830;
   --foreground: #eef2ec;
   --surface: #142b52;
@@ -188,4 +195,12 @@ h1, h2, h3, .font-display {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Respaldo para los navegadores que no aplican color-scheme al menú del
+   select. Los <option> se dibujan fuera del documento, así que no heredan
+   del contenedor: necesitan color y fondo propios. */
+select option {
+  background-color: var(--background);
+  color: var(--foreground);
 }
