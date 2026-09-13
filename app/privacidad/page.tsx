@@ -67,11 +67,12 @@ export default function PrivacidadPage() {
           <div className="border border-brand-gold/30 bg-brand-gold/5 rounded-sm p-5 text-sm leading-relaxed">
             <p className="text-accent-text font-medium mb-1">En corto</p>
             <p className="text-foreground/75">
-              Si me envías los resultados de una evaluación, recibo tu nombre, tu correo,
-              tu teléfono si lo escribes, y tus respuestas al cuestionario. Los uso
-              únicamente para leerlos y ponerme en contacto contigo. No los vendo, no los
-              comparto con terceros con fines comerciales y no los uso para publicidad.
-              Puedes pedirme en cualquier momento que los borre.
+              Hay dos cosas aquí que dejan datos: enviarme los resultados de una evaluación,
+              o pedir una guía en PDF. En el primer caso recibo tus datos de contacto y tus
+              respuestas; en el segundo, sólo tu correo, y lo uso únicamente para mandarte
+              ese archivo. No te suscribo a nada. No los vendo, no los comparto con terceros
+              con fines comerciales y no los uso para publicidad. Puedes pedirme en cualquier
+              momento que los borre.
             </p>
           </div>
 
@@ -107,9 +108,17 @@ export default function PrivacidadPage() {
                 sensibles los datos sobre estado de salud, presente o futuro.
               </li>
             </ul>
+            <ul className="list-disc pl-5 space-y-1.5 marker:text-brand-teal">
+              <li>
+                <strong className="text-foreground">Correo para recibir una guía:</strong> si
+                pides que te envíe en PDF alguno de los documentos de la sección de guías,
+                recabo únicamente tu correo electrónico. Nada más: ni nombre, ni teléfono.
+              </li>
+            </ul>
             <p>
-              Las evaluaciones se pueden responder sin identificarte. Los datos de contacto
-              sólo se recaban si decides usar el botón para enviarme tus resultados.
+              Las evaluaciones se pueden responder sin identificarte, y el contenido de las
+              guías se puede leer completo en el sitio sin dejar ningún dato. Los datos de
+              contacto sólo se recaban si decides enviarme tus resultados o pedir el PDF.
             </p>
           </Seccion>
 
@@ -135,6 +144,11 @@ export default function PrivacidadPage() {
               <li>Leer y valorar los resultados que me envías.</li>
               <li>Ponerme en contacto contigo para responder o proponer una cita.</li>
               <li>Integrar la información a tu proceso si decides iniciar uno conmigo.</li>
+              <li>
+                Enviarte por correo la guía en PDF que hayas pedido.{" "}
+                <strong className="text-foreground">Ese correo se usa para eso y nada
+                más:</strong> no te suscribo a ninguna lista ni te escribo después.
+              </li>
             </ul>
             <p>
               <strong className="text-foreground">No realizo tratamientos con finalidades
