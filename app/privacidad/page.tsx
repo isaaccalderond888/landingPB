@@ -50,8 +50,11 @@ export default function PrivacidadPage() {
         <ThemeToggle />
       </nav>
 
-      <header className="pt-32 pb-10 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-brand-night via-brand-navy to-brand-night text-[#EEF2EC]">
-        <div className="max-w-3xl mx-auto space-y-3">
+      <header className="relative overflow-hidden pt-32 pb-10 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-brand-night via-brand-navy to-brand-night text-[#EEF2EC]">
+        {/* Registro minimalista a propósito: es una página legal y la sobriedad
+            comunica más que una imagen. */}
+        <div aria-hidden="true" className="curvas-lateral pointer-events-none absolute inset-y-0 right-0 w-2/5" />
+        <div className="relative z-10 max-w-3xl mx-auto space-y-3">
           <p className="text-xs tracking-widest uppercase text-brand-gold opacity-80">Legal</p>
           <h1 className="font-display text-4xl md:text-5xl leading-tight">Aviso de privacidad</h1>
           <p className="text-sm opacity-55">Última actualización: {ACTUALIZADO}</p>

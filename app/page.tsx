@@ -140,8 +140,11 @@ export default function Home() {
       </section>
 
       {/* SECCIÓN 3 — EL PROCESO */}
-      <section id="proceso" className="scroll-mt-20 px-6 md:px-12 lg:px-20 py-14 bg-brand-navy">
-        <div className="max-w-3xl mx-auto">
+      <section id="proceso" className="relative overflow-hidden scroll-mt-20 px-6 md:px-12 lg:px-20 py-14 bg-brand-navy">
+        {/* Lleva texto corrido encima, así que aquí el motivo va al borde
+            derecho y muy apagado: acompaña, no compite. */}
+        <div aria-hidden="true" className="curvas-lateral pointer-events-none absolute inset-y-0 right-0 w-1/3" />
+        <div className="relative z-10 max-w-3xl mx-auto">
           <h2 className="text-xs tracking-widest uppercase text-[#69A5BB] mb-8">
             El proceso
           </h2>

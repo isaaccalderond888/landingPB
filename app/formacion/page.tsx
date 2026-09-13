@@ -122,7 +122,7 @@ export default function FormacionPage() {
         </div>
       </nav>
 
-      <header className="pt-32 pb-12 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-brand-night via-brand-navy to-brand-night text-[#EEF2EC]">
+      <header className="cabecera-arte arte-estratos pt-32 pb-12 px-6 md:px-12 lg:px-20 text-[#EEF2EC]">
         <div className="max-w-4xl mx-auto space-y-4">
           <p className="text-xs tracking-widest uppercase text-brand-gold opacity-80">Trayectoria</p>
           <h1 className="font-display text-4xl md:text-5xl leading-tight">Formación</h1>

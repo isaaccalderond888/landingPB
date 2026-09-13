@@ -151,6 +151,30 @@ h1, h2, h3, .font-display {
 }
 .arte-vetas { background-image: url("/arte/vetas.jpg"); }
 .arte-bruma { background-image: url("/arte/bruma.jpg"); }
+.arte-estratos { background-image: url("/arte/estratos.jpg"); }
+
+/* Registro minimalista: el mismo dibujo de curvas del hero, anclado a la
+   derecha para no pasar por detrás del texto. Se usa donde la imagen
+   estorbaría — bandas con texto corrido y la página legal. */
+.curvas-lateral {
+  background-color: #EAD06A;
+  -webkit-mask-image: url("/arte/curvas-hero.svg"),
+                      linear-gradient(to left, #000 0%, #000 30%, transparent 85%);
+  mask-image: url("/arte/curvas-hero.svg"),
+              linear-gradient(to left, #000 0%, #000 30%, transparent 85%);
+  -webkit-mask-size: cover, 100% 100%;
+  mask-size: cover, 100% 100%;
+  -webkit-mask-position: right center, right center;
+  mask-position: right center, right center;
+  -webkit-mask-repeat: no-repeat, no-repeat;
+  mask-repeat: no-repeat, no-repeat;
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  opacity: 0.18;
+}
+@media (max-width: 767px) {
+  .curvas-lateral { display: none; }
+}
 
 /* Accesibilidad: respeta preferencia de movimiento reducido */
 @media (prefers-reduced-motion: reduce) {
