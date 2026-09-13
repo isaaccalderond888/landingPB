@@ -124,7 +124,14 @@ ha leído estos resultados.» **No revertir esto por brevedad.**
 
 ## 4. Pendientes, en orden de importancia
 
-### 4.1 El webhook de agendado devuelve 502 · BLOQUEANTE
+### 4.1 Webhook de agendado · CERRADO (2026-09-13)
+**Estado vigente:** Grok reportó corrección de URL HTTPS y key en Production,
+redeploy y POST HTTP 200 con `ok: true`, request_id
+`19d1d8ef-cf31-4278-8c90-6f063b4da2f0`, y activación de la rutina de Prefrontis.
+Isaac entregó este traspaso a Codex. No repetir el POST ni reabrir C1.
+No se necesita túnel Cloudflare según Grok. Conservar APIs y contrato JSON.
+
+**Referencia histórica del diagnóstico previo:**
 
 `/api/agendar` valida bien pero falla al entregar el lead a Prefrontis. Probado
 en producción el 13 de septiembre: un POST válido devuelve
@@ -448,3 +455,15 @@ WhatsApp. I2 ya pudo comprobarlo Codex mediante el conector Vercel: la ejecució
 registrada a las 20:07:30 UTC devolvió 502 con ERR_INVALID_URL antes de contactar
 al destino. Esto describe esa ejecución; no prueba la configuración actual.
 No copiar valores de configuración de los logs.
+
+## 10. Integración autorizada — 2026-09-13
+
+Isaac autorizó integrar C4–C7 si no cruza el trabajo de Grok. Tras fetch,
+origin/main seguía en la base 40578a2; el único commit de implementación por
+integrar era a16fbfc. Diff sin cambios en app/api, AgendarPresencial ni
+CalendlyAccordion. La implementación pasó TypeScript, lint, build y revisión
+local; se integra por avance directo, sin force push. La evidencia del despliegue
+se registra en el cierre de Codex y en la nota Dominio-isaaccalderon-me del vault.
+
+Grok confirmó haber leído §9. Sigue con dry-run G3/G4, sin reservas ni WhatsApp
+a pacientes. Su configuración de Vercel y contrato JSON quedan intactos.
