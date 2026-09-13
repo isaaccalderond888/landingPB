@@ -14,6 +14,7 @@ export default function SendToTherapist({ testId, score, answers, aiText }: Prop
   const [open, setOpen] = useState(false);
   const [form, setForm] = useState({ nombre: "", apellido: "", telefono: "", correo: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   function set(field: keyof typeof form, value: string) {
     setForm((prev) => ({ ...prev, [field]: value }));
@@ -25,6 +26,7 @@ export default function SendToTherapist({ testId, score, answers, aiText }: Prop
     e.preventDefault();
     if (!valid) return;
     setStatus("sending");
+    setErrorMsg(null);
 
     try {
       const res = await fetch("/api/send-results", {
@@ -32,7 +34,16 @@ export default function SendToTherapist({ testId, score, answers, aiText }: Prop
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...form, testId, score, answers, aiText }),
       });
-      setStatus(res.ok ? "sent" : "error");
+
+      if (!res.ok) {
+        // 429: el servidor explica por qué; en el resto, mensaje genérico.
+        const { error } = await res.json().catch(() => ({ error: null }));
+        setErrorMsg(res.status === 429 ? error ?? null : null);
+        setStatus("error");
+        return;
+      }
+
+      setStatus("sent");
     } catch {
       setStatus("error");
     }
@@ -122,8 +133,12 @@ export default function SendToTherapist({ testId, score, answers, aiText }: Prop
 
           {status === "error" && (
             <p className="text-xs text-red-400 opacity-80">
-              No se pudo enviar. Intenta de nuevo o escribe a{" "}
-              <a href="mailto:psic@isaaccalderon.me" className="underline underline-offset-2">psic@isaaccalderon.me</a>.
+              {errorMsg ?? (
+                <>
+                  No se pudo enviar. Intenta de nuevo o escribe a{" "}
+                  <a href="mailto:psic@isaaccalderon.me" className="underline underline-offset-2">psic@isaaccalderon.me</a>.
+                </>
+              )}
             </p>
           )}
 

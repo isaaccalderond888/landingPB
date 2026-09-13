@@ -15,12 +15,12 @@ export default function AIInterpret({ score, answers, test, onComplete }: Props)
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   async function interpret() {
     setLoading(true);
     setText("");
-    setError(false);
+    setError(null);
     setDone(false);
 
     try {
@@ -29,6 +29,13 @@ export default function AIInterpret({ score, answers, test, onComplete }: Props)
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ score, answers, test }),
       });
+
+      // 429: el servidor explica por qué y cuánto esperar; mostramos su mensaje.
+      if (res.status === 429) {
+        const { error: mensaje } = await res.json().catch(() => ({ error: null }));
+        setError(mensaje ?? "Demasiadas peticiones. Intenta de nuevo en un momento.");
+        return;
+      }
 
       if (!res.ok || !res.body) throw new Error(`Status ${res.status}`);
 
@@ -47,7 +54,7 @@ export default function AIInterpret({ score, answers, test, onComplete }: Props)
       setDone(true);
       onComplete?.(fullText);
     } catch {
-      setError(true);
+      setError("No se pudo obtener la interpretación.");
     } finally {
       setLoading(false);
     }
@@ -96,7 +103,7 @@ export default function AIInterpret({ score, answers, test, onComplete }: Props)
       {/* Error state */}
       {error && (
         <div className="space-y-3">
-          <p className="text-sm opacity-50">No se pudo obtener la interpretación.</p>
+          <p className="text-sm opacity-50">{error}</p>
           <button
             onClick={interpret}
             className="text-xs text-brand-teal opacity-70 hover:opacity-100 underline underline-offset-4 transition-opacity"

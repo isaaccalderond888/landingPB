@@ -1,8 +1,33 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { NextRequest } from "next/server";
 import { TEST_CONFIGS, getBand, type TestId } from "@/lib/testData";
+import { clientIp, rateLimit, tooManyRequests } from "@/lib/rateLimit";
+
+const HORA = 60 * 60 * 1000;
+const DIA = 24 * HORA;
+
+/** Interpretaciones permitidas por IP y por hora. */
+const POR_IP = { max: 5, windowMs: HORA };
+/** Tope global diario — protege el presupuesto de API ante un abuso distribuido. */
+const GLOBAL = { max: 100, windowMs: DIA };
 
 export async function POST(req: NextRequest) {
+  const porIp = rateLimit(`interpret:${clientIp(req)}`, POR_IP);
+  if (!porIp.ok) {
+    return tooManyRequests(
+      porIp.retryAfter,
+      "Has pedido varias interpretaciones seguidas. Espera un momento antes de volver a intentarlo."
+    );
+  }
+
+  const global = rateLimit("interpret:global", GLOBAL);
+  if (!global.ok) {
+    return tooManyRequests(
+      global.retryAfter,
+      "La interpretación con IA no está disponible en este momento. Puedes enviar tus resultados a Isaac directamente."
+    );
+  }
+
   const client = new Anthropic();
   let score: number;
   let answers: number[];

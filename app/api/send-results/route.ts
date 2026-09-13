@@ -2,10 +2,36 @@ import { Resend } from "resend";
 import { NextRequest } from "next/server";
 import { TEST_CONFIGS, getBand, type TestId } from "@/lib/testData";
 
+import { clientIp, rateLimit, tooManyRequests } from "@/lib/rateLimit";
+
 const THERAPIST_EMAIL = "psic@isaaccalderon.me";
 const FROM_EMAIL = "evaluaciones@isaaccalderon.me";
 
+const HORA = 60 * 60 * 1000;
+const DIA = 24 * HORA;
+
+/** Envíos permitidos por IP y por hora. */
+const POR_IP = { max: 3, windowMs: HORA };
+/** Tope global diario — evita que la bandeja se inunde desde un formulario público. */
+const GLOBAL = { max: 50, windowMs: DIA };
+
 export async function POST(req: NextRequest) {
+  const porIp = rateLimit(`send-results:${clientIp(req)}`, POR_IP);
+  if (!porIp.ok) {
+    return tooManyRequests(
+      porIp.retryAfter,
+      "Ya enviaste varios resultados seguidos. Espera un momento o escribe directamente a psic@isaaccalderon.me."
+    );
+  }
+
+  const global = rateLimit("send-results:global", GLOBAL);
+  if (!global.ok) {
+    return tooManyRequests(
+      global.retryAfter,
+      "El envío no está disponible en este momento. Escribe directamente a psic@isaaccalderon.me."
+    );
+  }
+
   const resend = new Resend(process.env.RESEND_API_KEY);
   let body: {
     nombre: string;
