@@ -15,12 +15,19 @@ export default function SendToTherapist({ testId, score, answers, aiText }: Prop
   const [form, setForm] = useState({ nombre: "", apellido: "", telefono: "", correo: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  // Las respuestas de un instrumento clínico son datos personales sensibles:
+  // la LFPDPPP exige consentimiento expreso, no inferido del uso del formulario.
+  const [consiente, setConsiente] = useState(false);
 
   function set(field: keyof typeof form, value: string) {
     setForm((prev) => ({ ...prev, [field]: value }));
   }
 
-  const valid = form.nombre.trim() && form.apellido.trim() && /\S+@\S+\.\S+/.test(form.correo);
+  const valid =
+    !!form.nombre.trim() &&
+    !!form.apellido.trim() &&
+    /\S+@\S+\.\S+/.test(form.correo) &&
+    consiente;
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -154,8 +161,33 @@ export default function SendToTherapist({ testId, score, answers, aiText }: Prop
             {status === "sending" ? "Enviando…" : "Enviar resultados"}
           </button>
 
+          <label className="flex items-start gap-3 cursor-pointer group">
+            <input
+              type="checkbox"
+              checked={consiente}
+              onChange={(e) => setConsiente(e.target.checked)}
+              className="mt-0.5 w-4 h-4 flex-shrink-0 accent-brand-teal cursor-pointer"
+            />
+            <span className="text-xs leading-relaxed opacity-60 group-hover:opacity-80 transition-opacity">
+              Doy mi consentimiento expreso para que Isaac reciba y trate mis respuestas a
+              esta evaluación, que son datos personales sensibles de salud, con la finalidad
+              de leerlas y ponerse en contacto conmigo. He leído el{" "}
+              <a
+                href="/privacidad"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-interactive-text underline underline-offset-2"
+                onClick={(e) => e.stopPropagation()}
+              >
+                aviso de privacidad
+              </a>
+              .
+            </span>
+          </label>
+
           <p className="text-xs opacity-25 leading-relaxed">
-            Tus datos se usan únicamente para que Isaac pueda contactarte. No se comparten con terceros.
+            Tus datos se usan únicamente para que Isaac pueda contactarte. No se comparten
+            con terceros con fines comerciales. Puedes pedir su eliminación cuando quieras.
           </p>
         </form>
       )}

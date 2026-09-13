@@ -210,6 +210,7 @@ export default function Home() {
             <p className="text-sm text-foreground/60">Ciudad de México</p>
             <a href="mailto:psic@isaaccalderon.me" className="text-sm text-foreground/60 hover:text-interactive-text transition-colors">psic@isaaccalderon.me</a>
             <a href={WA} target="_blank" rel="noopener noreferrer" className="text-sm text-foreground/60 hover:text-interactive-text transition-colors">WhatsApp ↗</a>
+            <a href="/privacidad" className="text-sm text-foreground/60 hover:text-interactive-text transition-colors">Aviso de privacidad</a>
           </div>
           <p className="text-xs text-foreground/40">© Isaac Calderón Derat</p>
         </div>

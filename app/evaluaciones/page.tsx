@@ -197,6 +197,7 @@ function EvaluacionesPageInner() {
           <div className="flex flex-wrap gap-x-6 gap-y-2">
             <Link href="/" className="text-sm text-foreground/60 hover:text-interactive-text transition-colors">← Inicio</Link>
             <a href="mailto:psic@isaaccalderon.me" className="text-sm text-foreground/60 hover:text-interactive-text transition-colors">psic@isaaccalderon.me</a>
+            <Link href="/privacidad" className="text-sm text-foreground/60 hover:text-interactive-text transition-colors">Aviso de privacidad</Link>
           </div>
           <p className="text-xs text-foreground/40">© Isaac Calderón Derat</p>
         </div>
