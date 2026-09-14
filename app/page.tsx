@@ -145,8 +145,8 @@ export default function Home() {
               <p className="text-sm leading-relaxed text-foreground/70">
                 El trauma vive en el cuerpo — en los patrones de activación
                 del sistema nervioso, en lo que no pudo ser procesado.
-                Trabajo desde la psicotraumatología clínica en la que estoy
-                certificado, donde el cuerpo es parte central del proceso.
+                Por eso el cuerpo es parte central del proceso, no un
+                añadido al final.
               </p>
             </div>
 
@@ -170,9 +170,9 @@ export default function Home() {
               </h3>
               <p className="text-sm leading-relaxed text-foreground/70">
                 Acompaño preparación e integración con sustancias
-                psicoactivas o enteógenas en contexto clínico y ético.
-                Tengo la fortuna de dirigir Ciencia Psicodélica, y desde
-                ahí cuido que este trabajo tenga el rigor que merece.
+                psicoactivas o enteógenas en contexto clínico y ético. El
+                trabajo está antes y después de la experiencia: eso es lo
+                que la vuelve parte de un proceso.
               </p>
             </div>
 
