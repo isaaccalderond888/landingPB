@@ -169,8 +169,8 @@ export default function Home() {
                 Terapia asistida con psicodélicos
               </h3>
               <p className="text-sm leading-relaxed text-foreground/70">
-                Acompaño preparación e integración con sustancias
-                psicoactivas o enteógenas en contexto clínico y ético. El
+                Acompaño preparación e integración con medicina
+                psicodélica y enteógenos en contexto clínico y ético. El
                 trabajo está antes y después de la experiencia: eso es lo
                 que la vuelve parte de un proceso.
               </p>
